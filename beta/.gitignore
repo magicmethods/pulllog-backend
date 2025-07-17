@@ -1,0 +1,13 @@
+vendor/
+*.log
+*.cache
+.env.sample
+cookies.txt
+
+.github/*
+
+schema/*.json
+schema/*.yaml
+
+sessions/*
+temp/uploads/*

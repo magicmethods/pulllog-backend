@@ -1,0 +1,301 @@
+[
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-06-28",
+        "total_pulls": 71,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "リーゼロッテ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "コラボPickUpガチャ",
+            "Premiumガチャ（恒常）"
+        ],
+        "free_text": "リーゼロッテ（60連）、プレガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-27T22:20:14.985Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-06-29",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-28T22:02:56.103Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-06-30",
+        "total_pulls": 11,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "ダオユン",
+                "marker": "完凸済み"
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-29T23:28:26.662Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-01",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-30T22:22:47.237Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-02",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-01T22:16:00.036Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-03",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-02T21:37:58.416Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-04",
+        "total_pulls": 11,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "チーシェン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-03T21:46:31.066Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-05",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-04T21:53:46.936Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-06",
+        "total_pulls": 11,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "テレーゼ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-05T23:12:57.708Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-07",
+        "total_pulls": 41,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "境界ヴァネッサ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "S",
+                "name": "ミレイユ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "限定新キャラPickUpガチャ"
+        ],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚）、配布ガチャチケ✕30回（ミレイユ）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-07T13:17:18.700Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-08",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "レガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-07T22:19:38.082Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-09",
+        "total_pulls": 11,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "境界ヴァネッサ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "レガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-09T21:09:08.227Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-10",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "レガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-09T21:09:31.459Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-11",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "レガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-10T21:52:26.632Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-12",
+        "total_pulls": 11,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "ハロメリッサ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-12T22:42:19.456Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-13",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-12T22:42:44.202Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-14",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "プレガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-13T21:54:53.657Z"
+    },
+    {
+        "appId": "685ec0a169203",
+        "date": "2025-07-15",
+        "total_pulls": 161,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "S",
+                "name": "シャーロット",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "S",
+                "name": "パトラ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "限定ぺスカPickUpガチャ"
+        ],
+        "free_text": "限定ガチャ（内チケ✕30枚）ぺスカは天井交換、プレガチャ✕11回（無料1回＋ガチャチケ10枚）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-15T00:38:42.308Z"
+    }
+]

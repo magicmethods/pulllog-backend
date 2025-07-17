@@ -1,0 +1,7020 @@
+[
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-04-17",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "黄昏クラウディア",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "クラウディア《黄昏》（10連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:30:32.137Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-04-30",
+        "total_pulls": 50,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "リーナ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "リーナPickUpガチャ"
+        ],
+        "free_text": "リーナ（50連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:29:19.320Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-07",
+        "total_pulls": 70,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ヴァレリー",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "X'masイレーナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "トリシャ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "ヴァレリーPickUpガチャ"
+        ],
+        "free_text": "ヴァレリー（70連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:27:34.280Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-11",
+        "total_pulls": 200,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "トワ先生《黎明》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "フィオナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "モネ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "トワ先生《黎明》PickUp",
+            "メイプルPickUp"
+        ],
+        "free_text": "トワ先生《黎明》（20連目）、メイプルは天井交換",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:24:26.511Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-15",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:25:27.324Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-19",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:25:15.799Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-20",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エルデリーゼ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "フラン",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "BOXガチャ",
+            "エルデリーゼPickUpガチャ"
+        ],
+        "free_text": "エルデリーゼ（6連目）、フラン（7連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:21:01.310Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-21",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:21:20.337Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-05-31",
+        "total_pulls": 40,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "花嫁フィオナ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "サーシャ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "花嫁フィオナPickUpガチャ"
+        ],
+        "free_text": "花嫁フィオナ（40連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:18:40.206Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-05",
+        "total_pulls": 80,
+        "discharge_items": 5,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "花嫁ナミエル",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "蘭美",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "バニーセーラ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ウィステリア",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "サーシャ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 6000,
+        "tags": [
+            "花嫁ナミエルPickUpガチャ"
+        ],
+        "free_text": "花嫁ナミエル（80連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:14:57.649Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-11",
+        "total_pulls": 200,
+        "discharge_items": 5,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルレミカ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アイドルレミカ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ネーゼマイン",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "キサナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "イクシリオン",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 1000,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "アイドルレミカPickUp",
+            "アイドルメルエルPickUp"
+        ],
+        "free_text": "アイドルレミカ（130連目、150連目）、アイドルメルエルは天井交換",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:14:23.133Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-14",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:13:53.614Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-18",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:13:36.694Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-19",
+        "total_pulls": 150,
+        "discharge_items": 6,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "星霊アニュラス",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "トワ先生《黎明》",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "Vt.せつな",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "蘭美",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ナミエル",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "キサナ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "BOXガチャ",
+            "アニュラス《星霊》PickUpガチャ"
+        ],
+        "free_text": "アニュラス《星霊》（150連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:12:59.418Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-20",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 12000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:12:30.522Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-24",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:10:53.542Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-25",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:10:35.033Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-26",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 9000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:10:11.339Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-29",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:09:41.427Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-06-30",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:09:18.732Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-01",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:07:48.454Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-02",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:13:00.547Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-03",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:12:53.025Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-04",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:12:45.180Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-05",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:12:37.901Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-06",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:07:16.527Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-07",
+        "total_pulls": 60,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アポロ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "梨緒",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 8000,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）",
+            "レイドイベWPickUpガチャ",
+            "アポロ\/梨緒PickUp"
+        ],
+        "free_text": "アポロ（10連目）、梨緒（50連目）、WPickUpガチャ✕50回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:06:33.162Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-08",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サチ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:11:54.145Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-09",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ナミエル",
+                "marker": "💖確定枠"
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "1日1回無料10連ガチャ（最大100連）"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:05:55.825Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-11",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アニマ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:08:47.281Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-12",
+        "total_pulls": 200,
+        "discharge_items": 6,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ヒヨ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "バニーユウリ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着フィオナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "エルデリーゼ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "マハムート",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "花嫁フィオナ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 1000,
+        "tags": [
+            "レイドイベWPickUpガチャ",
+            "ミルフィーPickUp",
+            "ヒヨPickUp"
+        ],
+        "free_text": "ヒヨ（60連目）、ミルフィーは天井交換",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:05:10.657Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-13",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:04:33.246Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-14",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:03:58.781Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-15",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:02:56.238Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-17",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:03:40.975Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-18",
+        "total_pulls": 41,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着マム",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アニマ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "水着マハムートPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "水着マム（36連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T13:01:38.651Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-19",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:03:17.700Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-20",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:02:48.141Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-21",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:58:24.254Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-22",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "セシア",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:58:10.034Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-23",
+        "total_pulls": 201,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ユーリス",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "水着アムPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "水着アムは天井交換、ユーリス（190連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:01:51.398Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-24",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:01:29.499Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-25",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:54:43.687Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-26",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "イレーナ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:54:03.381Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-27",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:53:40.196Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-28",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:53:29.753Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-29",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:53:17.663Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-30",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:53:04.951Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-07-31",
+        "total_pulls": 11,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着ヴィーナス",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "水着ヴィーナスPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "水着ヴィーナス（9連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:52:21.290Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-01",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 8000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T03:00:08.847Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-02",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:50:27.214Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-03",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:50:17.789Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-04",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:50:08.367Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-05",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ヴィーナス",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:49:56.702Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-06",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:49:33.255Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-07",
+        "total_pulls": 61,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着リーリア",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "水着リーリアPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "水着リーリア（54連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:59:23.454Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-08",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:47:30.198Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-09",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:47:20.128Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-10",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:58:57.032Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-11",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:47:00.608Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-12",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:46:52.665Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-13",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:46:41.864Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-14",
+        "total_pulls": 150,
+        "discharge_items": 5,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着イクシリオン",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着イクシリオン",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着イクシリオン",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着ルリエル",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "黄昏クラウディア",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "討伐イベWPickUpガチャ"
+        ],
+        "free_text": "水着イクシリオン（81連目、83連目、100連目）、水着ルリエル（144連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:45:54.157Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-15",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "シャロン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:42:10.169Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-16",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:41:48.647Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-17",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:41:38.726Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-18",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:41:27.378Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-19",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:41:06.610Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-20",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:40:54.354Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-21",
+        "total_pulls": 21,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "BOXガチャ",
+            "水着ウィステリアPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "水着ウィステリアは20連でスルーしてピース交換、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:40:17.583Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-22",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:58:12.906Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-23",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:37:58.126Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-25",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:37:40.794Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-27",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:37:22.637Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-28",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:57:54.036Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-29",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:36:37.407Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-30",
+        "total_pulls": 51,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サーシャ《絶氷》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "パテル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 5000,
+        "tags": [
+            "サーシャ《絶氷》PickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "サーシャ《絶氷》（48連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:57:28.310Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-08-31",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:33:08.348Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-01",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "カヤ",
+                "marker": null
+            }
+        ],
+        "expense": 6000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:56:00.288Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-02",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:30:32.634Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-03",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "パルミエ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:30:15.010Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-04",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:29:51.189Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-05",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:29:44.108Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-06",
+        "total_pulls": 21,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "プリムラ《セカンド》",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "プリムラ《セカンド》PickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "プリムラ《セカンド》（12連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:49:18.810Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-07",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:48:07.082Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-08",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:47:47.464Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-09",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:26:43.086Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-10",
+        "total_pulls": 1,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ちぃアルモ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:26:21.460Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-11",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:25:41.908Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-12",
+        "total_pulls": 120,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "イングリット",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ジュリエッテ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "シフォン",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "イングリット（43連目）、ジュリエッテ（112連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:46:32.659Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-13",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:22:15.836Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-14",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:22:03.137Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-15",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:21:53.564Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-16",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:46:04.557Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-17",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:21:33.542Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-18",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:21:24.140Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-19",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "BOXガチャ",
+            "美鶴PickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "美鶴ガチャはスルーしてピース交換",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:20:49.821Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-20",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:19:01.103Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-21",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:45:22.823Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-22",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:18:40.635Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-23",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:18:24.531Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-24",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:18:15.925Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-25",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:18:04.925Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-26",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:17:54.679Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-27",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:17:39.460Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-28",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:44:56.093Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-29",
+        "total_pulls": 161,
+        "discharge_items": 5,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ヒマワリ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヒマワリ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヒルディオーネ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "マグダレナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ミア",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "ヒマワリPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "ヒマワリ（156連目、160連目）、チケットガチャ✕1回（ミア）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:16:31.072Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-09-30",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:12:49.436Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-01",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:56:34.724Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-02",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:56:25.725Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-03",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:56:13.331Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-04",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:55:53.430Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-05",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:55:21.838Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-06",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:04:59.080Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-07",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:54:55.805Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-08",
+        "total_pulls": 151,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "女帝セナリィ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ウィステリア",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "女帝セナリィPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "女帝セナリィ（148連目）、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:05:26.360Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-09",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:52:42.449Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-10",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:52:31.731Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-11",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:05:55.598Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-12",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:06:20.252Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-13",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:07:13.236Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-14",
+        "total_pulls": 201,
+        "discharge_items": 4,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ジャクリーヌ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ジャクリーヌ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ウズメ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "花嫁ナミエル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "ジャクリーヌ（76連目、176連目）、ハロヒトリは天井で交換、チケガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:51:53.803Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-15",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エスメラルダ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:47:14.241Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-16",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ハロネーゼ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:46:54.581Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-17",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:46:20.325Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-18",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:46:07.523Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-19",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "シャロン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:45:43.604Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-20",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:45:21.964Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-21",
+        "total_pulls": 20,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "シルヴィ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ",
+            "BOXガチャ",
+            "シルヴィPickUpガチャ"
+        ],
+        "free_text": "シルヴィ（3連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:44:47.756Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-22",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:07:55.787Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-23",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:43:03.226Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-24",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:42:55.779Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-25",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:42:20.835Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-26",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:42:09.068Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-27",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ちぃダレナ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:41:52.007Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-28",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サチ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:41:18.409Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-29",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ソフレ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:40:55.822Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-30",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:40:32.278Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-10-31",
+        "total_pulls": 110,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アナ《煌炎》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヴィーナス",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "アナ《煌炎》PickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "アナ《煌炎》（95連目）、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:40:12.380Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-01",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:38:08.322Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-02",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:38:00.111Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-03",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:37:49.321Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-04",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:37:33.128Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-05",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:37:22.024Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-06",
+        "total_pulls": 60,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アニマ《極天》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "美鶴",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "極天アニマPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "アニマ《極天》（49連目）、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:36:51.105Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-07",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:35:02.128Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-08",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "フラン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:34:24.244Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-09",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:34:03.218Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-10",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "黄昏クラウディア",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:33:47.205Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-11",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:33:18.865Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-12",
+        "total_pulls": 60,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ロクサーナ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "藍",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "ロクサーナ（40連目）、藍（47連目）、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:32:59.625Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-13",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:30:56.237Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-14",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:10:40.520Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-15",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:30:27.170Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-16",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:30:16.374Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-17",
+        "total_pulls": 10,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "メルエル",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "イニシュ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "イングリット",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:29:58.022Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-18",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:29:00.177Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-19",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:28:51.670Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-20",
+        "total_pulls": 20,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "X'masイレーナ",
+                "marker": null
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "BOXガチャ",
+            "ツィツーリェPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "PickUpガチャはチケットのみ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:11:56.941Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-21",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:26:20.612Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-22",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:26:10.505Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-23",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:12:22.024Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-24",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:13:19.247Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-25",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:13:43.833Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-26",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:25:06.864Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-27",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:24:37.247Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-28",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T06:24:14.503Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-29",
+        "total_pulls": 30,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "X'masルルカ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ナミエル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "X'masルルカPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "X'masルルカ（18連目）、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:14:25.227Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-11-30",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:15:11.685Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-01",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ラティエ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:17:39.777Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-02",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:17:17.135Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-03",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:17:09.747Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-04",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:16:59.881Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-05",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "美鶴",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:16:44.735Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-06",
+        "total_pulls": 130,
+        "discharge_items": 5,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "X'masフニ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヴァレリー",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ミア",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ソフレ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "メルエル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "X'masフニPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "X'masフニ（113連目）、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:15:55.683Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-07",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:12:43.501Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-08",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:12:29.388Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-09",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ナミエル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:12:16.189Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-10",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:11:49.846Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-11",
+        "total_pulls": 10,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ハロヒトリ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "キサナ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アルモタヘル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:11:24.982Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-12",
+        "total_pulls": 50,
+        "discharge_items": 4,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "X'masリップル",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "サンタモネ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "花嫁ナミエル",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "イングリット",
+                "marker": null
+            }
+        ],
+        "expense": 5000,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "X'masリップル（25連目）、サンタモネ（38連目）、花嫁ナミエル（27連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:16:14.485Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-13",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:06:12.405Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-14",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:06:00.947Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-15",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:05:45.984Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-16",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:16:40.378Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-17",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "シフォン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:05:14.949Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-18",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:17:41.922Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-19",
+        "total_pulls": 41,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サンタ蘭美",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヒルディオーネ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "BOXガチャ",
+            "サンタ蘭美PickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "PickUpガチャの11連は配布チケット、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:04:12.346Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-20",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ユーリス",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:00:49.367Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-21",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ネーゼマイン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:00:26.709Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-22",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T05:00:05.041Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-23",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:59:54.317Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-24",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:18:12.374Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-25",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:59:14.082Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-26",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:18:50.789Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-27",
+        "total_pulls": 90,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "晴着トリシャ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アイドルメルエル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "晴着トリシャPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "晴着トリシャ（72連目）、チケガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:58:17.908Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2024-12-29",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:19:17.663Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-01",
+        "total_pulls": 200,
+        "discharge_items": 4,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "オオヒメ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "オオヒメ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "晴着フィオナ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "X'masヨミ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "正月限定WPickUpガチャ"
+        ],
+        "free_text": "オオヒメ（51連目、56連目）、晴着フィオナ（84連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:55:29.225Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-02",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:52:12.957Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-03",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ネーゼマイン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:51:58.177Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-04",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:51:36.067Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-05",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:51:28.301Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-06",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 10000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:19:59.880Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-07",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:51:03.983Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-08",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "トリュファイナ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:50:48.270Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-09",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:50:27.023Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-10",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:50:13.027Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-11",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 10000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:20:34.204Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-12",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:49:40.642Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-13",
+        "total_pulls": 90,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ナナカ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アナ《煌炎》",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "ナナカPickUpガチャ"
+        ],
+        "free_text": "ナナカ（90連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:49:03.528Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-14",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:21:32.646Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-15",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着ルリエル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:46:42.459Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-16",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:46:11.437Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-17",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:46:02.631Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-18",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:45:53.989Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-19",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:45:38.710Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-20",
+        "total_pulls": 50,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ロロット",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "サチ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "ロロットPickUpガチャ"
+        ],
+        "free_text": "ロロット（42連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:45:00.375Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-21",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:43:53.176Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-22",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:43:43.398Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-23",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "バニーユウリ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:43:25.159Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-24",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:42:59.605Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-25",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:42:48.998Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-26",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着マム",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:42:37.283Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-27",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:42:08.004Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-28",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:41:54.214Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-29",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着アム",
+                "marker": null
+            }
+        ],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:22:41.217Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-30",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:40:55.467Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-01-31",
+        "total_pulls": 100,
+        "discharge_items": 5,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "Vt.ウズメ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "Vt.シャルレーヌ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着ウィステリア",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "イングリット",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アルモタヘル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "Vt.ウズメ（27連目）、Vt.シャルレーヌ（83連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:40:26.965Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-01",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルメルエル",
+                "marker": null
+            }
+        ],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:23:28.541Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-02",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:35:59.115Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-03",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:24:00.780Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-04",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:35:26.740Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-05",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "シフォン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:35:09.371Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-06",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:34:50.623Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-07",
+        "total_pulls": 20,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 500,
+        "tags": [
+            "BOXガチャ",
+            "ベアトリスPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "ベアトリスのBOXガチャは有償チケット✕5購入して10連のみ",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:34:21.024Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-08",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:24:16.880Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-09",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:32:20.085Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-10",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ヒヨ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヒルディオーネ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:32:02.457Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-11",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルレミカ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "メイプル",
+                "marker": null
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:24:56.069Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-12",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ユーリス",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "エルデリーゼ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:30:13.963Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-13",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:29:39.771Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-14",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:29:15.794Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-15",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:28:55.062Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-16",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:28:28.110Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-17",
+        "total_pulls": 100,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルレミカ",
+                "marker": null
+            }
+        ],
+        "expense": 13000,
+        "tags": [
+            "チケットガチャ",
+            "アルテPickUpガチャ"
+        ],
+        "free_text": "アルテ（70連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:25:49.827Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-18",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着アム",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:25:34.807Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-19",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルレミカ",
+                "marker": null
+            }
+        ],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:27:43.453Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-20",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:27:12.251Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-21",
+        "total_pulls": 200,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルレミカ",
+                "marker": null
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "プトラPickUpガチャ"
+        ],
+        "free_text": "プトラ（180連目、197連目）、ナミエル（127連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:28:07.041Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-22",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:20:32.453Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-23",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:20:12.835Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-24",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ヨミ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ネーゼマイン",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:19:55.923Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-25",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:19:15.387Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-26",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:17:50.496Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-27",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:17:36.556Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-02-28",
+        "total_pulls": 20,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着アポロ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヨミ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ナミエル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "水着アポロPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "水着アポロ（10連目）、ヨミとナミエルはチケガチャにて",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:17:15.038Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-01",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ",
+            "クルスク"
+        ],
+        "free_text": "クルスク開始（月額1000円）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:29:29.218Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-02",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "キサナ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "エスメラルダ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:14:30.414Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-03",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:13:38.942Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-04",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:09:52.882Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-05",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:09:39.585Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-06",
+        "total_pulls": 20,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着ソフィア",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ",
+            "水着ソフィアPickUpガチャ"
+        ],
+        "free_text": "水着ソフィア（8連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:11:25.163Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-07",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "クラウディア",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:09:13.263Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-08",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:08:43.199Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-09",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着ルルカ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:08:25.564Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-10",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サチ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:07:53.646Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-11",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:07:16.580Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-12",
+        "total_pulls": 30,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エンジュ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "メテオラ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "討伐イベWPickUpガチャ"
+        ],
+        "free_text": "エンジュ（9連目）、メテオラ（13連目）、チケットガチャ✕10回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:30:08.713Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-13",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "イレーナ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:04:05.589Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-14",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:03:37.166Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-15",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:03:22.978Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-16",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:02:58.898Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-17",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:02:48.842Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-18",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "女帝セナリィ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヴィーナス",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:02:30.471Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-19",
+        "total_pulls": 10,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エスメラルダ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "晴着トリシャ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:01:37.355Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-20",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "リップル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T04:00:24.033Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-21",
+        "total_pulls": 20,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エスメラルダ",
+                "marker": null
+            }
+        ],
+        "expense": 500,
+        "tags": [
+            "BOXガチャ",
+            "ナターシャPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "BOXガチャは有償チケx5追加で10連のみ、エスメラルダはチケガチャから",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:59:28.413Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-22",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エンジュ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 1000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:30:28.055Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-23",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:55:44.461Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-24",
+        "total_pulls": 20,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "セレクトPickUpとチケガチャそれぞれ10回ずつ",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:54:55.485Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-25",
+        "total_pulls": 50,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "パテル",
+                "marker": "🎯狙い"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:53:24.516Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-26",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:52:44.628Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-27",
+        "total_pulls": 20,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:30:50.735Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-28",
+        "total_pulls": 20,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:52:09.427Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-29",
+        "total_pulls": 20,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "パテル",
+                "marker": "🎯狙い"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:51:38.513Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-30",
+        "total_pulls": 20,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "イングリット",
+                "marker": "🎯狙い"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:50:45.893Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-03-31",
+        "total_pulls": 30,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "バニーネーゼマイン",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "バニーネーゼPickUpガチャ",
+            "チケットガチャ",
+            "クルスク"
+        ],
+        "free_text": "バニーネーゼ（11連目）、恒常チケガチャ✕10回、クルスク継続",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:31:39.071Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-01",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:33:28.107Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-02",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:39:39.977Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-03",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:39:27.591Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-04",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:39:13.972Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-05",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:38:46.170Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-06",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:38:27.226Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-07",
+        "total_pulls": 201,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "藍",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "X'masリップル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ",
+            "バニーヒルディPickUpガチャ"
+        ],
+        "free_text": "バニーヒルディは天井でGET",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:42:26.708Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-08",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:38:11.642Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-09",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:36:44.098Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-10",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:36:21.377Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-11",
+        "total_pulls": 90,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ジュエリー《究明》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ミネコ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "討伐イベWPickUpガチャ",
+            "チケットガチャ"
+        ],
+        "free_text": "ジュエリー《究明》（22連目）、ミネコ（76連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:34:30.888Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-12",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:33:46.055Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-13",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:29:52.947Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-14",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:29:39.043Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-15",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:29:18.620Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-16",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 5000,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:34:03.815Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-17",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:27:53.187Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-18",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "星霊アニュラス",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:26:54.169Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-19",
+        "total_pulls": 0,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:23:41.630Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-20",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "チケットガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:27:18.031Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-21",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:22:50.424Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-22",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 500,
+        "tags": [
+            "シノPickUpガチャ",
+            "BOXガチャ"
+        ],
+        "free_text": "有償ガチャチケx5購入",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:22:16.505Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-23",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:20:17.693Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-24",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:19:24.413Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-25",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:34:26.020Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-26",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:18:37.045Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-27",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:18:17.200Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-28",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:17:56.814Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-29",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:17:40.914Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-04-30",
+        "total_pulls": 80,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "レイラ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 6000,
+        "tags": [
+            "レイラPickUpガチャ（限定）",
+            "クルスク"
+        ],
+        "free_text": "有償ガチャチケx5購入、レイラ（64連目）、クルスク継続",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:35:57.231Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-01",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:12:09.680Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-02",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 10000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:37:00.615Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-03",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-09T12:53:20.578Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-04",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-09T12:52:44.874Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-05",
+        "total_pulls": 140,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着ウィステリア",
+                "marker": "🎯狙い"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着リーリア",
+                "marker": "🎯狙い"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-09T12:43:26.222Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-06",
+        "total_pulls": 10,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-08T23:29:43.776Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-07",
+        "total_pulls": 201,
+        "discharge_items": 3,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "藍",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "イレーナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ちぃダレナ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "コハルコ《光誕》PickUpガチャ"
+        ],
+        "free_text": "コハルコ《光誕》は天井交換",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:51:40.227Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-08",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:48:29.273Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-09",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:48:15.547Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-10",
+        "total_pulls": 4,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:47:41.017Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-11",
+        "total_pulls": 4,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:37:38.426Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-12",
+        "total_pulls": 4,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:37:52.119Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-13",
+        "total_pulls": 194,
+        "discharge_items": 8,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "マグダレナ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "紅明《羅刹》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "サーシャ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "X'masヨミ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ハロネーゼ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "シフォン",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "クーシェン",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "X'masリップル",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "紅明《羅刹》（53連目）、クーシェン（185連目）\n190連目以降は有償石100ガチャ✕4",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:44:06.309Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-14",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 3000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:38:11.358Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-15",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:44:57.165Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-16",
+        "total_pulls": 1,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:45:27.357Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-17",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:38:30.482Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-18",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:46:06.204Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-19",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:46:18.704Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-20",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:46:37.107Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-21",
+        "total_pulls": 12,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 500,
+        "tags": [],
+        "free_text": "リーエンBOXガチャ✕10連（配布チケ✕5＋有償チケ✕5）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-06T09:53:40.361Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-22",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2000,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:38:52.647Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-23",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-04T05:00:46.676Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-24",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-04T05:00:25.865Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-25",
+        "total_pulls": 11,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-04T05:00:05.852Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-26",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-04T04:59:39.072Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-27",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-02T07:54:48.366Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-28",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-02T07:44:16.771Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-29",
+        "total_pulls": 3,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アイドルメルエル",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-03T23:54:33.015Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-30",
+        "total_pulls": 83,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "イングリット",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "花嫁ヨミ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 1000,
+        "tags": [
+            "花嫁ヨミPickUpガチャ",
+            "クルスク"
+        ],
+        "free_text": "PickUpガチャ✕80連（ヨミ：78連目）\n有償石100のガチャ✕3回、クルスク継続",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T07:40:31.916Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-05-31",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-02T07:36:57.474Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-01",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-02T07:35:39.236Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-02",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-02T07:34:26.298Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-03",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 480,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-06T10:09:31.684Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-04",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-03T23:53:37.284Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-05",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-06T09:45:27.875Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-06",
+        "total_pulls": 73,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エスメラルダ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "花嫁蘭美",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "花嫁蘭美PickUpガチャ"
+        ],
+        "free_text": "PickUpガチャ✕70連（蘭美：64連目）\n有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-06T10:08:28.609Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-07",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T14:21:18.833Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-08",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-07T22:28:27.805Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-09",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-09T07:14:05.400Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-10",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:08:51.140Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-11",
+        "total_pulls": 3,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕3回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T03:09:18.910Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-12",
+        "total_pulls": 154,
+        "discharge_items": 7,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サチ《運命》",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "トレジアンナ",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヒヨ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "水着ウィステリア",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "X'masモネ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "トリシャ",
+                "marker": "💔すり抜け"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "アナ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "討伐イベWPickUpガチャ"
+        ],
+        "free_text": "サチ《運命》（110連目）、トレジアンナ（148連目）、有償石100のガチャ✕4回、スペシャルスタージュエルミッションパス（2800DMMPt）購入",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-12T12:20:18.318Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-13",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-13T12:10:50.027Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-14",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-14T02:35:43.166Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-15",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:46:56.642Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-16",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:46:39.024Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-17",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:46:29.283Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-18",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:46:14.163Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-19",
+        "total_pulls": 2,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [],
+        "free_text": "有償石100のガチャ✕2回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:46:03.017Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-20",
+        "total_pulls": 4,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年前夜祭記念限定ガチャ",
+            "アポロ（大人）PickUp"
+        ],
+        "free_text": "有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:45:38.665Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-21",
+        "total_pulls": 44,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 4800,
+        "tags": [
+            "2周年前夜祭記念限定ガチャ",
+            "アポロ（大人）PickUp"
+        ],
+        "free_text": "ガチャチケパック③購入、チケガチャ✕40回、有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-20T21:58:01.383Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-22",
+        "total_pulls": 4,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年前夜祭記念限定ガチャ"
+        ],
+        "free_text": "有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-24T11:45:30.879Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-23",
+        "total_pulls": 5,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年前夜祭記念限定ガチャ",
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "有償石100のガチャ✕5回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-24T11:46:34.498Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-24",
+        "total_pulls": 14,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年前夜祭記念限定ガチャ",
+            "セレクトPickUpガチャ"
+        ],
+        "free_text": "配布チケット✕10回、有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-24T11:48:28.327Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-25",
+        "total_pulls": 5,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "サンタ蘭美",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "限定サンタ蘭美復刻PickUpガチャ"
+        ],
+        "free_text": "有償石100のガチャ✕5回、サンタ蘭美一発ツモ♪",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-25T14:28:24.093Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-26",
+        "total_pulls": 10,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アポロ（大人）",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 2000,
+        "tags": [
+            "2周年前夜祭記念限定ガチャ"
+        ],
+        "free_text": "アポロ（大人）（66連目）、有償石100のガチャ✕5回、キラキラセール（アポロ）購入",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-25T21:52:50.929Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-27",
+        "total_pulls": 17,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 2400,
+        "tags": [
+            "2周年記念無料10連ガチャ",
+            "復刻コラボ限定ガチャ（ナナカ）",
+            "復刻コラボ限定ガチャ（聖沙&リア）"
+        ],
+        "free_text": "無料10連ガチャ、有償石100のガチャ✕7回、限定シスターナナカパック購入",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-27T11:23:05.696Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-28",
+        "total_pulls": 15,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "エルデリーゼ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ",
+            "復刻限定ガチャ（梨緒&アポロ）"
+        ],
+        "free_text": "無料10連ガチャ、有償石100のガチャ✕5回（エルデ）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-27T22:14:59.592Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-29",
+        "total_pulls": 15,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ、有償石100のガチャ✕5回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-28T22:02:00.920Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-06-30",
+        "total_pulls": 16,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "マハムート",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "ヴァレリー",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ",
+            "限定ロロット復刻ガチャ"
+        ],
+        "free_text": "無料10連ガチャ（マム）、有償石100のガチャ✕5回（ヴァレリー）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-30T14:07:28.745Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-01",
+        "total_pulls": 14,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ、有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-06-30T22:36:38.337Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-02",
+        "total_pulls": 14,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "アニマ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ（アニマ）、有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-01T22:13:26.043Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-03",
+        "total_pulls": 24,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "セドナ",
+                "marker": null
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ、有償石100のガチャ✕4回、チケットガチャ✕10回（セドナ）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-02T21:13:43.456Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-04",
+        "total_pulls": 24,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ",
+            "第2弾2周年記念無料10連ガチャ",
+            "1.5周年復刻限定ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕2回（第2弾が追加）、有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-04T13:06:38.430Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-05",
+        "total_pulls": 24,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "水着ソフィア",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ",
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕2回、有償石100のガチャ✕4回（ソフィア）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-04T21:52:16.133Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-06",
+        "total_pulls": 24,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "パテル",
+                "marker": "💖確定枠"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "2周年記念無料10連ガチャ",
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕2回（第1弾確定枠：パテル）、有償石100のガチャ✕4回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-05T22:23:57.403Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-07",
+        "total_pulls": 15,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "ナターシャ",
+                "marker": null
+            },
+            {
+                "rarity": "⭐3",
+                "name": "晴着トリシャ",
+                "marker": null
+            }
+        ],
+        "expense": 6000,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ",
+            "2周年記念限定ガチャ第1弾"
+        ],
+        "free_text": "2周年記念スターゲイザーパス（プレミアム2000／スペシャル1500）購入、シスターヴィーナス【神光】パック（1500）購入、無料10連ガチャ✕1回（ナターシャ・トリシャ）、有償石100のガチャ✕4回、限定ガチャ1日無料✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-07T11:46:43.329Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-08",
+        "total_pulls": 36,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 10000,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕1回、有償石100のガチャ✕5回、1日1回無料ガチャ✕1回、限定ガチャ✕20連、クーポン対応パックをクーポン適用できずに購入（泣）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-08T15:04:25.472Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-09",
+        "total_pulls": 136,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "神光ヴィーナス",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "魔王フィオナ",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕1回、有償石100のガチャ✕5回、1日1回無料ガチャ✕1回、限定ガチャ（神光ヴィーナス：75連目、魔王フィオナ：139連目）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-09T00:06:17.766Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-10",
+        "total_pulls": 16,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "女帝セナリィ",
+                "marker": "💔すり抜け"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕1回、有償石100のガチャ✕5回（女帝セナリィ）、1日1回無料ガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-09T22:23:21.787Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-11",
+        "total_pulls": 14,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ",
+            "復刻限定ガチャ（ヘレナ・ヴィーナス）"
+        ],
+        "free_text": "無料10連ガチャ✕1回、有償石100のガチャ✕3回、1日1回無料ガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-11T07:11:11.518Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-12",
+        "total_pulls": 13,
+        "discharge_items": 0,
+        "drop_details": [],
+        "expense": 0,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕1回、有償石100のガチャ✕2回、1日1回無料ガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-11T22:00:49.976Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-13",
+        "total_pulls": 13,
+        "discharge_items": 1,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "煌炎アナ",
+                "marker": "💖確定枠"
+            }
+        ],
+        "expense": 0,
+        "tags": [
+            "第2弾2周年記念無料10連ガチャ"
+        ],
+        "free_text": "無料10連ガチャ✕1回（煌炎アナ）、有償石100のガチャ✕2回、1日1回無料ガチャ✕1回",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-12T23:03:38.925Z"
+    },
+    {
+        "appId": "683c103e6a7b0",
+        "date": "2025-07-14",
+        "total_pulls": 14,
+        "discharge_items": 2,
+        "drop_details": [
+            {
+                "rarity": "⭐3",
+                "name": "超竜マム",
+                "marker": "🏆ピックアップ"
+            },
+            {
+                "rarity": "⭐3",
+                "name": "彩愛リーリア",
+                "marker": "🏆ピックアップ"
+            }
+        ],
+        "expense": 3000,
+        "tags": [
+            "2周年記念限定ガチャ第2弾",
+            "リーリア《彩愛》・マハムート《超竜》Pick"
+        ],
+        "free_text": "2周年記念スタージュエルミッションパス購入、有償石100のガチャ✕3回、1日1回無料ガチャ（超竜マム！）、彩愛リーリア（6連目♪）",
+        "images": [],
+        "tasks": [],
+        "last_updated": "2025-07-14T15:07:11.982Z"
+    }
+]
