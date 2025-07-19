@@ -20,7 +20,7 @@ erDiagram
         TIMESTAMPTZ updated_at
     }
     Users{
-        id
+        SERIAL id PK
         email
         password_hash
         name
