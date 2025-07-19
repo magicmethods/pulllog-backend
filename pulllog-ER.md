@@ -19,58 +19,58 @@ erDiagram
     Users ||--o{ UserApps: "has"
     Users {
         SERIAL id PK
-        email
-        password_hash
-        name
-        avatar_url
-        roles
-        plan_id
-        plan_expiration
-        language
-        theme
-        home_page
-        last_login
-        last_login_ip
-        last_login_ua
-        is_deleted
-        is_verified
-        unread_notices
-        created_at
-        updated_at
+        VARCHAR email UNIQUE
+        VARCHAR password_hash
+        VARCHAR name
+        VARCHAR avatar_url
+        VARCHAR[] roles
+        INTEGER plan_id FK
+        TIMESTAMPTZ plan_expiration
+        VARCHAR language
+        theme theme
+        VARCHAR home_page
+        TIMESTAMPTZ last_login
+        VARCHAR last_login_ip
+        VARCHAR last_login_ua
+        BOOLEAN is_deleted
+        BOOLEAN is_verified
+        INTEGER[] unread_notices
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
     }
     UserApps {
-        id
-        user_id
-        app_id
-        created_at
+        SERIAL id PK
+        INTEGER user_id FK
+        INTEGER app_id FK
+        TIMESTAMPTZ created_at
     }
     Users ||--o{ Logs: "has"
     Logs {
-        id
-        user_id
-        app_id
-        log_date
-        total_pulls
-        discharge_items
-        expense
-        drop_details
-        tags
-        free_text
-        images
-        tasks
-        created_at
-        updated_at
+        BIGSERIAL id PK
+        INTEGER user_id FK
+        INTEGER app_id FK
+        DATE log_date
+        INTEGER total_pulls
+        INTEGER discharge_items
+        INTEGER expense
+        drop[] drop_details
+        TEXT[] tags
+        TEXT free_text
+        TEXT[] images
+        JSONB tasks
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
     }
     Users ||--o{ AuthTokens: "has"
     AuthTokens {
-        id
-        user_id
-        token
-        type
-        code
-        is_used
-        expires_at
-        created_at
+        SERIAL id PK
+        INTEGER user_id FK
+        VARCHAR token UNIQUE
+        token_type type
+        VARCHAR code
+        BOOLEAN is_used
+        TIMESTAMPTZ expires_at
+        TIMESTAMPTZ created_at
     }
     Users ||--o{ UserSessions: "has"
     Users }|--|| Plans: "plan"
