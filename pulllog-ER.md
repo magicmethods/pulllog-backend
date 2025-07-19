@@ -100,6 +100,10 @@ erDiagram
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
     }
+```
+
+```mermaid
+erDiagram
     entity UserSessions {
         VARCHAR csrf_token PK
         INTEGER user_id FK
