@@ -2,7 +2,7 @@
 
 ```mermaid
 erDiagram
-    plans {
+    entity plans {
         id
         name
         description
@@ -20,7 +20,7 @@ erDiagram
         updated_at
     }
 
-    users {
+    entity users {
         id
         email
         password_hash
@@ -41,7 +41,8 @@ erDiagram
         created_at
         updated_at
     }
-    apps {
+
+    entity apps {
         id
         app_key
         name
@@ -58,13 +59,15 @@ erDiagram
         created_at
         updated_at
     }
-    user_apps {
+
+    entity user_apps {
         id
         user_id
         app_id
         created_at
     }
-    logs {
+
+    entity logs {
         id
         user_id
         app_id
@@ -80,7 +83,8 @@ erDiagram
         created_at
         updated_at
     }
-    auth_tokens {
+
+    entity auth_tokens {
         id
         user_id
         token
@@ -90,14 +94,16 @@ erDiagram
         expires_at
         created_at
     }
-    user_sessions {
+    
+    entity user_sessions {
         csrf_token
         user_id
         email
         created_at
         expires_at
     }
-    stats_cache {
+
+    entity stats_cache {
         user_id
         cache_key
         value
