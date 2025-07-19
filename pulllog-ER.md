@@ -19,6 +19,7 @@ erDiagram
         created_at
         updated_at
     }
+
     users {
         id
         email
