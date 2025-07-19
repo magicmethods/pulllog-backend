@@ -1,5 +1,7 @@
 # PullLog ER
 
+## Full-Spec
+
 ```mermaid
 erDiagram
     users ||--o{ user_apps: "has"
@@ -114,6 +116,8 @@ erDiagram
         TIMESTAMPTZ updated_at
     }
 ```
+
+## Summary
 
 ```mermaid
 erDiagram
