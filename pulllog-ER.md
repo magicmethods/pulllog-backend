@@ -76,16 +76,9 @@ erDiagram
     Users }|--|| Plans: "plan"
     Plans ||--o{ Users: "plan"
     Apps ||--o{ UserApps: "has"
-    Apps ||--o{ Logs: "has"
-    Logs ||--o{ StatsCache: "has"
-    Users ||--o{ StatsCache: "has"
-```
-
-```mermaid
-erDiagram
-    entity Apps
-        SERIAL id PK
-        VARCHAR app_key UNIQUE
+    Apps {
+        SERIAL id
+        VARCHAR app_key
         VARCHAR name
         VARCHAR url
         TEXT description
@@ -99,7 +92,31 @@ erDiagram
         JSONB task_defs
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
+    }
+    Apps ||--o{ Logs: "has"
+    Logs ||--o{ StatsCache: "has"
+    Users ||--o{ StatsCache: "has"
+```
 
+```mermaid
+erDiagram
+    entity Apps {
+        SERIAL id
+        VARCHAR app_key
+        VARCHAR name
+        VARCHAR url
+        TEXT description
+        VARCHAR currency_unit
+        VARCHAR date_update_time
+        BOOLEAN sync_update_time
+        BOOLEAN pity_system
+        INTEGER guarantee_count
+        definition[] rarity_defs
+        definition[] marker_defs
+        JSONB task_defs
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
+    }
 ```
 
 ```mermaid
