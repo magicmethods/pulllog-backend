@@ -2,25 +2,25 @@
 
 ```mermaid
 erDiagram
-    entity plans {
-        id
-        name
-        description
-        max_apps
-        max_app_name_length
-        max_app_desc_length
-        max_log_tags
-        max_log_tag_length
-        max_log_text_length
-        max_logs_per_app
-        max_storage_mb
-        price_per_month
-        is_active
-        created_at
-        updated_at
+    plans{
+        SERIAL id PK
+        VARCHAR name UNIQUE
+        TEXT description
+        INTEGER max_apps
+        INTEGER max_app_name_length
+        INTEGER max_app_desc_length
+        INTEGER max_log_tags
+        INTEGER max_log_tag_length
+        INTEGER max_log_text_length
+        INTEGER max_logs_per_app
+        INTEGER max_storage_mb
+        INTEGER price_per_month
+        BOOLEAN is_active
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
     }
 
-    entity users {
+    users{
         id
         email
         password_hash
@@ -42,7 +42,7 @@ erDiagram
         updated_at
     }
 
-    entity apps {
+    apps{
         id
         app_key
         name
@@ -60,14 +60,14 @@ erDiagram
         updated_at
     }
 
-    entity user_apps {
+    user_apps{
         id
         user_id
         app_id
         created_at
     }
 
-    entity logs {
+    logs{
         id
         user_id
         app_id
@@ -84,7 +84,7 @@ erDiagram
         updated_at
     }
 
-    entity auth_tokens {
+    auth_tokens{
         id
         user_id
         token
@@ -95,7 +95,7 @@ erDiagram
         created_at
     }
     
-    entity user_sessions {
+    user_sessions{
         csrf_token
         user_id
         email
@@ -103,7 +103,7 @@ erDiagram
         expires_at
     }
 
-    entity stats_cache {
+    stats_cache{
         user_id
         cache_key
         value
