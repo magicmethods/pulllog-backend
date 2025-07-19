@@ -2,7 +2,7 @@
 
 ```mermaid
 erDiagram
-    plans{
+    Plans{
         SERIAL id PK
         VARCHAR name UNIQUE
         TEXT description
@@ -19,8 +19,7 @@ erDiagram
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
     }
-
-    users{
+    Users{
         id
         email
         password_hash
@@ -42,7 +41,7 @@ erDiagram
         updated_at
     }
 
-    apps{
+    Apps{
         id
         app_key
         name
@@ -60,14 +59,14 @@ erDiagram
         updated_at
     }
 
-    user_apps{
+    UserApps{
         id
         user_id
         app_id
         created_at
     }
 
-    logs{
+    Logs{
         id
         user_id
         app_id
@@ -84,7 +83,7 @@ erDiagram
         updated_at
     }
 
-    auth_tokens{
+    AuthTokens{
         id
         user_id
         token
@@ -95,7 +94,7 @@ erDiagram
         created_at
     }
     
-    user_sessions{
+    UserSessions{
         csrf_token
         user_id
         email
@@ -103,7 +102,7 @@ erDiagram
         expires_at
     }
 
-    stats_cache{
+    StatsCache{
         user_id
         cache_key
         value
