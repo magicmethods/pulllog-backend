@@ -8,7 +8,7 @@ $userDBFilePath  = './responses/user/users.json';
 // RememberトークンCookie取得
 $cookieName = 'remember_token';
 $rememberToken = $_COOKIE[$cookieName] ?? null;
-//@error_log(json_encode($rememberToken, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+//dump($rememberToken);
 
 header('Content-Type: application/json');
 

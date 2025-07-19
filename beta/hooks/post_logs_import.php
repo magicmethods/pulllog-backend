@@ -14,18 +14,18 @@ if (!empty($matchingKeys)) {
 
     // ファイル取得チェック
     if (!$request_data['files'] || empty($request_data['files']) || !isset($request_data['files']['file']) || $request_data['files']['file']['size'] === 0) {
-        returnError('アップロードファイルが取得できません。');
+        returnErrorWithState('Failed to retrieve uploaded file.');
     }
     $uploadFile = $request_data['files']['file'];
     $uploadFileType = $uploadFile['type'] ?? '';
     if (!in_array($uploadFileType, ['text/csv', 'application/json'], true)) {
-        returnError('アップロードされたファイルの形式が不正です。');
+        returnErrorWithState('Invalid file format.');
     }
     if ($uploadFile['error'] !== 0 || !is_uploaded_file($uploadFile['tmp_name'])) {
-        returnError('ファイルのアップロードに失敗しました。');
+        returnErrorWithState('Failed to upload file.');
     }
     if (!$mode) {
-        returnError('インポート方式が指定されていません。');
+        returnErrorWithState('No import mode specified. Use "overwrite" or "merge".');
     }
     // ファイルパース
     $parsedLogs = [];
@@ -33,16 +33,16 @@ if (!empty($matchingKeys)) {
     try {
         if ($uploadFileType === 'text/csv') {
             // CSVパース
-            $parsedLogs = parseAndFormatCsv($uploadFile['tmp_name'], $appId, $nowISOString);
+            $parsedLogs = parseAndFormatCsv($uploadFile['tmp_name'], $appId ?? '', $nowISOString);
         } else {
             // JSONパース
             $parsedLogs = parseAndFormatJson($uploadFile['tmp_name'], $nowISOString);
         }
     } catch (Exception $ex) {
-        returnError('アップロードファイルの解析に失敗しました。' . $ex->getMessage());
+        returnErrorWithState('Failed to parse uploaded file: ' . $ex->getMessage());
     }
     // $checksum = crc32(json_encode($parsedLogs));
-    // @error_log(json_encode([$appId, $uploadFile, $mode, count($parsedLogs), $checksum, $parsedLogs[0]], JSON_PRETTY_PRINT) . "\n", 3, './logs/dump.log');
+    //dump([$appId, $uploadFile, $mode, count($parsedLogs), $checksum, $parsedLogs[0]]);
     // 履歴インポート処理（モックはファイル管理なので暫定処理）
     $appLogsFile = './responses/logs/'. $appId .'.json';
     // 保存処理
@@ -62,7 +62,7 @@ if (!empty($matchingKeys)) {
             saveLogsFile($appLogsFile, $parsedLogs);
         }
     } catch (Exception $ex) {
-        returnError('ファイル保存に失敗しました。' . $ex->getMessage());
+        returnErrorWithState('File save failed: ' . $ex->getMessage());
     }
     returnResponse([
         'state' => 'success',
@@ -71,12 +71,7 @@ if (!empty($matchingKeys)) {
 
 // ---------- Utility functions ----------
 
-function returnResponse(array $response): void {
-    header('Content-Type: application/json');
-    echo json_encode($response, JSON_PRETTY_PRINT);
-    exit;
-}
-function returnError(string $message): void {
+function returnErrorWithState(string $message): void {
     returnResponse([
         'state' => 'error',
         'message' => $message,
@@ -99,7 +94,7 @@ function readJsonArray(string $filePath): array {
  */
 function saveLogsFile(string $filePath, array $logs): void {
     if (false === @file_put_contents($filePath, json_encode($logs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE))) {
-        throw new Exception('書き込みに失敗');
+        throw new Exception('File write failed: ' . $filePath);
     }
 }
 
@@ -107,8 +102,13 @@ function saveLogsFile(string $filePath, array $logs): void {
  * CSVファイルをパース＆ログ配列に整形
  */
 function parseAndFormatCsv(string $csvFilePath, string $appId, string $nowISOString): array {
+    if (empty($appId)) {
+        throw new Exception('No appId provided');
+    }
     $data = csvToArrayUtf8($csvFilePath);
-    if (!is_array($data)) throw new Exception('CSV読込エラー');
+    if (!is_array($data)) {
+        throw new Exception('CSV read error');
+    }
     foreach ($data as &$logItem) {
         $logItem['total_pulls'] = (int)($logItem['totalPulls'] ?? 0);
         $logItem['discharge_items'] = (int)($logItem['dischargeItems'] ?? 0);
@@ -134,7 +134,9 @@ function parseAndFormatCsv(string $csvFilePath, string $appId, string $nowISOStr
 function parseAndFormatJson(string $jsonFilePath, string $nowISOString): array {
     $raw = file_get_contents($jsonFilePath);
     $arr = json_decode($raw, true);
-    if (!is_array($arr)) throw new Exception('JSONパースエラー');
+    if (!is_array($arr)) {
+        throw new Exception('JSON parse error');
+    }
     foreach ($arr as &$item) {
         $item['last_updated'] = $nowISOString;
         ksort($item);

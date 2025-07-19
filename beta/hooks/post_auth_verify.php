@@ -8,8 +8,7 @@ if ($request_data['body']) {
     if (!$token || !$type || !in_array($type, ['signup', 'reset'], true)) {
         returnError('Invalid Request.');// code: 400
     }
-    //@error_log(json_encode([$token, $type], JSON_PRETTY_PRINT), 3, './logs/dump.log');
-    
+    //dump([$token, $type]);
     $tokenDBFilePath = './responses/auth/token.json';
     $tokens = json_decode(file_get_contents($tokenDBFilePath));
     $tokenMap = array_map(fn($t): string => $t->value, $tokens);
@@ -35,8 +34,8 @@ if ($request_data['body']) {
         // トークン使用済みの場合
         returnError('Token Already Used.');// code: 400
     }
-    
-    //@error_log(json_encode($tokenData, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+
+    //dump($tokenData);
     // トークン認証Ok
     if ($type === 'signup') {
         // 新規登録時のトークン認証の場合、該当ユーザーの認証済みフラグを変更
@@ -70,21 +69,4 @@ if ($request_data['body']) {
     returnResponse([
         'success' => true,
     ]);
-}
-
-// ---------- Utility functions ----------
-
-function returnResponse(array $response, int $code = 200): void {
-    header('Content-Type: application/json');
-    if ($code !== 200) {
-        http_response_code($code);
-    }
-    echo json_encode($response, JSON_PRETTY_PRINT);
-    exit;
-}
-function returnError(string $message, int $code = 200): void {
-    returnResponse([
-        'success' => false,
-        'message' => $message,
-    ], $code);
 }

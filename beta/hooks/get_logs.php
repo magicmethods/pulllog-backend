@@ -16,7 +16,7 @@ if (!empty($matchingKeys)) {
     $limitNum = isset($limit) && (int)$limit > 0 ? (int)$limit : -1;
     $offsetNum = isset($offset) && (int)$offset > 0 ? (int)$offset : -1;
     $params = [ 'appId' => $appId, 'from' => $fromDate, 'to' => $toDate, 'limit' => $limitNum, 'offset' => $offsetNum ];
-    //@error_log(json_encode($params, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($params);
 
     $response = null;
     $appLogsFile = './responses/logs/'. $appId .'.json';

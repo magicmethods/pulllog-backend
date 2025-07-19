@@ -27,7 +27,7 @@ if ($current_user) {
             file_put_contents($tokenDBFilePath, json_encode($tokens, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         }
     }
-    //@error_log(json_encode([$auth_request, $sessionFile, $current_user], JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump([$auth_request, $sessionFile, $current_user]);
     //exit;
 
     // レスポンス

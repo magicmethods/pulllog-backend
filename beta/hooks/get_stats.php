@@ -14,7 +14,7 @@ if (!empty($matchingKeys)) {
     $startDate = isset($start) && isYmd($start) ? $start : null;
     $endDate = isset($end) && isYmd($end) ? $end : null;
     $params = [ 'appId' => $appId, 'start' => $startDate, 'end' => $endDate ];
-    //@error_log(json_encode($params, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($params);
 
     $response = null;
     $appLogsFile = './responses/logs/'. $appId .'.json';

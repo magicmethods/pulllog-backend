@@ -25,7 +25,7 @@ if ($current_user) {
                 $userAppList[] = $match_app;
             }
         }
-        //@error_log(json_encode($userAppList, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+        //dump($userAppList);
         returnResponse($userAppList);
     }
 

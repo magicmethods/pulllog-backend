@@ -9,7 +9,7 @@ if ($request_data['body']) {
     if (in_array($request_data['body']['email'], $emailMap, true)) {
         $response = [
             'state' => 'error',
-            'message' => 'このメールアドレスは既に登録済みです。ログインを試すか、パスワードを再設定してください。',
+            'message' => 'An email address is already registered. Please try logging in or resetting your password.',
         ];
         header('Content-Type: application/json');
         //http_response_code(400);// Bad Request
@@ -47,7 +47,7 @@ if ($request_data['body']) {
     // 新規ユーザを追加
     $users[] = $user_data;
     file_put_contents($userDBFilePath, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    //@error_log(json_encode($user_data, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($user_data);
     // レスポンスデータにはユーザーデータを含まない
     // レスポンス用のユーザーデータからパスワードを削除
     //unset($user_data['password']);

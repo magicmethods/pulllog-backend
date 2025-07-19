@@ -3,7 +3,7 @@
 // Hook for `PUT /user/update`
 // ~本来は `PUT /user/update` のエンドポイントだが、 PSR-7 サーバ非互換のため POST で受ける~
 if ($request_data['body']) {
-    //@error_log(json_encode($request_data, JSON_PRETTY_PRINT) . "\n", 3, './logs/dump.log');
+    //dump($request_data);
     $response = null;
     $userDBFilePath = './responses/user/users.json';
     $users = json_decode(file_get_contents($userDBFilePath));
@@ -11,7 +11,7 @@ if ($request_data['body']) {
     if (!in_array($request_data['body']['email'], $emailMap, true)) {
         $response = [
             'state' => 'error',
-            'message' => '無効なリクエストです。',
+            'message' => 'Invalid request.',
         ];
         header('Content-Type: application/json');
         //http_response_code(400);// Bad Request
@@ -48,7 +48,7 @@ if ($request_data['body']) {
     // DBを更新
     if ($newUserData) {
         file_put_contents($userDBFilePath, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        //@error_log(json_encode($newUserData, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+        //dump($newUserData);
         // レスポンス用のユーザーデータからパスワードを削除
         unset($newUserData->password);
         $response = [
@@ -58,7 +58,7 @@ if ($request_data['body']) {
     } else {
         $response = [
             'state' => 'error',
-            'message' => '更新対象のユーザーが見つかりませんでした。',
+            'message' => 'Target user not found.',
             'user' => null,
         ];
     }

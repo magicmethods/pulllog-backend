@@ -10,7 +10,7 @@ if ($request_data['body']) {
     if (!$token || !$type || $type !== 'reset' || !$code || !$password) {
         returnError('Invalid Request.');// code: 400
     }
-    @error_log(json_encode($request_data, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($request_data);
     
     $tokenDBFilePath = './responses/auth/token.json';
     $tokens = json_decode(file_get_contents($tokenDBFilePath));
@@ -44,7 +44,7 @@ if ($request_data['body']) {
         returnError('Invalid Code.');// code: 400
     }
     
-    @error_log(json_encode($tokenData, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($tokenData);
     // トークン&認証コードOk
     // 該当ユーザーのパスワードを変更
     $targetUserId = $tokenData->user_id;
@@ -77,21 +77,4 @@ if ($request_data['body']) {
     returnResponse([
         'success' => true,
     ]);
-}
-
-// ---------- Utility functions ----------
-
-function returnResponse(array $response, int $code = 200): void {
-    header('Content-Type: application/json');
-    if ($code !== 200) {
-        http_response_code($code);
-    }
-    echo json_encode($response, JSON_PRETTY_PRINT);
-    exit;
-}
-function returnError(string $message, int $code = 200): void {
-    returnResponse([
-        'success' => false,
-        'message' => $message,
-    ], $code);
 }

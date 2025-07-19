@@ -19,7 +19,7 @@ if ($request_data['files']) {
         }
     }
     $request_data['newAvatar'] = $newAvatarName;
-    //@error_log(json_encode($request_data, JSON_PRETTY_PRINT) . "\n", 3, './logs/dump.log');
+    //dump($request_data);
     
     $now = new DateTime();
     $timezoneOffset = new DateTimeZone('UTC');
@@ -34,7 +34,7 @@ if ($request_data['files']) {
         if ($avatarData['error'] !== 0 || !is_uploaded_file($avatarData['tmp_name'])) {
             $response = [
                 'state' => 'error',
-                'message' => 'アバター画像のアップロードに失敗しました。',
+                'message' => 'Failed to upload avatar image.',
                 'user' => null,
             ];
             header('Content-Type: application/json');
@@ -57,7 +57,7 @@ if ($request_data['files']) {
         } else {
             $response = [
                 'state' => 'error',
-                'message' => 'アバター画像の保存に失敗しました。',
+                'message' => 'Failed to save avatar image.',
                 'user' => null,
             ];
             header('Content-Type: application/json');

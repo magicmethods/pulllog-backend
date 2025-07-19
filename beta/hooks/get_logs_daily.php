@@ -25,7 +25,7 @@ if (!empty($matchingKeys)) {
     } else {
         $response = null;
     }
-    //@error_log(json_encode([$appId, $date, $response], JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump([$appId, $date, $response]);
 
     header('Content-Type: application/json');
     echo json_encode($response, JSON_PRETTY_PRINT);

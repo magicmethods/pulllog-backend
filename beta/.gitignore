@@ -9,5 +9,7 @@ cookies.txt
 schema/*.json
 schema/*.yaml
 
-sessions/*
+sessions/*.json
 temp/uploads/*
+responses/*.json
+!responses/*/default.json

@@ -26,7 +26,7 @@ if (!empty($matchingKeys)) {
         // 指定 :id のアプリデータがなければエラーレスポンス
         $response = [ 'error' => 'Invalid API call.' ];
     }
-    //@error_log(json_encode([$appId, $applist, $keyIndex, $response], JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump([$appId, $applist, $keyIndex, $response]);
 
     header('Content-Type: application/json');
     echo json_encode($response, JSON_PRETTY_PRINT);

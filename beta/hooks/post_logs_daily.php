@@ -37,7 +37,7 @@ if (!empty($matchingKeys)) {
     );
     // 更新データをレスポンスとして返す
     $response = $request_data['body'];
-    //@error_log(json_encode([$appId, $date, $response, count($appLogs)], JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump([$appId, $date, $response, count($appLogs)]);
 
     header('Content-Type: application/json');
     echo json_encode($response, JSON_PRETTY_PRINT);

@@ -36,7 +36,7 @@ if (!empty($matchingKeys)) {
         // アプリログファイルがない場合はエラーとして null を返す
         $response = null;
     }
-    //@error_log(json_encode([$appId, $date, $response, count($appLogs)], JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump([$appId, $date, $response, count($appLogs)]);
 
     header('Content-Type: application/json');
     echo json_encode($response, JSON_PRETTY_PRINT);

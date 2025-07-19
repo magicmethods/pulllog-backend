@@ -25,7 +25,7 @@ if ($request_data['body']) {
     $targetUser = array_filter($users, function($user) use ($email, $password) {
         return $user->email === $email && password_verify($password, $user->password);
     });
-    //@error_log(json_encode($targetUser, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($targetUser);
     if (empty($targetUser) || count($targetUser) !== 1) {
         returnResponse([
             'state' => 'error',
@@ -54,7 +54,7 @@ if ($request_data['body']) {
     // 配列の該当ユーザー更新
     $indexKey = array_find_key($users, function($user) use ($userData) { return $user->id === $userData->id; });
     $users[$indexKey] = $userData;
-    //@error_log(json_encode($userData, JSON_PRETTY_PRINT), 3, './logs/dump.log');
+    //dump($userData);
     file_put_contents($userDBFilePath, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
     // 疑似セッションのセット
