@@ -75,6 +75,10 @@ erDiagram
     Users ||--o{ UserSessions: "has"
     Users }|--|| Plans: "plan"
     Plans ||--o{ Users: "plan"
+    Apps ||--o{ UserApps: "has"
+    Apps ||--o{ Logs: "has"
+    Logs ||--o{ StatsCache: "has"
+    Users ||--o{ StatsCache: "has"
     Plans {
         SERIAL id PK
         VARCHAR name UNIQUE
@@ -92,8 +96,6 @@ erDiagram
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
     }
-    Apps ||--o{ UserApps: "has"
-    Apps ||--o{ Logs: "has"
     Apps {
         id
         app_key
@@ -111,8 +113,6 @@ erDiagram
         created_at
         updated_at
     }
-    Logs ||--o{ StatsCache: "has"
-    Users ||--o{ StatsCache: "has"
     UserSessions {
         csrf_token
         user_id
