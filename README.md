@@ -1,12 +1,14 @@
 # PullLog Backend
 個人のガチャ履歴を記録・管理するWebアプリ「PullLog」のバックエンドリポジトリです。  
 バックエンドはAPIエントリポイントとしてフロントエンドとデータベースとのデータの中継を担います。  
-本アプリの正式版は Laravel + PostgreSQL + SQLite を中心技術として構築します。初期開発用のモック環境としては MockAPI-PHP を使用します。
+本アプリの正式版は Laravel + PostgreSQL を中心技術として構築します。  
+初期開発用のモック環境としては [MockAPI-PHP](https://github.com/ka215/MockAPI-PHP) を使用しています。
 
 ---
 
 ## 目次
 
+- [テーブル構成](#テーブル構成)
 - [ER図](#ER図)
 - [モック環境](#モック環境)
 - [ライセンス](#ライセンス)
@@ -15,10 +17,31 @@
 
 ---
 
+## テーブル構成
+
+| テーブル名     | 主なカラム・説明                                                         |
+|----------------|--------------------------------------------------------------------------|
+| `plans`        | id (PK), name, max_apps, ...                                             |
+| `users`        | id (PK), email (UQ), roles, plan_id (FK), ...                            |
+| `apps`         | id (PK), app_key (UQ), name, ...                                         |
+| `user_apps`    | id (PK), user_id (FK), app_id (FK), ...                                  |
+| `logs`         | id (PK), user_id (FK), app_id (FK), log_date, total_pulls, ...           |
+| `auth_tokens`  | id (PK), user_id (FK), token (UQ), type, ...                             |
+| `user_sessions`| csrf_token (PK), user_id (FK), email, ...                                |
+| `stats_cache`  | cache_key (PK), user_id (FK), value, ...                                 |
+
+> **注**:  
+> - (PK) = 主キー  
+> - (UQ) = ユニーク制約  
+> - (FK) = 外部キー  
+> - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/ddl.sql) を参照
+
+---
+
 ## ER図
 
-ここではエンティティ（テーブル）ベースの概要図まで。  
-属性値までついた詳細なER図は[pulllog-ER.md](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ER.md)を参照してください。
+主要なエンティティ（テーブル）とリレーションの概要図です。  
+属性値まで含む詳細ER図は [pulllog-ER.md](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ER.md) をご覧ください。
 
 ```mermaid
 erDiagram
