@@ -1,6 +1,10 @@
 # PullLog ER
 
 ```mermaid
+info
+```
+
+```mermaid
 erDiagram
     Plans{
         SERIAL id PK
@@ -18,8 +22,8 @@ erDiagram
         BOOLEAN is_active
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
-    };  
-    Users{
+    }
+    ;Users{
         SERIAL id PK
         email
         password_hash
