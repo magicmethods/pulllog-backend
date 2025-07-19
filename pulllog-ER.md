@@ -2,20 +2,6 @@
 
 ```mermaid
 erDiagram
-    users      ||--o{ user_apps: "has"
-    users      ||--o{ logs: "has"
-    users      ||--o{ auth_tokens: "has"
-    users      ||--o{ user_sessions: "has"
-    users      ||--o{ stats_cache: "has"
-    users      }|--|| plans: "plan"
-    apps       ||--o{ user_apps: "has"
-    apps       ||--o{ logs: "has"
-    logs       ||--o{ stats_cache: "has"
-    plans      ||--o{ users: "plan"
-```
-
-```mermaid
-erDiagram
     users ||--o{ user_apps: "has"
     users {
         SERIAL id
@@ -82,7 +68,7 @@ erDiagram
     }
     users }|--|| plans: "plan"
     plans ||--o{ users: "plan"
-    Plans {
+    plans {
         SERIAL id
         VARCHAR name
         TEXT description
@@ -131,18 +117,14 @@ erDiagram
 
 ```mermaid
 erDiagram
-    UserSessions {
-        VARCHAR csrf_token
-        INTEGER user_id
-        VARCHAR email
-        TIMESTAMPTZ created_at
-        TIMESTAMPTZ expires_at
-    }
-    StatsCache {
-        INTEGER user_id
-        VARCHAR cache_key
-        JSONB value
-        TIMESTAMPTZ created_at
-        TIMESTAMPTZ updated_at
-    }
+    users      ||--o{ user_apps: "has"
+    users      ||--o{ logs: "has"
+    users      ||--o{ auth_tokens: "has"
+    users      ||--o{ user_sessions: "has"
+    users      ||--o{ stats_cache: "has"
+    users      }|--|| plans: "plan"
+    apps       ||--o{ user_apps: "has"
+    apps       ||--o{ logs: "has"
+    logs       ||--o{ stats_cache: "has"
+    plans      ||--o{ users: "plan"
 ```
