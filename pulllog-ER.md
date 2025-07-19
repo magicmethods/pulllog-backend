@@ -79,22 +79,4 @@ erDiagram
     Apps ||--o{ Logs: "has"
     Logs ||--o{ StatsCache: "has"
     Users ||--o{ StatsCache: "has"
-    Apps {
-        id
-        app_key
-        name
-        url
-        description
-        currency_unit
-        date_update_time
-        sync_update_time
-        pity_system
-        guarantee_count
-        rarity_defs
-        marker_defs
-        task_defs
-        created_at
-        updated_at
-    }
-
 ```
