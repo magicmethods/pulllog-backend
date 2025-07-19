@@ -18,7 +18,7 @@ erDiagram
         BOOLEAN is_active
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
-    }
+    };  
     Users{
         SERIAL id PK
         email
