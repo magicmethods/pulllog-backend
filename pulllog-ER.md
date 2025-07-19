@@ -84,28 +84,28 @@ erDiagram
 ```mermaid
 erDiagram
     entity Apps {
-        id
-        app_key
-        name
-        url
-        description
-        currency_unit
-        date_update_time
-        sync_update_time
-        pity_system
-        guarantee_count
-        rarity_defs
-        marker_defs
-        task_defs
-        created_at
-        updated_at
+        SERIAL id PK
+        VARCHAR "app_key" UNIQUE
+        VARCHAR name
+        VARCHAR url
+        TEXT description
+        VARCHAR "currency_unit"
+        VARCHAR "date_update_time"
+        BOOLEAN "sync_update_time"
+        BOOLEAN "pity_system"
+        INTEGER "guarantee_count"
+        definition[] "rarity_defs"
+        definition[] "marker_defs"
+        JSONB "task_defs"
+        TIMESTAMPTZ "created_at"
+        TIMESTAMPTZ "updated_at"
     }
     entity UserSessions {
-        csrf_token
-        user_id
-        email
-        created_at
-        expires_at
+        VARCHAR csrf_token PK
+        INTEGER user_id FK
+        VARCHAR email
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ expires_at
     }
     entity StatsCache {
         user_id
