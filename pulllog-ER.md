@@ -83,7 +83,7 @@ erDiagram
 
 ```mermaid
 erDiagram
-    entity Apps {
+    entity Apps
         SERIAL id PK
         VARCHAR app_key UNIQUE
         VARCHAR name
@@ -99,7 +99,7 @@ erDiagram
         JSONB task_defs
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
-    }
+
 ```
 
 ```mermaid
