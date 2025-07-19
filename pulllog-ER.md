@@ -18,8 +18,8 @@ erDiagram
 erDiagram
     Users ||--o{ UserApps: "has"
     Users {
-        SERIAL id PK
-        VARCHAR email UNIQUE
+        SERIAL id
+        VARCHAR email
         VARCHAR password_hash
         VARCHAR name
         VARCHAR avatar_url
@@ -39,16 +39,16 @@ erDiagram
         TIMESTAMPTZ updated_at
     }
     UserApps {
-        SERIAL id PK
-        INTEGER user_id FK
-        INTEGER app_id FK
+        SERIAL id
+        INTEGER user_id
+        INTEGER app_id
         TIMESTAMPTZ created_at
     }
     Users ||--o{ Logs: "has"
     Logs {
-        BIGSERIAL id PK
-        INTEGER user_id FK
-        INTEGER app_id FK
+        BIGSERIAL id
+        INTEGER user_id
+        INTEGER app_id
         DATE log_date
         INTEGER total_pulls
         INTEGER discharge_items
@@ -63,9 +63,9 @@ erDiagram
     }
     Users ||--o{ AuthTokens: "has"
     AuthTokens {
-        SERIAL id PK
-        INTEGER user_id FK
-        VARCHAR token UNIQUE
+        SERIAL id
+        INTEGER user_id
+        VARCHAR token
         token_type type
         VARCHAR code
         BOOLEAN is_used
