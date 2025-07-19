@@ -73,14 +73,8 @@ erDiagram
         created_at
     }
     Users ||--o{ UserSessions: "has"
-    UserSessions {
-        csrf_token
-        user_id
-        email
-        created_at
-        expires_at
-    }
     Users }|--|| Plans: "plan"
+    Plans ||--o{ Users: "plan"
     Plans {
         SERIAL id PK
         VARCHAR name UNIQUE
@@ -118,8 +112,14 @@ erDiagram
     }
     Apps ||--o{ Logs: "has"
     Logs ||--o{ StatsCache: "has"
-    Plans ||--o{ Users: "plan"
     Users ||--o{ StatsCache: "has"
+    UserSessions {
+        csrf_token
+        user_id
+        email
+        created_at
+        expires_at
+    }
     StatsCache {
         user_id
         cache_key
