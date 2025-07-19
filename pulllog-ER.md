@@ -18,13 +18,13 @@ erDiagram
 erDiagram
     users ||--o{ user_apps: "has"
     users {
-        SERIAL id "PK"
-        VARCHAR email "UNIQUE"
+        SERIAL id
+        VARCHAR email
         VARCHAR password_hash
         VARCHAR name
         VARCHAR avatar_url
         VARCHAR[] roles
-        INTEGER plan_id "FK"
+        INTEGER plan_id
         TIMESTAMPTZ plan_expiration
         VARCHAR language
         theme theme
@@ -132,8 +132,8 @@ erDiagram
 ```mermaid
 erDiagram
     UserSessions {
-        VARCHAR csrf_token PK
-        INTEGER user_id FK
+        VARCHAR csrf_token "PK"
+        INTEGER user_id "FK"
         VARCHAR email
         TIMESTAMPTZ created_at
         TIMESTAMPTZ expires_at
