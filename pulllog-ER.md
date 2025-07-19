@@ -80,7 +80,6 @@ erDiagram
         created_at
         expires_at
     }
-    Users ||--o{ StatsCache: "has"
     Users }|--|| Plans: "plan"
     Plans {
         SERIAL id PK
@@ -120,6 +119,7 @@ erDiagram
     Apps ||--o{ Logs: "has"
     Logs ||--o{ StatsCache: "has"
     Plans ||--o{ Users: "plan"
+    Users ||--o{ StatsCache: "has"
     StatsCache {
         user_id
         cache_key
