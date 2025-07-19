@@ -79,23 +79,6 @@ erDiagram
     Apps ||--o{ Logs: "has"
     Logs ||--o{ StatsCache: "has"
     Users ||--o{ StatsCache: "has"
-    Plans {
-        SERIAL id PK
-        VARCHAR name UNIQUE
-        TEXT description
-        INTEGER max_apps
-        INTEGER max_app_name_length
-        INTEGER max_app_desc_length
-        INTEGER max_log_tags
-        INTEGER max_log_tag_length
-        INTEGER max_log_text_length
-        INTEGER max_logs_per_app
-        INTEGER max_storage_mb
-        INTEGER price_per_month
-        BOOLEAN is_active
-        TIMESTAMPTZ created_at
-        TIMESTAMPTZ updated_at
-    }
     Apps {
         id
         app_key
@@ -126,6 +109,23 @@ erDiagram
         value
         created_at
         updated_at
+    }
+    Plans {
+        SERIAL id PK
+        VARCHAR name UNIQUE
+        TEXT description
+        INTEGER max_apps
+        INTEGER max_app_name_length
+        INTEGER max_app_desc_length
+        INTEGER max_log_tags
+        INTEGER max_log_tag_length
+        INTEGER max_log_text_length
+        INTEGER max_logs_per_app
+        INTEGER max_storage_mb
+        INTEGER price_per_month
+        BOOLEAN is_active
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
     }
 
 ```
