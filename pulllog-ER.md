@@ -24,7 +24,7 @@ erDiagram
         VARCHAR name
         VARCHAR avatar_url
         VARCHAR[] roles
-        INTEGER plan_id FK
+        INTEGER plan_id
         TIMESTAMPTZ plan_expiration
         VARCHAR language
         theme theme
