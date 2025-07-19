@@ -121,28 +121,28 @@ erDiagram
     logs ||--o{ stats_cache: "has"
     users ||--o{ stats_cache: "has"
     stats_cache {
-        user_id
-        cache_key
-        value
-        created_at
-        updated_at
+        INTEGER user_id
+        VARCHAR cache_key
+        JSONB value
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
     }
 ```
 
 ```mermaid
 erDiagram
     UserSessions {
-        VARCHAR csrf_token "PK"
-        INTEGER user_id "FK"
+        VARCHAR csrf_token
+        INTEGER user_id
         VARCHAR email
         TIMESTAMPTZ created_at
         TIMESTAMPTZ expires_at
     }
     StatsCache {
-        user_id
-        cache_key
-        value
-        created_at
-        updated_at
+        INTEGER user_id
+        VARCHAR cache_key
+        JSONB value
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
     }
 ```
