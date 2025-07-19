@@ -19,22 +19,22 @@
 
 ## テーブル構成
 
-| テーブル名     | 主なカラム・説明                                                         |
-|----------------|--------------------------------------------------------------------------|
-| `plans`        | id (PK), name, max_apps, ...                                             |
-| `users`        | id (PK), email (UQ), roles, plan_id (FK), ...                            |
-| `apps`         | id (PK), app_key (UQ), name, ...                                         |
-| `user_apps`    | id (PK), user_id (FK), app_id (FK), ...                                  |
-| `logs`         | id (PK), user_id (FK), app_id (FK), log_date, total_pulls, ...           |
-| `auth_tokens`  | id (PK), user_id (FK), token (UQ), type, ...                             |
-| `user_sessions`| csrf_token (PK), user_id (FK), email, ...                                |
-| `stats_cache`  | cache_key (PK), user_id (FK), value, ...                                 |
+| テーブル名     | 用途・説明           | 主なカラム                                                         |
+|----------------|----------------------|--------------------------------------------------------------------|
+| `plans`        | 契約プラン管理       | id (PK), name, max_apps, ...                                       |
+| `users`        | ユーザー管理         | id (PK), email (UQ), roles, plan_id (FK), ...                      |
+| `apps`         | アプリケーション管理 | id (PK), app_key (UQ), name, ...                                   |
+| `user_apps`    | ユーザー・アプリ管理（リレーション） | id (PK), user_id (FK), app_id (FK), ...            |
+| `logs`         | 日次ログ（履歴）管理 | id (PK), user_id (FK), app_id (FK), log_date, total_pulls, ...     |
+| `auth_tokens`  | 認証トークン管理     | id (PK), user_id (FK), token (UQ), type, ...                       |
+| `user_sessions`| ユーザーセッション（CSRFトークン）管理 | csrf_token (PK), user_id (FK), email, ...        |
+| `stats_cache`  | 統計データ（キャッシュ）管理 | cache_key (PK), user_id (FK), value, ...                   |
 
 > **注**:  
 > - (PK) = 主キー  
 > - (UQ) = ユニーク制約  
 > - (FK) = 外部キー  
-> - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/ddl.sql) を参照
+> - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ddl.sql) を参照
 
 ---
 
