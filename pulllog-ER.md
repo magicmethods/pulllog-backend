@@ -16,8 +16,8 @@ erDiagram
 
 ```mermaid
 erDiagram
-    Users ||--o{ User_apps: "has"
-    Users{
+    Users ||--o{ UserApps: "has"
+    Users {
         SERIAL id PK
         email
         password_hash
@@ -38,14 +38,14 @@ erDiagram
         created_at
         updated_at
     }
-    UserApps{
+    UserApps {
         id
         user_id
         app_id
         created_at
     }
     Users ||--o{ Logs: "has"
-    Logs{
+    Logs {
         id
         user_id
         app_id
@@ -62,7 +62,7 @@ erDiagram
         updated_at
     }
     Users ||--o{ AuthTokens: "has"
-    AuthTokens{
+    AuthTokens {
         id
         user_id
         token
@@ -73,7 +73,7 @@ erDiagram
         created_at
     }
     Users ||--o{ UserSessions: "has"
-    UserSessions{
+    UserSessions {
         csrf_token
         user_id
         email
@@ -81,15 +81,8 @@ erDiagram
         expires_at
     }
     Users ||--o{ StatsCache: "has"
-    StatsCache{
-        user_id
-        cache_key
-        value
-        created_at
-        updated_at
-    }
     Users }|--|| Plans: "plan"
-    Plans{
+    Plans {
         SERIAL id PK
         VARCHAR name UNIQUE
         TEXT description
@@ -107,7 +100,7 @@ erDiagram
         TIMESTAMPTZ updated_at
     }
     Apps ||--o{ UserApps: "has"
-    Apps{
+    Apps {
         id
         app_key
         name
@@ -127,5 +120,12 @@ erDiagram
     Apps ||--o{ Logs: "has"
     Logs ||--o{ StatsCache: "has"
     Plans ||--o{ Users: "plan"
+    StatsCache {
+        user_id
+        cache_key
+        value
+        created_at
+        updated_at
+    }
 
 ```
