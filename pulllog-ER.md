@@ -1,7 +1,17 @@
 # PullLog ER
 
 ```mermaid
-info
+erDiagram
+    users      ||--o{ user_apps: "has"
+    users      ||--o{ logs: "has"
+    users      ||--o{ auth_tokens: "has"
+    users      ||--o{ user_sessions: "has"
+    users      ||--o{ stats_cache: "has"
+    users      }|--|| plans: "plan"
+    apps       ||--o{ user_apps: "has"
+    apps       ||--o{ logs: "has"
+    logs       ||--o{ stats_cache: "has"
+    plans      ||--o{ users: "plan"
 ```
 
 ```mermaid
