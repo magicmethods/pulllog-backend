@@ -80,3 +80,55 @@ erDiagram
     Logs ||--o{ StatsCache: "has"
     Users ||--o{ StatsCache: "has"
 ```
+
+```mermaid
+erDiagram
+    entity Apps {
+        id
+        app_key
+        name
+        url
+        description
+        currency_unit
+        date_update_time
+        sync_update_time
+        pity_system
+        guarantee_count
+        rarity_defs
+        marker_defs
+        task_defs
+        created_at
+        updated_at
+    }
+    entity UserSessions {
+        csrf_token
+        user_id
+        email
+        created_at
+        expires_at
+    }
+    entity StatsCache {
+        user_id
+        cache_key
+        value
+        created_at
+        updated_at
+    }
+    entity Plans {
+        SERIAL id PK
+        VARCHAR name UNIQUE
+        TEXT description
+        INTEGER max_apps
+        INTEGER max_app_name_length
+        INTEGER max_app_desc_length
+        INTEGER max_log_tags
+        INTEGER max_log_tag_length
+        INTEGER max_log_text_length
+        INTEGER max_logs_per_app
+        INTEGER max_storage_mb
+        INTEGER price_per_month
+        BOOLEAN is_active
+        TIMESTAMPTZ created_at
+        TIMESTAMPTZ updated_at
+    }
+```
