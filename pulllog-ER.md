@@ -93,6 +93,7 @@ erDiagram
         TIMESTAMPTZ updated_at
     }
     Apps ||--o{ UserApps: "has"
+    Apps ||--o{ Logs: "has"
     Apps {
         id
         app_key
@@ -110,7 +111,6 @@ erDiagram
         created_at
         updated_at
     }
-    Apps ||--o{ Logs: "has"
     Logs ||--o{ StatsCache: "has"
     Users ||--o{ StatsCache: "has"
     UserSessions {
