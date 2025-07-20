@@ -6,8 +6,8 @@ if ($request_data['body']) {
     //dump($request_data);
     $response = null;
     $userDBFilePath = './responses/user/users.json';
-    $users = json_decode(file_get_contents($userDBFilePath));
-    $emailMap = array_map(fn($user): string => $user->email, $users);
+    $users = initFileDBAsJSON('users');
+    $emailMap = array_map(fn($user): string => $user['email'], $users);
     if (!in_array($request_data['body']['email'], $emailMap, true)) {
         $response = [
             'state' => 'error',
@@ -26,21 +26,21 @@ if ($request_data['body']) {
     // ユーザーデータの引き当て処理はモック用の簡易版
     $newUserData = null;
     foreach($users as $index => $user) {
-        if ($user->email === $request_data['body']['email']) {
+        if ($user['email'] === $request_data['body']['email']) {
             // ユーザーデータの更新（暫定）
             $newUserData = $user;
-            $newUserData->name = $request_data['body']['name'];
+            $newUserData['name'] = $request_data['body']['name'];
             if (!empty($request_data['body']['password'])) {
-                $newUserData->password = password_hash($request_data['body']['password'], PASSWORD_DEFAULT);
+                $newUserData['password'] = password_hash($request_data['body']['password'], PASSWORD_DEFAULT);
             }
-            if ($request_data['body']['avatarUrl']) {
-                $newUserData->avatar_url = $request_data['body']['avatarUrl'];
+            if (isset($request_data['body']['avatarUrl'])) {
+                $newUserData['avatar_url'] = $request_data['body']['avatarUrl'];
             }
-            $newUserData->language = $request_data['body']['language'];
-            $newUserData->theme = $request_data['body']['theme'];
-            $newUserData->home_page = $request_data['body']['homePage'];
-            $newUserData->updated_at = $nowISOString;
-            
+            $newUserData['language'] = $request_data['body']['language'];
+            $newUserData['theme'] = $request_data['body']['theme'];
+            $newUserData['home_page'] = $request_data['body']['homePage'];
+            $newUserData['updated_at'] = $nowISOString;
+
             $users[$index] = $newUserData;
             break;
         }

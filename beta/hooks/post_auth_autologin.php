@@ -19,16 +19,17 @@ if (!$rememberToken) {
 }
 
 // トークンDBを読み込み
-$tokens = file_exists($tokenDBFilePath) ? json_decode(file_get_contents($tokenDBFilePath)) : [];
+//$tokens = file_exists($tokenDBFilePath) ? json_decode(file_get_contents($tokenDBFilePath)) : [];
+$tokens = initFileDBAsJSON('auth_tokens', '', false);
 $now = new DateTime('now', new DateTimeZone('UTC'));
 
 // 有効なrememberトークンを検索
 $tokenEntry = null;
 foreach ($tokens as $i => $token) {
-    if ($token->type === 'remember'
-        && $token->value === $rememberToken
-        && !$token->is_used
-        && $now < new DateTime($token->expired)
+    if ($token['type'] === 'remember'
+        && $token['value'] === $rememberToken
+        && !$token['is_used']
+        && $now < new DateTime($token['expired'])
     ) {
         $tokenEntry = $token;
         $tokenEntryIndex = $i;
@@ -46,15 +47,16 @@ if (!$tokenEntry) {
 }
 
 // ユーザーデータ取得
-$users = json_decode(file_get_contents($userDBFilePath));
+//$users = json_decode(file_get_contents($userDBFilePath));
+$users = initFileDBAsJSON('users');
 $userData = null;
 foreach ($users as $user) {
-    if ($user->id == $tokenEntry->user_id) {
+    if ($user['id'] == $tokenEntry['user_id']) {
         $userData = $user;
         break;
     }
 }
-if (!$userData || $userData->is_deleted || !$userData->is_verified) {
+if (!$userData || $userData['is_deleted'] || !$userData['is_verified']) {
     //http_response_code(401);
     echo json_encode(['state' => 'error', 'message' => 'User not found or invalid.']);
     exit;
@@ -68,9 +70,9 @@ $newRememberToken = bin2hex(random_bytes(40));
 $newExpired = (clone $now)->add(new DateInterval('P30D'))->format('c');
 $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
-$newTokenEntry = (object)[
+$newTokenEntry = [
     'id'      => time() . rand(1000, 9999),
-    'user_id' => $userData->id,
+    'user_id' => $userData['id'],
     'value'   => $newRememberToken,
     'type'    => 'remember',
     'code'    => null,
@@ -95,8 +97,8 @@ header('Set-Cookie: remember_token=' . $newRememberToken . '; ' . implode('; ', 
 // 疑似セッション発行
 $sessionToken = bin2hex(random_bytes(32));
 $sessionData = [
-    'user_id' => $userData->id,
-    'email' => $userData->email,
+    'user_id' => $userData['id'],
+    'email' => $userData['email'],
     'created_at' => gmdate('c'),
     'expires_at' => gmdate('c', time() + 1 * 3600) // 1時間有効
 ];

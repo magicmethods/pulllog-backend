@@ -9,9 +9,9 @@ if ($request_data['body']) {
     }
     //dump($request_data);
 
-    $userDBFilePath = './responses/user/users.json';
-    $users = json_decode(file_get_contents($userDBFilePath));
-    $emailMap = array_map(fn($user): string => $user->email, $users);
+    //$userDBFilePath = './responses/user/users.json';
+    $users = initFileDBAsJSON('users');
+    $emailMap = array_map(fn($user): string => $user['email'], $users);
     if (!in_array($email, $emailMap, true)) {
         // 該当するアカウントは存在しないが、登録メールアドレスの存在を通知しないために成功を返す
         returnResponse([
@@ -19,11 +19,11 @@ if ($request_data['body']) {
         ]);
     }
     $targetUser = array_filter($users, function($user) use ($email) {
-        return $user->email === $email;
+        return $user['email'] === $email;
     });
     //dump($targetUser);
     $userData = array_shift($targetUser);
-    if ($userData->is_deleted || !$userData->is_verified) {
+    if ($userData['is_deleted'] || !$userData['is_verified']) {
         // 該当アカウントが削除済みか未承認である場合は、メール送信処理は行わず、成功を返す
         returnResponse([
             'success' => true,
@@ -33,8 +33,8 @@ if ($request_data['body']) {
     // パスワード再設定用のトークンを発行
     // 正式実装時、同一user_id&typeのトークンがあれば上書きし、なければ新規発行する（モックでは新規発行のみ）
     $tokenDBFilePath = './responses/auth/token.json';
-    $tokens = json_decode(file_get_contents($tokenDBFilePath));
-    $tokenIdMap = array_map(fn($t): string => $t->id, $tokens);
+    $tokens = initFileDBAsJSON('auth_tokens', '', false);
+    $tokenIdMap = array_map(fn($t): string => $t['id'], $tokens);
     $now = new DateTime();
     $timezoneOffset = new DateTimeZone('UTC');
     $now->setTimezone($timezoneOffset);
@@ -42,8 +42,8 @@ if ($request_data['body']) {
     $expireDateTime = new DateTime(date('c', strtotime($nowISOString . '+1 day')));
     $expireISOString = $expireDateTime->format("Y-m-d\TH:i:s\Z");
     $newTokenData = [
-        'id' => max($tokenIdMap) + 1,
-        'user_id' => $userData->id,
+        'id' => !empty($tokenIdMap) ? max($tokenIdMap) + 1 : 1,
+        'user_id' => $userData['id'],
         'value' => bin2hex(random_bytes(32)), // token
         'type' => 'reset',
         'code' => strtoupper(substr(uniqid(), 0, 6)),

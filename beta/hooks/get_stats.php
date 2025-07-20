@@ -73,6 +73,9 @@ if (!empty($matchingKeys)) {
             'averageMonthlyExpense' => round($averageMonthlyExpense, 0),
             'averageRareDropRate' => round($averageRareDropRate, 2),
         ];
+    } else {
+        // アプリのログが存在しない場合のレスポンス
+        $response = null;// [ 'state' => 'error', 'message' => 'No logs found for the specified app.' ];
     }
     
     header('Content-Type: application/json');

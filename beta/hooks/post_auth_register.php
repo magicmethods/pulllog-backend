@@ -4,8 +4,10 @@
 if ($request_data['body']) {
     $response = null;
     $userDBFilePath = './responses/user/users.json';
-    $users = json_decode(file_get_contents($userDBFilePath));
-    $emailMap = array_map(fn($user): string => $user->email, $users);
+    //$users = json_decode(file_get_contents($userDBFilePath));
+    $users = initFileDBAsJSON('users');
+    dump($users);
+    $emailMap = array_map(fn($user): string => $user['email'], $users);
     if (in_array($request_data['body']['email'], $emailMap, true)) {
         $response = [
             'state' => 'error',
@@ -16,7 +18,7 @@ if ($request_data['body']) {
         echo json_encode($response, JSON_PRETTY_PRINT);
         exit;
     }
-    $userIdMap = array_map(fn($user): int => $user->id, $users);
+    $userIdMap = array_map(fn($user): int => $user['id'], $users);
     $newUserId = count($userIdMap) === 0 ? 1 : max($userIdMap) + 1;
     $now = new DateTime();
     $timezoneOffset = new DateTimeZone('UTC');
@@ -48,6 +50,31 @@ if ($request_data['body']) {
     $users[] = $user_data;
     file_put_contents($userDBFilePath, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     //dump($user_data);
+
+    // メール認証用のトークンを発行
+    // 正式実装時、同一user_id&typeのトークンがあれば上書きし、なければ新規発行する（モックでは新規発行のみ）
+    $tokenDBFilePath = './responses/auth/token.json';
+    $tokens = initFileDBAsJSON('auth_tokens', '', false);
+    $tokenIdMap = array_map(fn($t): string => $t['id'], $tokens);
+    $now = new DateTime();
+    $timezoneOffset = new DateTimeZone('UTC');
+    $now->setTimezone($timezoneOffset);
+    $nowISOString = $now->format("Y-m-d\TH:i:s\Z");
+    $expireDateTime = new DateTime(date('c', strtotime($nowISOString . '+1 day')));
+    $expireISOString = $expireDateTime->format("Y-m-d\TH:i:s\Z");
+    $newTokenData = [
+        'id' => !empty($tokenIdMap) ? max($tokenIdMap) + 1 : 1,
+        'user_id' => $user_data['id'],
+        'value' => bin2hex(random_bytes(32)), // token
+        'type' => 'signup',
+        'code' => null,
+        'expired' => $expireISOString,
+        'is_used' => false,
+    ];
+    $tokens[] = $newTokenData;
+    file_put_contents($tokenDBFilePath, json_encode($tokens, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    
+
     // レスポンスデータにはユーザーデータを含まない
     // レスポンス用のユーザーデータからパスワードを削除
     //unset($user_data['password']);

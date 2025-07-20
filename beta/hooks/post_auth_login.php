@@ -7,13 +7,17 @@ if ($request_data['body']) {
     $password = $request_data['body']['password'];
     $userDBFilePath = './responses/user/users.json';
     $tokenDBFilePath = './responses/auth/token.json';
+    $users = initFileDBAsJSON('users');
+    $tokens = initFileDBAsJSON('auth_tokens', '', false);
+    /*
     $users = json_decode(file_get_contents($userDBFilePath));
     $tokens = $tokens = file_exists($tokenDBFilePath)
         ? json_decode(file_get_contents($tokenDBFilePath))
         : [];
+    */
     
     // ユーザー認証ロジック
-    $emailMap = array_map(fn($user): string => $user->email, $users);
+    $emailMap = array_map(fn($user): string => $user['email'], $users);
     if (!in_array($email, $emailMap, true)) {
         returnResponse([
             'state' => 'error',
@@ -23,7 +27,7 @@ if ($request_data['body']) {
         ]);// or 400 Bad Request
     }
     $targetUser = array_filter($users, function($user) use ($email, $password) {
-        return $user->email === $email && password_verify($password, $user->password);
+        return $user['email'] === $email && password_verify($password, $user['password']);
     });
     //dump($targetUser);
     if (empty($targetUser) || count($targetUser) !== 1) {
@@ -35,7 +39,7 @@ if ($request_data['body']) {
         ]);// or 400 Bad Request
     }
     $userData = array_shift($targetUser);
-    if ($userData->is_deleted || !$userData->is_verified) {
+    if ($userData['is_deleted'] || !$userData['is_verified']) {
         returnResponse([
             'state' => 'error',
             'message' => 'You cannot log in because the account you specified is invalid.',
@@ -46,13 +50,13 @@ if ($request_data['body']) {
     
     // ログイン情報の更新
     $now = new DateTime('now', new DateTimeZone('UTC'));
-    $userData->last_login = $now->format("Y-m-d\TH:i:s\Z");
-    $userData->last_login_ip = $_SERVER['REMOTE_ADDR'] ?? null;
-    $userData->last_login_user_agent = $_SERVER['HTTP_USER_AGENT'] ?? null;
-    $userData->unread_notifications = [];
+    $userData['last_login'] = $now->format("Y-m-d\TH:i:s\Z");
+    $userData['last_login_ip'] = $_SERVER['REMOTE_ADDR'] ?? null;
+    $userData['last_login_user_agent'] = $_SERVER['HTTP_USER_AGENT'] ?? null;
+    $userData['unread_notifications'] = [];
     
     // 配列の該当ユーザー更新
-    $indexKey = array_find_key($users, function($user) use ($userData) { return $user->id === $userData->id; });
+    $indexKey = array_find_key($users, function($user) use ($userData) { return $user['id'] === $userData['id']; });
     $users[$indexKey] = $userData;
     //dump($userData);
     file_put_contents($userDBFilePath, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
@@ -60,8 +64,8 @@ if ($request_data['body']) {
     // 疑似セッションのセット
     $sessionToken = bin2hex(random_bytes(32));
     $sessionData = [
-        'user_id' => $userData->id,
-        'email' => $userData->email,
+        'user_id' => $userData['id'],
+        'email' => $userData['email'],
         'created_at' => gmdate('c'),
         'expires_at' => gmdate('c', time() + 1 * 3600) // 1時間有効
     ];
@@ -84,7 +88,7 @@ if ($request_data['body']) {
         // トークンDBに追加
         $tokenEntry = [
             'id'      => intval(time() . rand(1000, 9999)),
-            'user_id' => $userData->id,
+            'user_id' => $userData['id'],
             'value'   => $rememberToken,
             'type'    => 'remember',
             'code'    => null,
@@ -111,7 +115,7 @@ if ($request_data['body']) {
     } else {
         // remember未チェック時は、既存のremember_tokenを無効化（削除）する
         $filteredTokens = array_filter($tokens, function($token) use ($userData) {
-            return !($token->type === 'remember' && $token->user_id === $userData->id);
+            return !($token['type'] === 'remember' && $token['user_id'] === $userData['id']);
         });
         if (count($filteredTokens) !== count($tokens)) {
             file_put_contents($tokenDBFilePath, json_encode(array_values($filteredTokens), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));

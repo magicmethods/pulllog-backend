@@ -12,7 +12,8 @@ if (!empty($matchingKeys)) {
     $appId = isset($dynamicParam1) ? $dynamicParam1 : null;
 
     $appDBFile = './responses/apps/get/appData.json';
-    $applist = json_decode(file_get_contents($appDBFile));
+    //$applist = json_decode(file_get_contents($appDBFile));
+    $applist = initFileDBAsJSON('apps', '', false);
     $keyIndex = array_search($appId, array_column($applist, 'appId'), true);
     if ($keyIndex !== false) {
         // 指定 :id のアプリデータがあれば更新

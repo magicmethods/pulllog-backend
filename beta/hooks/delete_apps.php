@@ -12,7 +12,8 @@ if (!empty($matchingKeys)) {
     $appId = isset($dynamicParam1) ? $dynamicParam1 : null;
 
     $appDBFile = './responses/apps/get/appData.json';
-    $applist = json_decode(file_get_contents($appDBFile));
+    //$applist = json_decode(file_get_contents($appDBFile));
+    $applist = initFileDBAsJSON('apps', '', false);
     $keyIndex = array_search($appId, array_column($applist, 'appId'), true);
     if ($keyIndex !== false) {
         // 指定 :id のアプリデータがあれば削除
@@ -31,10 +32,11 @@ if (!empty($matchingKeys)) {
     // アプリリストからも削除
     $current_user = $_SESSION['current_user'];
     $userAppsDBFile = './responses/apps/userApps.json';
-    $userAppsMap = json_decode(file_get_contents($userAppsDBFile));
+    //$userAppsMap = json_decode(file_get_contents($userAppsDBFile));
+    $userAppsMap = initFileDBAsJSON('user_apps', '', false);
     foreach($userAppsMap as $i => $item) {
-        if (in_array($appId, $item->own_apps, true)) {
-            $userAppsMap[$i]->own_apps = array_filter($item->own_apps, function($aid) use($appId) {
+        if (in_array($appId, $item['own_apps'], true)) {
+            $userAppsMap[$i]['own_apps'] = array_filter($item['own_apps'], function($aid) use($appId) {
                 return $aid !== $appId;
             });
         }

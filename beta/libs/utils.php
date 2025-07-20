@@ -121,7 +121,7 @@ if (!function_exists('dump')) {
         } else {
             $output = print_r($var, true);
         }
-        $output = "[$timestamp] $output";
+        $output = "[$timestamp] $output\n";
         if ($toFile) {
             $logFile = __DIR__ . '/../logs/' . $logFile;
             if (!is_dir(dirname($logFile))) {
@@ -133,6 +133,27 @@ if (!function_exists('dump')) {
             // note: This will not work in a web context, only in CLI
             header('Content-Type: text/plain');
             echo '<pre>' . $output . '</pre>';
+        }
+    }
+}
+
+if (!function_exists('getBaseDirectory')) {
+    /**
+     * Get the absolute path to a directory within the application
+     * @param string $dirName The directory to retrieve (e.g. 'responses/user')
+     * @return string The absolute path to the directory
+     */
+    function getBaseDirectory(): string {
+        $currentPath = rtrim(__DIR__);
+        while (true) {
+            $currentDirectoryName = basename($currentPath);
+            if ($currentDirectoryName === 'beta') {
+                return $currentPath;
+            }
+            if ($currentPath === dirname($currentPath)) { // ルートディレクトリに到達
+                return '/'; // 目的のディレクトリが見つからない場合
+            }
+            $currentPath = dirname($currentPath);
         }
     }
 }
@@ -159,7 +180,7 @@ if (!function_exists('initFileDBAsJSON')) {
         string $placeholder = '',
         bool $withCleanupSession = true
     ): mixed {
-        $BASE_PATH = __DIR__ . '/..';
+        $BASE_PATH = getBaseDirectory();
         $dbFilePaths = [
             'users'        => '/responses/user/users.json',
             'auth_tokens'  => '/responses/auth/token.json',
@@ -168,11 +189,12 @@ if (!function_exists('initFileDBAsJSON')) {
             'logs'         => '/responses/logs/%s.json',
             'user_session' => '/sessions/%s.json',
         ];
-        foreach ($dbFilePaths as $entity => $path) {
-            if (in_array($entity, ['logs', 'user_session'], true)) {
+        foreach ($dbFilePaths as $key => $path) {
+            if (in_array($key, ['logs', 'user_session'], true)) {
                 continue;
             }
             $filePath = $BASE_PATH . $path;
+            //dump([$filePath, file_exists($filePath), filesize($filePath)]);
             if (!file_exists($filePath)) {
                 // Ensure the directory exists
                 $dir = dirname($filePath);
@@ -199,17 +221,18 @@ if (!function_exists('initFileDBAsJSON')) {
                 }
             }
         }
-        if ($entity && array_key_exists($entity, $dbFilePaths)) {
-            $isReturnEmptyArray = true;
-            if ($placeholder && in_array($entity, ['logs', 'user_session'], true)) {
+        dump([$entity, $placeholder, array_key_exists($entity, $dbFilePaths)]);
+        if (!empty($entity) && array_key_exists($entity, $dbFilePaths)) {
+            if (!empty($placeholder) && in_array($entity, ['logs', 'user_session'], true)) {
                 $filePath = $BASE_PATH . sprintf($dbFilePaths[$entity], $placeholder);
                 $isReturnEmptyArray = false; // Do not return empty array for logs and user_session
             } else {
                 $filePath = $BASE_PATH . $dbFilePaths[$entity];
+                $isReturnEmptyArray = true;
             }
             if (file_exists($filePath)) {
                 $content = file_get_contents($filePath);
-                return json_decode($content, true);
+                return json_decode($content, true);// Decode as associative array
             }
             // fallback
             return $isReturnEmptyArray ? [] : null;

@@ -4,7 +4,8 @@
 $current_user = $_SESSION['current_user'];
 if ($request_data['body'] && $current_user) {
     $appDBFile = './responses/apps/get/appData.json';
-    $nowApplist = json_decode(file_get_contents($appDBFile));
+    //$nowApplist = json_decode(file_get_contents($appDBFile));
+    $nowApplist = initFileDBAsJSON('apps', '', false);
     $newAppData = $request_data['body'];
     $newAppId = uniqid();
     $newAppData['appId'] = $newAppId;
@@ -14,9 +15,10 @@ if ($request_data['body'] && $current_user) {
         json_encode($nowApplist, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
     );
     $userAppsDBFile = './responses/apps/userApps.json';
-    $userAppsMap = json_decode(file_get_contents($userAppsDBFile));
+    //$userAppsMap = json_decode(file_get_contents($userAppsDBFile));
+    $userAppsMap = initFileDBAsJSON('user_apps', '', false);
     $userApps = array_find($userAppsMap, function($item) use($current_user) {
-        return (int)$item->user_id === (int)$current_user['user_id'];
+        return (int)$item['user_id'] === (int)$current_user['user_id'];
     });
     if (empty($userApps)) {
         // アプリリストが無ければ新規追加
@@ -24,8 +26,9 @@ if ($request_data['body'] && $current_user) {
     } else {
         // アプリリストがあれば更新
         foreach($userAppsMap as $i => $item) {
-            if ((int)$item->user_id === (int)$current_user['user_id']) {
-                $item->own_apps[] = $newAppId;
+            if ((int)$item['user_id'] === (int)$current_user['user_id']) {
+                $item['own_apps'][] = $newAppId;
+                $userAppsMap[$i] = $item;
                 break;
             }
         }

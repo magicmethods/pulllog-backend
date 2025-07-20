@@ -11,5 +11,9 @@ schema/*.yaml
 
 sessions/*.json
 temp/uploads/*
-responses/*.json
-!responses/*/default.json
+
+responses/apps/get/appData.json
+responses/apps/userApps.json
+responses/auth/token.json
+responses/logs/*.json
+responses/user/users.json

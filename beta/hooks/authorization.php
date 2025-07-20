@@ -22,7 +22,7 @@ $auth_request = [
     'api_key' => $_SERVER['HTTP_X_API_KEY'] ?? '',
 ];
 
-//dump($auth_request);
+//dump([$auth_request, in_array($auth_request['path'], $path_through_check, true)]);
 
 // APIキーのチェック
 if (!in_array($auth_request['path'], $path_through_check, true)) {
@@ -54,4 +54,5 @@ if (!in_array($auth_request['path'], $path_through_check, true)) {
     // 必要に応じてグローバル変数か$_SESSIONにユーザーID等をセット
     // $GLOBALS['current_user'] = $sessionData;
     $_SESSION['current_user'] = $sessionData;
+    $_SESSION['session_file'] = getBaseDirectory() . '/sessions/' . $auth_request['csrf_token'] . '.json';
 }

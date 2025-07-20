@@ -2,12 +2,12 @@
 
 // Hook for `POST /auth/logout`
 $current_user = $_SESSION['current_user'];
+$sessionFile = $_SESSION['session_file'] ?? '';
 if ($current_user) {
     $tokenDBFilePath = './responses/auth/token.json';
     setcookie('remember_token', '', time() - 3600, '/', '', false, true);
 
-    // セッションファイルのパスは authorization.php のフックで定義される
-    // $sessionFile = __DIR__ . "/../sessions/{$auth_request['csrf_token']}.json";
+    // セッションファイルのパスは authorization.php のフックでセットされる
     if (file_exists($sessionFile)) {
         @unlink($sessionFile);
     }
