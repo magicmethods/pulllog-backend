@@ -1,22 +1,64 @@
--- ENUM型定義
-CREATE TYPE theme AS ENUM ('light', 'dark');
-CREATE TYPE token_type AS ENUM ('signup', 'reset', 'remember');
+-- ====================
+-- 型定義
+-- ====================
+DO $$
+BEGIN
+    -- theme型
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'theme') THEN
+        CREATE TYPE theme AS ENUM ('light', 'dark');
+    END IF;
+END$$;
 
--- definition型
-CREATE TYPE definition AS (
-    symbol      VARCHAR(10),
-    label       VARCHAR(64),
-    value       VARCHAR(64)
-);
+DO $$
+BEGIN
+    -- token_type型
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'token_type') THEN
+        CREATE TYPE token_type AS ENUM ('signup', 'reset', 'remember');
+    END IF;
+END$$;
 
--- drop型
-CREATE TYPE drop AS (
-    rarity      VARCHAR(64),
-    name        VARCHAR(64),
-    marker      VARCHAR(64)
-);
+DO $$
+BEGIN
+    -- definition型
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'definition') THEN
+        CREATE TYPE definition AS (
+            symbol      VARCHAR(10),
+            label       VARCHAR(64),
+            value       VARCHAR(64)
+        );
+    END IF;
+END$$;
 
--- 0. プラン管理
+DO $$
+BEGIN
+    -- drop型
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'drop') THEN
+        CREATE TYPE drop AS (
+            rarity      VARCHAR(64),
+            name        VARCHAR(64),
+            marker      VARCHAR(64)
+        );
+    END IF;
+END$$;
+
+-- ====================
+-- テーブル初期化（DROPは依存関係を逆順に）
+-- ====================
+
+DROP TABLE IF EXISTS stats_cache      CASCADE;
+DROP TABLE IF EXISTS logs             CASCADE;
+DROP TABLE IF EXISTS user_sessions    CASCADE;
+DROP TABLE IF EXISTS auth_tokens      CASCADE;
+DROP TABLE IF EXISTS user_apps        CASCADE;
+DROP TABLE IF EXISTS apps             CASCADE;
+DROP TABLE IF EXISTS users            CASCADE;
+DROP TABLE IF EXISTS plans            CASCADE;
+
+-- ====================
+-- DDL
+-- ====================
+
+-- 1. プラン管理
 CREATE TABLE plans (
     id                  SERIAL PRIMARY KEY,
     name                VARCHAR(64) NOT NULL UNIQUE,      -- プラン名 (Free, Standard, Premium)
@@ -35,7 +77,7 @@ CREATE TABLE plans (
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 1. ユーザー管理
+-- 2. ユーザー管理
 CREATE TABLE users (
     id              SERIAL PRIMARY KEY,
     email           VARCHAR(255) NOT NULL UNIQUE,
@@ -58,10 +100,10 @@ CREATE TABLE users (
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 2. アプリ管理
+-- 3. アプリ管理
 CREATE TABLE apps (
     id                  SERIAL PRIMARY KEY,
-    app_key             VARCHAR(64) NOT NULL UNIQUE,
+    app_key             VARCHAR(64) NOT NULL UNIQUE,  -- ULID形式
     name                VARCHAR(128) NOT NULL,
     url                 VARCHAR(255),
     description         TEXT,
@@ -77,7 +119,7 @@ CREATE TABLE apps (
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 3. ユーザー✕アプリ（マッピング・リレーション）
+-- 4. ユーザー✕アプリ（マッピング・リレーション）
 CREATE TABLE user_apps (
     id              SERIAL PRIMARY KEY,
     user_id         INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -86,7 +128,7 @@ CREATE TABLE user_apps (
     UNIQUE (user_id, app_id)
 );
 
--- 4. 認証/リセット/Rememberトークン等
+-- 5. 認証/リセット/Rememberトークン等
 CREATE TABLE auth_tokens (
     id              SERIAL PRIMARY KEY,
     user_id         INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -98,7 +140,7 @@ CREATE TABLE auth_tokens (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 5. セッション（CSRF管理含む）
+-- 6. セッション（CSRF管理含む）
 CREATE TABLE user_sessions (
     csrf_token      VARCHAR(255) PRIMARY KEY,
     user_id         INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -107,9 +149,9 @@ CREATE TABLE user_sessions (
     expires_at      TIMESTAMPTZ NOT NULL
 );
 
--- 6. ログ（ユーザーごとにパーティション）
+-- 7. ログ（ユーザーごとにパーティション）
 CREATE TABLE logs (
-    id              BIGSERIAL PRIMARY KEY,
+    id              BIGSERIAL,
     user_id         INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     app_id          INTEGER NOT NULL REFERENCES apps(id) ON DELETE CASCADE,
     log_date        DATE NOT NULL,
@@ -123,10 +165,24 @@ CREATE TABLE logs (
     tasks           JSONB,            -- タスク完了情報（暫定仕様）
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (user_id, id),
     UNIQUE (user_id, app_id, log_date)
 ) PARTITION BY HASH (user_id);
 
--- パーティション例（ユーザーIDの下2桁で分割 0〜9:10分割, 必要に応じて増やせる）
+-- 8. （オプション）集計キャッシュ
+CREATE TABLE stats_cache (
+    user_id         INTEGER REFERENCES users(id) ON DELETE CASCADE, -- 複数ユーザーに対応する場合はNULL許容
+    cache_key       VARCHAR(128) PRIMARY KEY,
+    value           JSONB NOT NULL,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- ====================
+-- ログパーティションの作成
+-- - ユーザーIDの下2桁で分割 0〜9:10分割, 必要に応じて増やせる
+-- ====================
+
 DO $$
 BEGIN
     FOR i IN 0..9 LOOP
@@ -137,11 +193,13 @@ BEGIN
     END LOOP;
 END $$;
 
--- 7. （オプション）集計キャッシュ
-CREATE TABLE stats_cache (
-    user_id         INTEGER REFERENCES users(id) ON DELETE CASCADE, -- 複数ユーザーに対応する場合はNULL許容
-    cache_key       VARCHAR(128) PRIMARY KEY,
-    value           JSONB NOT NULL,
-    created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+-- ====================
+-- 初期データ投入（プラン）
+-- ====================
+
+INSERT INTO plans (name, description, max_apps, max_log_tags, max_storage_mb, price_per_month, is_active)
+    VALUES
+    ('Free', 'Free plan limited to minimal usage.', 5, 3, 100, 0, TRUE),
+    ('Standard', 'Standard plan for comfortable use with no ads.', 10, 5, 300, 480, TRUE),
+    ('Premium', 'Premium plans give you unlimited access to our advanced features.', 50, 10, 1024, 980, TRUE)
+    ON CONFLICT (name) DO NOTHING;
