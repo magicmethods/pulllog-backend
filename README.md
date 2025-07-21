@@ -25,7 +25,7 @@
 | `users`        | ユーザー管理         | id (PK), email (UQ), roles, plan_id (FK), ...                      |
 | `apps`         | アプリケーション管理 | id (PK), app_key (UQ), name, ...                                   |
 | `user_apps`    | ユーザー・アプリ管理（リレーション） | id (PK), user_id (FK), app_id (FK), ...            |
-| `logs`         | 日次ログ（履歴）管理 | id (PK), user_id (FK), app_id (FK), log_date, total_pulls, ...     |
+| `logs`         | 日次ログ（履歴）管理 | id (PK), user_id (PK,FK), app_id (FK), log_date, total_pulls, ...  |
 | `auth_tokens`  | 認証トークン管理     | id (PK), user_id (FK), token (UQ), type, ...                       |
 | `user_sessions`| ユーザーセッション（CSRFトークン）管理 | csrf_token (PK), user_id (FK), email, ...        |
 | `stats_cache`  | 統計データ（キャッシュ）管理 | cache_key (PK), user_id (FK), value, ...                   |
@@ -35,6 +35,8 @@
 > - (UQ) = ユニーク制約  
 > - (FK) = 外部キー  
 > - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ddl.sql) を参照
+
+※ pulllog-ddl.sql はあくまでスキーマ確認用です。手動DDLとして使用するのは**NG**です。DBマイグレーションは Laravel の `artisan maigrate` を使ってください。
 
 ---
 

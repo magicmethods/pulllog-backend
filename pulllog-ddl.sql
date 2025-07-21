@@ -119,7 +119,7 @@ CREATE TABLE apps (
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 4. ユーザー✕アプリ（マッピング・リレーション）
+-- 4. ユーザーxアプリ（マッピング・リレーション）
 CREATE TABLE user_apps (
     id              SERIAL PRIMARY KEY,
     user_id         INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -180,7 +180,7 @@ CREATE TABLE stats_cache (
 
 -- ====================
 -- ログパーティションの作成
--- - ユーザーIDの下2桁で分割 0〜9:10分割, 必要に応じて増やせる
+-- - ユーザーIDの下2桁で分割 0-9:10分割, 必要に応じて増やせる
 -- ====================
 
 DO $$
