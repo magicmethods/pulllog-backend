@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Api\DefaultApiInterface;
 //use App\Http\Controllers\Controller;
 
-class DefaultController extends Controller
+class AuthController extends Controller
 {
     /**
      * Constructor
