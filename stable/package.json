@@ -5,7 +5,9 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "db:reset": "php artisan migrate:fresh --seed"
+        "openapi:generate": "openapi-generator-cli generate -i https://raw.githubusercontent.com/magicmethods/pulllog-contract/refs/heads/main/api-schema.yaml?token=GHSAT0AAAAAADFV3JAVZHEORW3LBY5Y45T62D7LK6A -g php-laravel -o ./generated",
+        "db:reset": "php artisan migrate:fresh --seed",
+        "serve": "php artisan serve --host=localhost --port=3030"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
@@ -14,5 +16,9 @@
         "laravel-vite-plugin": "^1.2.0",
         "tailwindcss": "^4.0.0",
         "vite": "^6.2.4"
+    },
+    "dependencies": {
+        "@openapitools/openapi-generator-cli": "^2.21.3",
+        "openapi-generator": "^0.1.39"
     }
 }
