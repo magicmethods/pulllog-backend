@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -16,8 +16,21 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class AuthController extends Controller
+class PasswordController extends Controller
 {
-    // no-op now, this class is empty
+    /**
+     * パスワードリセットリクエスト (POST /auth/password)
+     */
+    public function requestReset(Request $request): JsonResponse
+    {
+
+    }
+    /**
+     * パスワードリセット (PUT /auth/password)
+     */
+    public function reset(Request $request): JsonResponse
+    {
+        
+    }
 
 }

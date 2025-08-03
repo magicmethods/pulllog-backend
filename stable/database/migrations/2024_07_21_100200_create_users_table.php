@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('email', 255)->unique();
-            $table->string('password_hash', 255);
+            $table->string('password', 255);
             $table->string('name', 64);
             $table->string('avatar_url', 255)->nullable();
             $table->json('roles');
@@ -20,13 +20,15 @@ return new class extends Migration
             $table->timestampTz('plan_expiration');
             $table->string('language', 10);
             $table->string('theme')->default('light'); // ENUM: theme
-            $table->string('home_page', 20);
+            $table->string('home_page', 20)->default('/apps');
             $table->timestampTz('last_login')->nullable();
             $table->string('last_login_ip', 128)->nullable();
             $table->string('last_login_ua', 255)->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->boolean('is_verified')->default(false);
+            $table->string('remember_token', 255)->nullable();
             $table->json('unread_notices')->nullable();
+            $table->timestampTz('email_verified_at')->nullable();
             $table->timestampsTz(0);
         });
 

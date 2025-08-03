@@ -79,25 +79,27 @@ CREATE TABLE plans (
 
 -- 2. ユーザー管理
 CREATE TABLE users (
-    id              SERIAL PRIMARY KEY,
-    email           VARCHAR(255) NOT NULL UNIQUE,
-    password_hash   VARCHAR(255) NOT NULL,
-    name            VARCHAR(64) NOT NULL,   -- display_name
-    avatar_url      VARCHAR(255),
-    roles           VARCHAR[] NOT NULL,     -- ユーザーロール（admin, userなど）将来的に多段階・複数ロール運用も可能
-    plan_id         INTEGER NOT NULL REFERENCES plans(id) ON DELETE RESTRICT,
-    plan_expiration TIMESTAMPTZ NOT NULL,
-    language        VARCHAR(10) NOT NULL,   -- 現状 en, ja, zh の3種のみだが、locale値の **-** や **-****-** に対応可能
-    theme           theme DEFAULT 'light',
-    home_page       VARCHAR(20) NOT NULL,
-    last_login      TIMESTAMPTZ,
-    last_login_ip   VARCHAR(128),
-    last_login_ua   VARCHAR(255),
-    is_deleted      BOOLEAN NOT NULL DEFAULT FALSE,
-    is_verified     BOOLEAN NOT NULL DEFAULT FALSE,
-    unread_notices  INTEGER[],  -- 将来的にNOTIFY管理テーブルを独立させるまでの暫定
-    created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    id                  SERIAL PRIMARY KEY,
+    email               VARCHAR(255) NOT NULL UNIQUE,
+    password            VARCHAR(255) NOT NULL,  -- password_hash からリネーム
+    name                VARCHAR(64) NOT NULL,   -- フロントエンドにおける display_name
+    avatar_url          VARCHAR(255),
+    roles               VARCHAR[] NOT NULL,     -- ユーザーロール（admin, userなど）将来的に多段階・複数ロール運用も可能
+    plan_id             INTEGER NOT NULL REFERENCES plans(id) ON DELETE RESTRICT,
+    plan_expiration     TIMESTAMPTZ NOT NULL,
+    language            VARCHAR(10) NOT NULL,   -- 当面 en, ja, zh の3種のみ。locale値の **-** や **-****-** に対応可能
+    theme               theme DEFAULT 'light',
+    home_page           VARCHAR(20) NOT NULL,
+    last_login          TIMESTAMPTZ,
+    last_login_ip       VARCHAR(128),
+    last_login_ua       VARCHAR(255),
+    is_deleted          BOOLEAN NOT NULL DEFAULT FALSE,
+    is_verified         BOOLEAN NOT NULL DEFAULT FALSE, -- フロントエンドのUI連携用 email_verified_at のショートハンドとして残す
+    remember_token      VARCHAR(255) NOT NULL DEFAULT '', -- LaravelのUserモデル準拠。Rememberトークンは auth_tokens でのトークン管理から除外
+    unread_notices      INTEGER[],  -- 将来的にNOTIFY管理テーブルを独立させるまでの暫定
+    email_verified_at   TIMESTAMPTZ, -- Laravel標準のメール認証機能を使用するため
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- 3. アプリ管理
@@ -112,8 +114,8 @@ CREATE TABLE apps (
     sync_update_time    BOOLEAN DEFAULT FALSE,
     pity_system         BOOLEAN DEFAULT FALSE,
     guarantee_count     INTEGER NOT NULL DEFAULT 0,
-    rarity_defs         definition[],
-    marker_defs         definition[],
+    rarity_defs         JSONB, -- 理想としては配列型 definition[] を適用したいが、Laravel(Eloquent)で対応するのが難しいため JSONB 型とする
+    marker_defs         JSONB, -- 理想としては配列型 definition[] を適用したいが、Laravel(Eloquent)で対応するのが難しいため JSONB 型とする
     task_defs           JSONB,  -- 構造未定
     created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -136,6 +138,8 @@ CREATE TABLE auth_tokens (
     type            token_type NOT NULL,
     code            VARCHAR(6),
     is_used         BOOLEAN DEFAULT FALSE,
+    ip              VARCHAR(128),   -- Rememberトークン用
+    ua              VARCHAR(255),   -- Rememberトークン用
     expires_at      TIMESTAMPTZ NOT NULL,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -158,11 +162,11 @@ CREATE TABLE logs (
     total_pulls     INTEGER NOT NULL,
     discharge_items INTEGER NOT NULL,
     expense         INTEGER DEFAULT 0,
-    drop_details    drop[],           -- 詳細アイテムリスト
-    tags            TEXT[],
+    drop_details    JSONB, -- 詳細アイテムリストは配列型 drop[] を想定していたが、Laravel(Eloquent)での対応が難しいため JSONB 型とする
+    tags            JSONB, -- 配列型 TEXT[] は空配列を asArrayObject 対応する必要があり煩雑なため JSONB 型とする
     free_text       TEXT,
-    images          TEXT[],
-    tasks           JSONB,            -- タスク完了情報（暫定仕様）
+    images          JSONB, -- 配列型 TEXT[] は空配列を asArrayObject 対応する必要があり煩雑なため JSONB 型とする
+    tasks           JSONB, -- タスク完了情報（暫定仕様）
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     PRIMARY KEY (user_id, id),
@@ -180,7 +184,8 @@ CREATE TABLE stats_cache (
 
 -- ====================
 -- ログパーティションの作成
--- - ユーザーIDの下2桁で分割 0-9:10分割, 必要に応じて増やせる
+-- - ユーザーIDの下2桁で分割 0-9:10分割（※ただしuser_idの下一桁 N は logs_pN と等価ではなく `mod(hashint4(N), 10)` に依存）
+-- - user_id の下一桁 N がどのパーティションテーブルに入っているかは `SELECT mod(hashint4(N), 10);` で調べられる
 -- ====================
 
 DO $$

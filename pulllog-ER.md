@@ -8,7 +8,7 @@ erDiagram
     users {
         SERIAL id
         VARCHAR email
-        VARCHAR password_hash
+        VARCHAR password
         VARCHAR name
         VARCHAR avatar_url
         VARCHAR[] roles
@@ -22,7 +22,9 @@ erDiagram
         VARCHAR last_login_ua
         BOOLEAN is_deleted
         BOOLEAN is_verified
+        VARCHAR remember_token
         INTEGER[] unread_notices
+        TIMESTAMPTZ email_verified_at
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
     }
@@ -57,6 +59,8 @@ erDiagram
         token_type type
         VARCHAR code
         BOOLEAN is_used
+        VARCHAR ip
+        VARCHAR ua
         TIMESTAMPTZ expires_at
         TIMESTAMPTZ created_at
     }

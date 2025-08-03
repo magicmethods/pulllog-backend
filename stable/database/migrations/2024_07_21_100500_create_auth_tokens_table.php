@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('code', 6)->nullable();
             $table->boolean('is_used')->default(false);
+            $table->string('ip', 128)->nullable();
+            $table->string('ua', 255)->nullable();
             $table->timestampTz('expires_at');
             $table->timestampsTz(0);
         });

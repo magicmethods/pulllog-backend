@@ -20,7 +20,16 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Auth\PasswordController;
 use App\Http\Controllers\Api\DefaultController;
+use App\Http\Controllers\Api\Apps\AppsController;
+use App\Http\Controllers\Api\Logs\LogsController;
+use App\Http\Controllers\Api\Logs\DailyLogController;
+use App\Http\Controllers\Api\Logs\LogImportController;
+use App\Http\Controllers\Api\Stats\StatsController;
+use App\Http\Controllers\Api\User\ProfileController;
 
 Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
@@ -41,8 +50,17 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
     // /auth/** 系（APIキー認証のみ）
     Route::prefix('auth')
         ->middleware(['auth.apikey']) // 独自APIキー認証ミドルウェア
+        ->withoutMiddleware(['auth.csrf']) // CSRFトークン認証は不要
         ->group(function () {
             // 認証関連のルート
+            Route::post('register',   [RegisterController::class, 'register'])->name('auth.register');
+            Route::post('verify',     [RegisterController::class, 'verifyEmail'])->name('auth.verify');
+            Route::post('login',      [LoginController::class, 'login'])->name('auth.login');
+            Route::post('autologin',  [LoginController::class, 'autologin'])->name('auth.autologin');
+            Route::post('logout',     [LoginController::class, 'logout'])->name('auth.logout');
+            Route::post('password',   [PasswordController::class, 'requestReset'])->name('auth.password.request');
+            Route::put( 'password',   [PasswordController::class, 'reset'])->name('auth.password.reset');
+            /* 分割前ルート
             Route::post('autologin', [AuthController::class, 'autologin'])->name('auth.autologin');
             Route::post('login',     [AuthController::class, 'login'])->name('auth.login');
             Route::post('logout',    [AuthController::class, 'logout'])->name('auth.logout');
@@ -50,6 +68,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             Route::put( 'password',  [AuthController::class, 'resetPassword'])->name('auth.password.reset');
             Route::post('register',  [AuthController::class, 'register'])->name('auth.register');
             Route::post('verify',    [AuthController::class, 'verifyEmail'])->name('auth.verify');
+            */
         });
 
     // その他（APIキー認証+CSRFトークン認証が必要）
@@ -57,28 +76,37 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
         ->group(function () {
             // アプリ関連のルート
             Route::prefix('apps')->group(function () {
-                Route::get(   '/',        [DefaultController::class, 'appsGet'])->name('default.apps.get');
-                Route::post(  '/',        [DefaultController::class, 'appsPost'])->name('default.apps.post');
-                Route::get(   '/{appId}', [DefaultController::class, 'appsAppIdGet'])->name('default.apps.app.id.get');
-                Route::put(   '/{appId}', [DefaultController::class, 'appsAppIdPut'])->name('default.apps.app.id.put');
-                Route::delete('/{appId}', [DefaultController::class, 'appsAppIdDelete'])->name('default.apps.app.id.delete');
+                Route::get(   '/',        [AppsController::class, 'getAppList'])->name('apps.list');
+                Route::post(  '/',        [AppsController::class, 'registerApp'])->name('apps.app.register');
+                Route::get(   '/{appId}', [AppsController::class, 'getAppData'])->name('apps.app.get');
+                Route::put(   '/{appId}', [AppsController::class, 'updateApp'])->name('apps.app.update');
+                Route::delete('/{appId}', [AppsController::class, 'deleteApp'])->name('apps.app.delete');
             });
 
             // ログ関連のルート
             Route::prefix('logs')->group(function () {
-                Route::get(   '/{appId}',              [DefaultController::class, 'logsAppIdGet'])->name('default.logs.app.id.get');
-                Route::delete('/daily/{appId}/{date}', [DefaultController::class, 'logsDailyAppIdDateDelete'])->name('default.logs.daily.app.id.date.delete');
-                Route::get(   '/daily/{appId}/{date}', [DefaultController::class, 'logsDailyAppIdDateGet'])->name('default.logs.daily.app.id.date.get');
-                Route::post(  '/daily/{appId}/{date}', [DefaultController::class, 'logsDailyAppIdDatePost'])->name('default.logs.daily.app.id.date.post');
-                Route::put(   '/daily/{appId}/{date}', [DefaultController::class, 'logsDailyAppIdDatePut'])->name('default.logs.daily.app.id.date.put');
-                Route::post(  '/import/{appId}',       [DefaultController::class, 'logsImportAppIdPost'])->name('default.logs.import.app.id.post');
+                // アプリ全体ログ取得
+                Route::get(   '/{app}',              [LogsController::class, 'index'])->name('logs.index');
+                // 日別ログ取得・更新・削除
+                Route::get(   '/daily/{app}/{date}', [DailyLogController::class, 'show'])->name('logs.daily.show');
+                Route::post(  '/daily/{app}/{date}', [DailyLogController::class, 'insert'])->name('logs.daily.insert');
+                Route::put(   '/daily/{app}/{date}', [DailyLogController::class, 'update'])->name('logs.daily.update');
+                Route::delete('/daily/{app}/{date}', [DailyLogController::class, 'destroy'])->name('logs.daily.destroy');
+                // ログインポート
+                Route::post(  '/import/{app}',       [LogImportController::class, 'store'])->name('logs.import.store');
             });
 
             // 統計関連のルート
-            Route::get('/stats/{appId}', [DefaultController::class, 'statsAppIdGet'])->name('default.stats.app.id.get');
+            Route::prefix('stats')->group(function () {
+                Route::get(   '/{appId}', [StatsController::class, 'getAppStats'])->name('stats.app.get');
+            });
 
             // ユーザー関連のルート
-            Route::put('/user/update', [DefaultController::class, 'userUpdatePut'])->name('default.user.update.put');
+            Route::prefix('user')->group(function () {
+                Route::get(   '/',        [ProfileController::class, 'userGet'])->name('user.get');
+                Route::put(   '/update',  [ProfileController::class, 'update'])->name('user.update');
+                Route::delete('/',        [ProfileController::class, 'delete'])->name('user.delete');
+            });
         });
 
 });

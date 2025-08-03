@@ -19,12 +19,16 @@ return new class extends Migration
             $table->boolean('sync_update_time')->default(false);
             $table->boolean('pity_system')->default(false);
             $table->integer('guarantee_count')->default(0);
+            $table->jsonb('rarity_defs')->nullable();
+            $table->jsonb('marker_defs')->nullable();
+            $table->jsonb('task_defs')->nullable();
             $table->timestampsTz(0);
         });
-        // definition[], drop[] 等のカラムは生SQLで追加
-        DB::statement('ALTER TABLE apps ADD COLUMN rarity_defs definition[];');
-        DB::statement('ALTER TABLE apps ADD COLUMN marker_defs definition[];');
-        DB::statement('ALTER TABLE apps ADD COLUMN task_defs JSONB;');
+        // PostgreSQLの配列型（definition[]）カラムをLaravel（Eloquent）で取り扱うのが難しいためJSONB型に変更
+        // - もし将来的に配列型を使用する場合は、以下のようにカラムを追加する
+        // DB::statement('ALTER TABLE apps ADD COLUMN rarity_defs TYPE definition[];');
+        // DB::statement('ALTER TABLE apps ADD COLUMN marker_defs TYPE definition[];');
+        // DB::statement('ALTER TABLE apps ADD COLUMN task_defs TYPE definition[];');
     }
 
     public function down(): void

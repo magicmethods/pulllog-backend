@@ -22,7 +22,7 @@ return new class extends Migration
             DO $$
             BEGIN
                 IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'token_type') THEN
-                    CREATE TYPE token_type AS ENUM ('signup', 'reset', 'remember');
+                    CREATE TYPE token_type AS ENUM ('signup', 'reset');
                 END IF;
             END$$;
         ");
