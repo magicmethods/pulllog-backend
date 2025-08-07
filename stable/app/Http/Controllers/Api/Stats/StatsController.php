@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Log;
 
 class StatsController extends Controller
 {
+    /**
+     * GET /stats/{appKey}
+     * アプリの統計情報を取得
+     */
     public function getAppStats(Request $request, $appKey): JsonResponse|Response
     {
         // 認証ユーザーの取得
@@ -63,7 +67,6 @@ class StatsController extends Controller
             'log_date', 'total_pulls', 'discharge_items', 'expense'
         ]);
         if ($logs->isNotEmpty()) {
-            //$logsAll = array_merge($logsAll, $logs->toArray());
             $logsAll = $logsAll ? $logsAll->concat($logs) : $logs;
         }
 
@@ -96,11 +99,6 @@ class StatsController extends Controller
 
         // ソート
         $logsAll = $logsAll->sortBy('log_date')->values();
-        /*
-        usort($logsAll, function ($a, $b) {
-            return strcmp($a->log_date, $b->log_date);
-        });
-        */
 
         // 集計
         $totalPulls = 0;

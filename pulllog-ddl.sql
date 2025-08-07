@@ -138,6 +138,7 @@ CREATE TABLE auth_tokens (
     type            token_type NOT NULL,
     code            VARCHAR(6),
     is_used         BOOLEAN DEFAULT FALSE,
+    failed_attempts INTEGER DEFAULT 0, -- 認証失敗回数
     ip              VARCHAR(128),   -- Rememberトークン用
     ua              VARCHAR(255),   -- Rememberトークン用
     expires_at      TIMESTAMPTZ NOT NULL,

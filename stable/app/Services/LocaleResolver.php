@@ -27,7 +27,7 @@ class LocaleResolver
         // ユーザー
         if ($user && in_array($user->language ?? null, self::$supportedLanguages)) return $user->language;
 
-        // デフォルト
-        return 'en';
+        // デフォルト（.env の APP_FALLBACK_LOCALE）
+        return config('app.fallback_locale');
     }
 }

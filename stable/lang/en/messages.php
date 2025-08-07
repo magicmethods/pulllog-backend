@@ -27,4 +27,7 @@ return [
 
     'plan_not_found' => 'The specified plan was not found.',
     'invalid_date_format' => 'The :field date is invalid.',
+
+    'api_running_successfully' => 'API is running successfully.',
+
 ];

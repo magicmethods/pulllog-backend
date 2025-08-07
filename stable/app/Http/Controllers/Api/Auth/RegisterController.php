@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\AuthToken;
-//use App\Models\Plan;
-//use App\Models\UserSession;
 use App\Services\LocaleResolver;
+use App\Services\AuthMailService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -20,7 +19,8 @@ use Illuminate\Support\Facades\Log;
 class RegisterController extends Controller
 {
     /**
-     * アカウント新規登録 (/auth/register)
+     * POST /auth/register
+     * アカウント新規登録
      */
     public function register(Request $request): JsonResponse
     {
@@ -77,12 +77,12 @@ class RegisterController extends Controller
                 'expires_at' => $expiredAt,
             ]);
 
-            // メール送信（後で実装）
-            // Mail::to($user->email)->send(new VerificationEmail($authToken));
-            Log::debug('Registration email sent to ' . $user->email, ['auth_token' => $authToken]);
+            // メール送信
+            $lang = LocaleResolver::resolve($request, $user);
+            AuthMailService::send($user, $token, null, 'signup', $lang);
 
             DB::commit();
-            $lang = LocaleResolver::resolve($request, $user);
+
             return response()->json([
                 'state'   => 'success',
                 'message' => trans('auth.registration_completed', [], $lang),
@@ -103,7 +103,8 @@ class RegisterController extends Controller
         abort(500);
     }
     /**
-     * メール認証 (/auth/verify)
+     * POST /auth/verify
+     * メール認証
      */
     public function verifyEmail(Request $request): JsonResponse
     {
@@ -112,10 +113,14 @@ class RegisterController extends Controller
         $type = $request->input('type');
 
         $lang = LocaleResolver::resolve($request, null);
-        //Log::debug('Verify email: ', ['request' => $request->all(), 'token' => $token, 'type' => $type]);
+        Log::debug('Verify email: ', ['request' => $request->all(), 'token' => $token, 'type' => $type]);
 
         // パラメータバリデーション
         if (!$token || !$type || !in_array($type, ['signup', 'reset'], true)) {
+            Log::warning('PasswordController@verifyEmail:InvalidRequest', [
+                'ip' => $request->ip(),
+                'data' => $request->all(),
+            ]);
             return response()->json([
                 'success' => false,
                 'message' => trans('auth.invalid_request', [], $lang),
@@ -125,6 +130,10 @@ class RegisterController extends Controller
         // トークン検索
         $authToken = AuthToken::where('token', $token)->first();
         if (!$authToken) {
+            Log::warning('PasswordController@verifyEmail:TokenNotFound', [
+                'ip' => $request->ip(),
+                'token' => $token,
+            ]);
             return response()->json([
                 'success' => false,
                 'message' => trans('auth.invalid_token', [], $lang),
@@ -133,6 +142,12 @@ class RegisterController extends Controller
 
         // タイプ不一致
         if ($authToken->type->value !== $type) {
+            Log::warning('PasswordController@verifyEmail:TokenTypeMismatch', [
+                'token' => $authToken->token->value,
+                'type_db' => $authToken->type,
+                'type_req' => $type,
+                'ip' => $request->ip(),
+            ]);
             return response()->json([
                 'success' => false,
                 'message' => trans('auth.invalid_token_type', [], $lang),
@@ -141,6 +156,11 @@ class RegisterController extends Controller
 
         // 有効期限チェック
         if ($authToken->expires_at < now()) {
+            Log::warning('PasswordController@verifyEmail:TokenExpired', [
+                'token' => $authToken->token,
+                'expires_at' => $authToken->expires_at,
+                'ip' => $request->ip(),
+            ]);
             return response()->json([
                 'success' => false,
                 'message' => trans('auth.expired_token', [], $lang),
@@ -149,6 +169,10 @@ class RegisterController extends Controller
 
         // 既に使用済みか
         if ($authToken->is_used) {
+            Log::warning('PasswordController@verifyEmail:TokenAlreadyUsed', [
+                'token' => $authToken->token,
+                'ip' => $request->ip(),
+            ]);
             return response()->json([
                 'success' => false,
                 'message' => trans('auth.token_already_used', [], $lang),
@@ -159,43 +183,42 @@ class RegisterController extends Controller
         if ($type === 'signup') {
             $user = User::find($authToken->user_id);
             if (!$user) {
+                Log::warning('PasswordController@verifyEmail:UserNotFound', [
+                    'user_id' => $authToken->user_id,
+                    'ip' => $request->ip(),
+                ]);
                 return response()->json([
                     'success' => false,
                     'message' => trans('auth.user_not_found_short', [], $lang),
                 ], 404);
+            }
+            if ($user->is_deleted) {
+                Log::warning('PasswordController@verifyEmail:UserDeleted', [
+                    'user_id' => $user->id,
+                    'ip' => $request->ip(),
+                ]);
+                return response()->json([
+                    'success' => false,
+                    'message' => trans('auth.user_account_deleted', [], $lang),
+                ], 400);
             }
             $user->is_verified = true;
             $user->email_verified_at = now();
             $user->save();
+
+            // トークンを使用済みに
+            $authToken->is_used = true;
+            $authToken->save();
+
+            // 正常完了
+            return response()->json([
+                'success' => true,
+                'message' => trans('auth.verification_succeeded', [], $lang),
+            ]);
         }
-        // reset認証の場合、コード認証後にユーザーのパスワードをリセット
-        if ($type === 'reset') {
-            $code = $request->input('code');
-            if (!$code || $authToken->code !== $code) {
-                return response()->json([
-                    'success' => false,
-                    'message' => trans('auth.invalid_code', [], $lang),
-                ], 400);
-            }
-
-            $user = User::find($authToken->user_id);
-            if (!$user) {
-                return response()->json([
-                    'success' => false,
-                    'message' => trans('auth.user_not_found_short', [], $lang),
-                ], 404);
-            }
-            $user->password = Hash::make($request->input('new_password'));
-            $user->save();
-        }
-
-        // トークンを使用済みに
-        $authToken->is_used = true;
-        $authToken->save();
-
+        // reset認証の場合、追加入力画面に移行するため成功レスポンスのみ返す
         return response()->json([
             'success' => true,
-            'message' => trans('auth.verification_succeeded', [], $lang),
         ]);
     }
 

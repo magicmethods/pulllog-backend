@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\AuthToken;
-use App\Models\Plan;
 use App\Models\UserSession;
 use App\Services\LocaleResolver;
+use App\Services\UserResponseBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Log;
 class LoginController extends Controller
 {
     /**
-     * ログイン (/auth/login)
+     * POST /auth/login
+     * ログイン
      */
     public function login(Request $request): JsonResponse
     {
@@ -72,11 +73,11 @@ class LoginController extends Controller
             ], 401);
         }
 
-        // Rememberトークンを生成してUserモデルのremember_tokenに保存（AuthTokenでの管理はしない）
+        // Rememberトークンを生成
         $rememberToken = null;
         $expireAt = null;
         if ($request->boolean('remember')) {
-            // 新しいRememberトークンを生成
+            // 新しいRememberトークンを作成
             $rememberToken = Str::random(80);
             $expireAt = Carbon::now('UTC')->addDays(30);
 
@@ -111,7 +112,7 @@ class LoginController extends Controller
         $user->unread_notices = [];
         $user->save();
 
-        // セッショントークン（CSRFトークン）を生成してUserSessionモデルに保存
+        // セッショントークン（CSRFトークン）を生成
         // CSRFトークンはPrimaryKeyのため一意性担保が必要
         $csrfToken = hash('sha256', uniqid('', true) . Str::random(32));
         // 多重ログインを防ぐため、既存のセッションを削除
@@ -126,40 +127,8 @@ class LoginController extends Controller
         Log::debug('Creating new user session', $sessionData);
         UserSession::create($sessionData);
 
-        // レスポンス用ユーザーデータを生成する（フロントエンドの型定義に合わせる）
-        $plan = Plan::find($user->plan_id);
-        $planLimits = [
-            'maxApps' => $plan->max_apps ?? null,
-            'maxAppNameLength' => $plan->max_app_name_length ?? null,
-            'maxAppDescriptionLength' => $plan->max_app_description_length ?? null,
-            'maxLogTags' => $plan->max_log_tags ?? null,
-            'maxLogTagLength' => $plan->max_log_tag_length ?? null,
-            'maxLogTextLength' => $plan->max_log_text_length ?? null,
-            'maxLogsPerApp' => $plan->max_logs_per_app,
-            'maxLogSize' => $plan->max_log_size,
-            'maxStorage' => $plan->max_storage,
-        ];
-        $userResponse = [
-            'id'                => (int)$user->id,
-            'name'              => $user->name,
-            'email'             => $user->email,
-            'avatar_url'        => $user->avatar_url,
-            'roles'             => $user->roles ?? ['user'], // デフォルトは'user'
-            'plan'              => $plan->name ?? 'free',
-            'plan_expiration'   => $user->plan_expiration ? $user->plan_expiration->toIso8601String() : null,
-            'plan_limits'       => $planLimits,
-            'language'          => $user->language,
-            'theme'             => $user->theme,
-            'home_page'         => $user->home_page ?? '/apps',
-            'created_at'        => $user->created_at ? $user->created_at->toIso8601String() : null,
-            'updated_at'        => $user->updated_at ? $user->updated_at->toIso8601String() : null,
-            'last_login'        => $user->last_login ? $user->last_login->toIso8601String() : null,
-            'last_login_ip'     => $user->last_login_ip ?? null,
-            'last_login_user_agent' => $user->last_login_ua ?? null,
-            'is_deleted'        => $user->is_deleted,
-            'is_verified'       => $user->is_verified,
-            'unread_notifications' => $user->unread_notices ?? [],
-        ];
+        // レスポンス用ユーザーデータを生成
+        $userResponse = UserResponseBuilder::build($user);
 
         // レスポンス
         return response()->json([
@@ -172,7 +141,8 @@ class LoginController extends Controller
         ]);
     }
     /**
-     * 自動ログイン (/auth/autologin)
+     * POST /auth/autologin
+     * 自動ログイン
      */
     public function autologin(Request $request): JsonResponse
     {
@@ -260,39 +230,7 @@ class LoginController extends Controller
             ]);
 
             // レスポンス用ユーザーデータ生成
-            $plan = Plan::find($user->plan_id);
-            $planLimits = [
-                'maxApps' => $plan->max_apps ?? null,
-                'maxAppNameLength' => $plan->max_app_name_length ?? null,
-                'maxAppDescriptionLength' => $plan->max_app_description_length ?? null,
-                'maxLogTags' => $plan->max_log_tags ?? null,
-                'maxLogTagLength' => $plan->max_log_tag_length ?? null,
-                'maxLogTextLength' => $plan->max_log_text_length ?? null,
-                'maxLogsPerApp' => $plan->max_logs_per_app,
-                'maxLogSize' => $plan->max_log_size,
-                'maxStorage' => $plan->max_storage,
-            ];
-            $userResponse = [
-                'id'                => (int)$user->id,
-                'name'              => $user->name,
-                'email'             => $user->email,
-                'avatar_url'        => $user->avatar_url,
-                'roles'             => $user->roles ?? ['user'],
-                'plan'              => $plan->name ?? 'free',
-                'plan_expiration'   => $user->plan_expiration ? $user->plan_expiration->toIso8601String() : null,
-                'plan_limits'       => $planLimits,
-                'language'          => $user->language,
-                'theme'             => $user->theme,
-                'home_page'         => $user->home_page ?? '/apps',
-                'created_at'        => $user->created_at ? $user->created_at->toIso8601String() : null,
-                'updated_at'        => $user->updated_at ? $user->updated_at->toIso8601String() : null,
-                'last_login'        => $user->last_login ? $user->last_login->toIso8601String() : null,
-                'last_login_ip'     => $user->last_login_ip ?? null,
-                'last_login_user_agent' => $user->last_login_ua ?? null,
-                'is_deleted'        => $user->is_deleted,
-                'is_verified'       => $user->is_verified,
-                'unread_notifications' => $user->unread_notices ?? [],
-            ];
+            $userResponse = UserResponseBuilder::build($user);
 
             DB::commit();
 
@@ -315,7 +253,8 @@ class LoginController extends Controller
         }
     }
     /**
-     * ログアウト (/auth/logout)
+     * POST /auth/logout
+     * ログアウト
      */
     public function logout(Request $request): JsonResponse
     {

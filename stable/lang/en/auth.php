@@ -41,7 +41,10 @@ return [
     'expired_token' => 'Token has expired.',
     'token_already_used' => 'Token already used.',
     'user_not_found_short' => 'User not found.',
+    'user_account_deleted' => 'User account has been deleted.',
     'invalid_code' => 'Invalid code.',
+    'invalid_user' => 'Invalid user.',
+    'too_many_requests' => 'Too many requests. Please try again later.',
     'verification_succeeded' => 'Verification succeeded.',
 
 ];

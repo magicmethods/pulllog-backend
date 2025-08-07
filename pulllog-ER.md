@@ -43,10 +43,10 @@ erDiagram
         INTEGER total_pulls
         INTEGER discharge_items
         INTEGER expense
-        drop[] drop_details
-        TEXT[] tags
+        JSONB drop_details
+        JSONB tags
         TEXT free_text
-        TEXT[] images
+        JSONB images
         JSONB tasks
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at
@@ -59,6 +59,7 @@ erDiagram
         token_type type
         VARCHAR code
         BOOLEAN is_used
+        INTEGER failed_attempts
         VARCHAR ip
         VARCHAR ua
         TIMESTAMPTZ expires_at
@@ -103,8 +104,8 @@ erDiagram
         BOOLEAN sync_update_time
         BOOLEAN pity_system
         INTEGER guarantee_count
-        definition[] rarity_defs
-        definition[] marker_defs
+        JSONB rarity_defs
+        JSONB marker_defs
         JSONB task_defs
         TIMESTAMPTZ created_at
         TIMESTAMPTZ updated_at

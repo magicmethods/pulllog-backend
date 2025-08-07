@@ -24,7 +24,7 @@
 - エンドポイントのリクエストに対してJSONレスポンスを応答する
 - リクエスト毎のトークン認証・データベース処理
 - 現状は管理画面等のUIはなし
-- OpenAPI 3.0のスキーマ駆動型の実装
+- レスポンスは OpenAPI のスキーマに準拠（~~スキーマ駆動型実装~~)
 
 ---
 
@@ -35,7 +35,8 @@
 - **データベース**: PostgreSQL v14.13 (開発環境は v17.4)
 - **OpenAPI 連携**: openapi-generator-cli v7.14.0 (※ 要JDK v11.x以上)
 - **モック環境**: MockAPI-PHP v1.3.1
-- **シリアル化**: crell/serde v1.5.0 (※ openapi-generator-cli の生成コードにて使用)
+- **画像変換**: Intervention Image v3.11.4 (driver: GD)
+- **メール送信（開発用）**: mailtrap
 
 ---
 
@@ -58,7 +59,8 @@
 > - (FK) = 外部キー  
 > - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ddl.sql) を参照
 
-※ pulllog-ddl.sql はあくまでスキーマ確認用です。手動DDLとして使用するのは**NG**です。DBマイグレーションは Laravel の `artisan maigrate` を使ってください。
+※ logs テーブルはパーティション化してあり、子テーブルとして `logs_p0` ～ `logs_p9` を持ちます。ただし、 Laravel/Eloquent からのアクセスは常に代表テーブルの logs に集約します。
+※ pulllog-ddl.sql はあくまでスキーマ確認用です。手動DDLとして使用するのは**非推奨**です。原則、DBマイグレーションは Laravel の `artisan maigrate` を使いますが、パーティション化する logs テーブルのみは専用のDDLを使ってマイグレーションします
 
 ---
 

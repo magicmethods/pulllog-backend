@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property TokenType $type
  * @property string|null $code
  * @property bool $is_used
+ * @property int $failed_attempts
  * @property string|null $ip
  * @property string|null $ua
  * @property Carbon $expires_at
@@ -44,9 +45,10 @@ class AuthToken extends Model
 		'type',
 		'code',
 		'is_used',
+		'failed_attempts',
 		'ip',
 		'ua',
-		'expires_at'
+		'expires_at',
 	];
 
     /**
@@ -69,6 +71,7 @@ class AuthToken extends Model
 			'user_id' => 'int',
 			'type' => TokenTypeCast::class,
 			'is_used' => 'bool',
+			'failed_attempts' => 'int',
 			'expires_at' => 'datetime'
 		];
 	}
