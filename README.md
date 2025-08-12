@@ -12,6 +12,7 @@
 - [技術スタック](#技術スタック)
 - [テーブル構成](#テーブル構成)
 - [ER図](#ER図)
+- [デプロイ手順](#デプロイ手順)
 - [モック環境](#モック環境)
 - [ライセンス](#ライセンス)
 - [コントリビューション](#コントリビューション)
@@ -82,6 +83,112 @@ erDiagram
     logs       ||--o{ stats_cache: "has"
     plans      ||--o{ users: "plan"
 ```
+
+---
+
+## デプロイ手順
+
+1. Gitからリソースを取得
+  例:
+  ```bash
+  cd /var/www
+  sudo git clone https://github.com/magicmethods/pulllog-backend.git pulllog-backend
+  sudo chown -R deploy:www-data pulllog-backend
+  cd pulllog-backend
+  ```
+2. .envファイルの設置
+  - `.env.example` をコピーし、本番用に編集。
+  - データベース情報、APP_KEY、APP_ENV=production、キャッシュ、メール設定等を正しくセット。
+  - `php artisan key:generate` でAPP_KEYを生成。
+  - `php artisan tinker` でAPI_KEYを生成（下記の例を参照）。
+    ```php
+    > 'PLGv1:'.bin2hex(random_bytes(32))
+    = "PLGv1:cb59588095adba014a886ab7d7984699a3213ee210f0e00cfb55907c040637da"
+    ```
+3. Composer依存のインストール
+  ```bash
+  composer install --no-dev --optimize-autoloader
+  ```
+4. パーミッション設定
+  例:
+  ```bash
+  sudo chown -R deploy:www-data storage bootstrap/cache
+  sudo chmod -R 775 storage bootstrap/cache
+  ```
+5. DBマイグレーション
+  ```bash
+  php artisan migrate:fresh --seed
+  psql -U <username> -d <dbname> -f create_logs_tables.sql
+  ```
+6. キャッシュ/設定の最適化
+  ```bash
+  php artisan config:cache
+  php artisan route:cache
+  php artisan view:cache
+  php artisan event:cache
+  ```
+7. Webサーバ設定
+  - Nginxの例:
+  ```nginx
+  server {
+    listen 80;
+    server_name pulllog.net;
+    root /var/www/pulllog-backend/public;
+
+    index index.php index.html;
+
+    location / {
+      try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+      fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+      fastcgi_index index.php;
+      include fastcgi_params;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+      expires max;
+      log_not_found off;
+    }
+  }
+  ```
+  - Apacheの例:
+  ```
+  <VirtualHost *:80>
+    ServerName pulllog.net
+    DocumentRoot /var/www/pulllog-backend/public
+
+    <Directory /var/www/pulllog-backend/public>
+      AllowOverride All
+      Require all granted
+      Options -Indexes
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/pulllog-error.log
+    CustomLog ${APACHE_LOG_DIR}/pulllog-access.log combined
+  </VirtualHost>
+  ```
+  - Coreserverでのホスティング時:
+  ```bash
+  cd ~/public_html/api.pulllog.net
+  ln -s ../pulllog-backend/stable/public v1
+  ln -s ../pulllog-backend/stable/storage/app/public storage
+  touch .htaccess
+  vim .htaccess
+  ```
+  .htaccessで /api/v1/ で始まるURLを /v1/api/v1/ 以下へ内部リダイレクト
+  ```
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+ 
+  RewriteRule ^api/v1/(.*)$ v1/api/v1/$1 [L]
+  ```
+8. 動作確認
+  https://api.pulllog.net/api/v1/dummy にアクセスしてJSONレスポンスが返却されればOk。
 
 ---
 

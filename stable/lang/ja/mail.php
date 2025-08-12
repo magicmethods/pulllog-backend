@@ -1,5 +1,7 @@
 <?php
 
+use Dom\Text;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -14,10 +16,29 @@ return [
     'subject_signup' => '【PullLog】メールアドレスのご確認',
     'subject_reset'  => '【PullLog】パスワード再設定のご案内',
     'greeting'       => ':name 様',
-    'body_signup'    => "PullLogへのご登録ありがとうございます。\n下記リンクよりメールアドレスの確認をお願いします。\n:tokenUrl",
-    'body_reset'     => "パスワード再設定リクエストを受け付けました。\n以下の認証コード: :code\nもしくは下記リンクよりリセットを続行してください。\n:tokenUrl",
-    'signature'      => "PullLog運営チーム",
+    'signup_intro'   => 'PullLogへのご登録ありがとうございます。',
+    'signup_howto'   => 'ご登録を完了するには、下記のリンクをクリックしてメールアドレス認証を行ってください。',
+    'reset_intro'    => 'PullLogアカウントのパスワード再設定リクエストを受け付けました。',
+    'reset_code'     => <<<TEXT
+-------------------------------------
+【認証コード】
+:code
+-------------------------------------
+TEXT,
+    'reset_howto'    => '下記リンクよりパスワード再設定を続行できます。',
+    'abort_notice'   => '※このメールにお心当たりがない場合は、破棄してください。',
+    'expires_notice' => '※セキュリティのため、このリンクの有効期限は24時間です。',
+    'signature'      => <<<TEXT
+※このメールは送信専用アドレス（noreply@pulllog.net）から自動送信されています。  
+ご不明な点があればサポートまでお問い合わせください。
 
+サポート: support@pulllog.net  
+公式サイト: https://pulllog.net/
+
+ご利用ありがとうございます。
+
+PullLog運営チーム
+TEXT,
     'body_signup' => <<<TEXT
 :name 様
 

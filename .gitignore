@@ -1,1 +1,4 @@
 api-schema.yaml
+stable/.env
+stable/.env.local
+stable/.env.production

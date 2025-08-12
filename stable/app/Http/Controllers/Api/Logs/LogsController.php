@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Api\Logs;
 use App\Http\Controllers\Controller;
 use App\Models\App;
 use App\Models\UserApp;
+use App\Models\Log as LogModel;
 use App\Services\LocaleResolver;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-//use Illuminate\Support\Facades\Validator;
-//use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 //use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Log;
@@ -17,8 +16,9 @@ use Illuminate\Support\Carbon;
 class LogsController extends Controller
 {
     /**
-     * GET /logs/{appKey}?from={date}&to={date}&limit={number}&offset={number}
+     * GET /logs/{appKey}?from=YYYY-MM-DD&to=YYYY-MM-DD&limit=number&offset=number&dir=asc|desc
      * 指定アプリのログを取得
+     * - 「最新N件」は dir=desc（既定） + ORDER BY log_date DESC, id ASC で実現
      */
     public function index(Request $request, string $appKey): JsonResponse
     {
@@ -47,12 +47,22 @@ class LogsController extends Controller
         }
 
         // クエリパラメータ取得
-        $from = $request->query('from');
-        $to = $request->query('to');
-        $limit = $request->query('limit', null);
-        $offset = $request->query('offset', null);
+        $from   = $request->query('from');// Y-m-d
+        $to     = $request->query('to');// Y-m-d
+        $limit  = $request->integer('limit') ?: null;
+        $offset = $request->integer('offset') ?: null;
+        $dir    = strtolower($request->query('dir', 'desc')) === 'asc' ? 'asc' : 'desc';
 
-        // 日付バリデーション
+        // 日付バリデーション（Y-m-d のみ許容）
+        foreach (['from' => $from, 'to' => $to] as $field => $val) {
+            if ($val !== null && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $val)) {
+                return response()->json([
+                    'state' => 'error',
+                    'message' => trans('messages.invalid_date_format', ['field' => $field], $lang),
+                ], 400);
+            }
+        }
+        /* 旧バリデーション
         $fromDate = null;
         $toDate = null;
         if ($from) {
@@ -75,26 +85,30 @@ class LogsController extends Controller
                 ], 400);
             }
         }
+        */
 
         // クエリ組み立て
-        $query = \App\Models\Log::where('user_id', $userId)
+        $query = LogModel::where('user_id', $userId)
             ->where('app_id', $app->id);
 
-        if ($fromDate) {
-            $query->where('log_date', '>=', $fromDate);
+        // 範囲条件（date のまま比較）
+        if ($from !== null) {
+            $query->where('log_date', '>=', $from);
         }
-        if ($toDate) {
-            $query->where('log_date', '<=', $toDate);
+        if ($to !== null) {
+            $query->where('log_date', '<=', $to);
         }
 
-        $query->orderBy('log_date', 'asc');
+        // 並び順：最新N件の既定 => DESC。tie-breaker で id ASC を必ず入れる
+        $query->orderBy('log_date', $dir)
+              ->orderBy('id', 'asc');
 
         // limit/offset
-        if ($offset !== null && is_numeric($offset)) {
-            $query->offset((int)$offset);
+        if ($offset !== null) {
+            $query->offset($offset);
         }
-        if ($limit !== null && is_numeric($limit)) {
-            $query->limit((int)$limit);
+        if ($limit !== null) {
+            $query->limit($limit);
         }
 
         // ログ取得
@@ -130,7 +144,7 @@ class LogsController extends Controller
         */
 
         // レスポンス
-        return response()->json($logs->isEmpty() ? [] : $logs);
+        return response()->json($logs);
     }
 
     

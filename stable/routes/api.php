@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\PasswordController;
+use App\Http\Controllers\Api\Auth\OauthController;
 //use App\Http\Controllers\Api\DefaultController;
 use App\Http\Controllers\Api\Apps\AppsController;
 use App\Http\Controllers\Api\Logs\LogsController;
@@ -53,6 +54,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             Route::post('logout',     [LoginController::class, 'logout'])->name('auth.logout');
             Route::post('password',   [PasswordController::class, 'requestReset'])->name('auth.password.request');
             Route::put( 'password',   [PasswordController::class, 'reset'])->name('auth.password.reset');
+            Route::post('google/exchange', [OauthController::class, 'googleExchange'])->name('auth.google.exchange');
         });
 
     // その他（APIキー認証+CSRFトークン認証が必要）

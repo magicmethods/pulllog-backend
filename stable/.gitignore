@@ -1,7 +1,7 @@
 *.log
 .DS_Store
 .env
-.env.backup
+.env.local
 .env.production
 .phpactor.json
 .phpunit.result.cache
@@ -20,6 +20,8 @@
 /storage/pail
 /vendor
 /generated
+generated.zip
+openapitools.json
 Homestead.json
 Homestead.yaml
 Thumbs.db

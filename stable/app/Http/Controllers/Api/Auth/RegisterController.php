@@ -117,7 +117,7 @@ class RegisterController extends Controller
 
         // パラメータバリデーション
         if (!$token || !$type || !in_array($type, ['signup', 'reset'], true)) {
-            Log::warning('PasswordController@verifyEmail:InvalidRequest', [
+            Log::warning('RegisterController@verifyEmail:InvalidRequest', [
                 'ip' => $request->ip(),
                 'data' => $request->all(),
             ]);
@@ -130,7 +130,7 @@ class RegisterController extends Controller
         // トークン検索
         $authToken = AuthToken::where('token', $token)->first();
         if (!$authToken) {
-            Log::warning('PasswordController@verifyEmail:TokenNotFound', [
+            Log::warning('RegisterController@verifyEmail:TokenNotFound', [
                 'ip' => $request->ip(),
                 'token' => $token,
             ]);
@@ -142,7 +142,7 @@ class RegisterController extends Controller
 
         // タイプ不一致
         if ($authToken->type->value !== $type) {
-            Log::warning('PasswordController@verifyEmail:TokenTypeMismatch', [
+            Log::warning('RegisterController@verifyEmail:TokenTypeMismatch', [
                 'token' => $authToken->token->value,
                 'type_db' => $authToken->type,
                 'type_req' => $type,
@@ -156,7 +156,7 @@ class RegisterController extends Controller
 
         // 有効期限チェック
         if ($authToken->expires_at < now()) {
-            Log::warning('PasswordController@verifyEmail:TokenExpired', [
+            Log::warning('RegisterController@verifyEmail:TokenExpired', [
                 'token' => $authToken->token,
                 'expires_at' => $authToken->expires_at,
                 'ip' => $request->ip(),
@@ -169,7 +169,7 @@ class RegisterController extends Controller
 
         // 既に使用済みか
         if ($authToken->is_used) {
-            Log::warning('PasswordController@verifyEmail:TokenAlreadyUsed', [
+            Log::warning('RegisterController@verifyEmail:TokenAlreadyUsed', [
                 'token' => $authToken->token,
                 'ip' => $request->ip(),
             ]);
@@ -183,7 +183,7 @@ class RegisterController extends Controller
         if ($type === 'signup') {
             $user = User::find($authToken->user_id);
             if (!$user) {
-                Log::warning('PasswordController@verifyEmail:UserNotFound', [
+                Log::warning('RegisterController@verifyEmail:UserNotFound', [
                     'user_id' => $authToken->user_id,
                     'ip' => $request->ip(),
                 ]);
@@ -193,7 +193,7 @@ class RegisterController extends Controller
                 ], 404);
             }
             if ($user->is_deleted) {
-                Log::warning('PasswordController@verifyEmail:UserDeleted', [
+                Log::warning('RegisterController@verifyEmail:UserDeleted', [
                     'user_id' => $user->id,
                     'ip' => $request->ip(),
                 ]);
