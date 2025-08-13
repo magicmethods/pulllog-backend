@@ -80,15 +80,26 @@ class OauthController extends Controller
                 $user = User::where('email', $email)->first();
 
                 if (!$user) {
+                    $lang = LocaleResolver::resolve($request, null);
                     $user = new User([
                         'email' => $email,
                         'password' => Str::random(32),
                         'name' => $name !== '' ? $name : Str::before($email, '@'),
-                        'language' => 'ja',
+                        'avatar_url' => null,
+                        'roles' => ['user'],
+                        'plan_id' => 1, // 1: 無料プラン
+                        'plan_expiration' => Carbon::now()->addYear(), // 1年後に設定
+                        'language' => $lang,
+                        'theme' => 'light',
                         'home_page' => '/apps',
+                        'last_login' => null,
+                        'last_login_ip' => null,
+                        'last_login_ua' => null,
+                        'is_deleted' => false,
                         'is_verified' => true,
-                        'email_verified_at' => Carbon::now('UTC'),
+                        'remember_token' => null,
                         'unread_notices' => [],
+                        'email_verified_at' => Carbon::now('UTC'),
                     ]);
                     $user->save();
                 }
@@ -146,7 +157,7 @@ class OauthController extends Controller
                 'expires_at' => Carbon::now('UTC')->addHours(2),
             ]);
 
-            $userResponse = \App\Services\UserResponseBuilder::build($user);
+            $userResponse = UserResponseBuilder::build($user);
 
             DB::commit();
 
@@ -161,7 +172,7 @@ class OauthController extends Controller
         } catch (\Throwable $e) {
             DB::rollBack();
             report($e);
-            $lang = \App\Services\LocaleResolver::resolve($request, null);
+            $lang = LocaleResolver::resolve($request, null);
             return response()->json([
                 'state' => 'error',
                 'message' => trans('auth.oauth_failed', ['error' => $e->getMessage()], $lang),

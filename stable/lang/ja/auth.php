@@ -47,4 +47,6 @@ return [
     'too_many_requests' => 'リクエストが多すぎます。しばらくしてから再試行してください。',
     'verification_succeeded' => '認証に成功しました。',
 
+    'oauth_failed' => 'OAuthに失敗しました: :error',
+
 ];

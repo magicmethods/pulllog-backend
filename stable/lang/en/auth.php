@@ -47,4 +47,6 @@ return [
     'too_many_requests' => 'Too many requests. Please try again later.',
     'verification_succeeded' => 'Verification succeeded.',
 
+    'oauth_failed' => 'OAuth failed: :error',
+
 ];
