@@ -64,7 +64,7 @@
 > - (FK) = 外部キー  
 > - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ddl.sql) を参照
 
-※ logs テーブルはパーティション化（ `hash partitioned by user_id` ）してあり、子テーブルとして `logs_p0` ～ `logs_p9` を持ちます。ただし、 Laravel/Eloquent からのアクセスは常に代表テーブルの logs に集約します。
+※ logs テーブルはパーティション化（ `hash partitioned by user_id` ）してあり、子テーブルとして `logs_p0` ～ `logs_p9` を持ちます。ただし、 Laravel/Eloquent からのアクセスは常に代表テーブルの logs に集約します。  
 ※ pulllog-ddl.sql はあくまでスキーマ確認用です。手動DDLとして使用するのは**非推奨**です。原則、DBマイグレーションは Laravel の `artisan maigrate` を使いますが、パーティション化する logs テーブルのみは専用のDDLを使ってマイグレーションします。
 
 ---
