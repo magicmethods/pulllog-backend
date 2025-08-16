@@ -89,7 +89,7 @@ erDiagram
         VARCHAR(128) name
         VARCHAR(255) url
         TEXT         description
-        CHAR(3)      currency_code  %% FK -> currencies.code
+        CHAR(3)      currency_code  "FK -> currencies.code"
         VARCHAR(5)   date_update_time
         BOOLEAN      sync_update_time
         BOOLEAN      pity_system
@@ -106,8 +106,8 @@ erDiagram
     %% =======================
     user_apps {
         SERIAL       id
-        INTEGER      user_id  %% FK -> users.id
-        INTEGER      app_id   %% FK -> apps.id
+        INTEGER      user_id  "FK -> users.id"
+        INTEGER      app_id   "FK -> apps.id"
         TIMESTAMPTZ  created_at
         TIMESTAMPTZ  updated_at
         %% UNIQUE (user_id, app_id) 推奨
@@ -118,12 +118,12 @@ erDiagram
     %% =======================
     logs {
         BIGSERIAL    id
-        INTEGER      user_id  %% FK -> users.id
-        INTEGER      app_id   %% FK -> apps.id
+        INTEGER      user_id  "FK -> users.id"
+        INTEGER      app_id   "FK -> apps.id"
         DATE         log_date
         INTEGER      total_pulls
         INTEGER      discharge_items
-        BIGINT       expense_amount   %% minor units (non-negative)
+        BIGINT       expense_amount   "minor units (non-negative)"
         JSONB        drop_details
         JSONB        tags
         TEXT         free_text
@@ -142,7 +142,7 @@ erDiagram
     users ||--o{ logs_with_money: "has"
     apps  ||--o{ logs_with_money: "has"
     logs_with_money {
-        BIGINT       id             %% from logs.id
+        BIGINT       id             "from logs.id"
         INTEGER      user_id
         INTEGER      app_id
         DATE         log_date
@@ -167,7 +167,7 @@ erDiagram
     %% =======================
     auth_tokens {
         SERIAL       id
-        INTEGER      user_id     %% FK -> users.id
+        INTEGER      user_id     "FK -> users.id"
         VARCHAR      token
         token_type   type
         VARCHAR      code
@@ -183,8 +183,8 @@ erDiagram
     %% User sessions
     %% =======================
     user_sessions {
-        VARCHAR      csrf_token   %% PK
-        INTEGER      user_id      %% FK -> users.id
+        VARCHAR      csrf_token   "PK"
+        INTEGER      user_id      "FK -> users.id"
         VARCHAR      email
         TIMESTAMPTZ  created_at
         TIMESTAMPTZ  expires_at
@@ -195,13 +195,13 @@ erDiagram
     %% =======================
     social_accounts {
         SERIAL       id
-        INTEGER      user_id      %% FK -> users.id
+        INTEGER      user_id      "FK -> users.id"
         VARCHAR      provider
         VARCHAR      provider_user_id
         VARCHAR      provider_email
         VARCHAR      avatar_url
-        TEXT         access_token     %% encrypted cast
-        TEXT         refresh_token    %% encrypted cast
+        TEXT         access_token     "encrypted cast"
+        TEXT         refresh_token    "encrypted cast"
         TIMESTAMPTZ  token_expires_at
         TIMESTAMPTZ  created_at
         TIMESTAMPTZ  updated_at
@@ -211,8 +211,8 @@ erDiagram
     %% Stats cache (per user or global when user_id NULL)
     %% =======================
     stats_cache {
-        INTEGER      user_id      %% FK -> users.id (nullable)
-        VARCHAR      cache_key    %% PK
+        INTEGER      user_id      "FK -> users.id (nullable)"
+        VARCHAR      cache_key    "PK"
         JSONB        value
         TIMESTAMPTZ  created_at
         TIMESTAMPTZ  updated_at
