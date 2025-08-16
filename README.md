@@ -43,16 +43,20 @@
 
 ## テーブル構成
 
+テーブルの並びはマイグレーション順になっています。
+
 | テーブル名     | 用途・説明           | 主なカラム                                                         |
 |----------------|----------------------|--------------------------------------------------------------------|
 | `plans`        | 契約プラン管理       | id (PK), name, max_apps, ...                                       |
 | `users`        | ユーザー管理         | id (PK), email (UQ), roles, plan_id (FK), ...                      |
-| `apps`         | アプリケーション管理 | id (PK), app_key (UQ), name, ...                                   |
-| `user_apps`    | ユーザー・アプリ管理（リレーション） | id (PK), user_id (FK), app_id (FK), ...            |
-| `logs`         | 日次ログ（履歴）管理 | id (PK), user_id (PK,FK), app_id (FK), log_date, total_pulls, ...  |
+| `currencies`   | 通貨マスタ           | code (PK), name, minor_unit, rounding, ...                         |
+| `apps`         | アプリケーション管理 | id (PK), app_key (UQ), currency_code (FK), ...                     |
+| `user_apps`    | ユーザー・アプリPivot | id (PK), user_id (FK), app_id (FK), [user_id, app_id] (UQ), ...   |
 | `auth_tokens`  | 認証トークン管理     | id (PK), user_id (FK), token (UQ), type, ...                       |
 | `user_sessions`| ユーザーセッション（CSRFトークン）管理 | csrf_token (PK), user_id (FK), email, ...        |
 | `stats_cache`  | 統計データ（キャッシュ）管理 | cache_key (PK), user_id (FK), value, ...                   |
+| `logs`         | 日次ログ（履歴）管理 | [user_id, id] (PK), user_id (FK), app_id (FK), [user_id, app_id, log_date] (UQ), ... |
+| `logs_with_money` | 日次ログView（読込専用） | VIEW: logs JOIN apps JOIN currencies   |
 
 > **注**:  
 > - (PK) = 主キー  
@@ -60,8 +64,8 @@
 > - (FK) = 外部キー  
 > - 各テーブルの詳細設計や全カラム・型は [pulllog-ddl.sql](https://github.com/magicmethods/pulllog-backend/blob/main/pulllog-ddl.sql) を参照
 
-※ logs テーブルはパーティション化してあり、子テーブルとして `logs_p0` ～ `logs_p9` を持ちます。ただし、 Laravel/Eloquent からのアクセスは常に代表テーブルの logs に集約します。
-※ pulllog-ddl.sql はあくまでスキーマ確認用です。手動DDLとして使用するのは**非推奨**です。原則、DBマイグレーションは Laravel の `artisan maigrate` を使いますが、パーティション化する logs テーブルのみは専用のDDLを使ってマイグレーションします
+※ logs テーブルはパーティション化（ `hash partitioned by user_id` ）してあり、子テーブルとして `logs_p0` ～ `logs_p9` を持ちます。ただし、 Laravel/Eloquent からのアクセスは常に代表テーブルの logs に集約します。
+※ pulllog-ddl.sql はあくまでスキーマ確認用です。手動DDLとして使用するのは**非推奨**です。原則、DBマイグレーションは Laravel の `artisan maigrate` を使いますが、パーティション化する logs テーブルのみは専用のDDLを使ってマイグレーションします。
 
 ---
 
@@ -76,12 +80,17 @@ erDiagram
     users      ||--o{ logs: "has"
     users      ||--o{ auth_tokens: "has"
     users      ||--o{ user_sessions: "has"
+    users      ||--o{ social_accounts: "has"
     users      ||--o{ stats_cache: "has"
     users      }|--|| plans: "plan"
+
+    currencies ||--o{ apps: "has"
     apps       ||--o{ user_apps: "has"
     apps       ||--o{ logs: "has"
-    logs       ||--o{ stats_cache: "has"
-    plans      ||--o{ users: "plan"
+
+    %% read-only view for listings/analytics
+    users      ||--o{ logs_with_money: "has"
+    apps       ||--o{ logs_with_money: "has"
 ```
 
 ---
@@ -102,8 +111,8 @@ erDiagram
   - `php artisan key:generate` でAPP_KEYを生成。
   - `php artisan tinker` でAPI_KEYを生成（下記の例を参照）。
     ```php
-    > 'PLGv1:'.bin2hex(random_bytes(32))
-    = "PLGv1:cb59588095adba014a886ab7d7984699a3213ee210f0e00cfb55907c040637da"
+    > 'PLGv*:'.bin2hex(random_bytes(32))
+    = "PLGv*:cb59588095adba014a886ab7d7984699a3213ee210f0e00cfb55907c040637da"
     ```
 3. Composer依存のインストール
   ```bash
