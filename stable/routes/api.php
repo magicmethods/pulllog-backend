@@ -1,13 +1,5 @@
 <?php
 
-/**
- * PullLog API
- * ガチャ履歴管理アプリ「PullLog」バックエンドAPI仕様
- * PHP version 8.3
- *
- * The version of the OpenAPI document: 1.0.0
- */
-
 use App\Services\LocaleResolver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +8,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\PasswordController;
 use App\Http\Controllers\Api\Auth\OauthController;
+use App\Http\Controllers\Api\Auth\LogoutController;
 //use App\Http\Controllers\Api\DefaultController;
 use App\Http\Controllers\Api\Apps\AppsController;
 use App\Http\Controllers\Api\Logs\LogsController;
@@ -41,7 +34,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
     // ここから OpenAPI スキーマから生成したルート定義 `generated/routes.php` をマージ:
 
-    // /auth/** 系（APIキー認証のみ）
+    // APIキー認証のみのルート（ログアウト以外の /auth/** 系）
     Route::prefix('auth')
         ->middleware(['auth.apikey']) // 独自APIキー認証ミドルウェア
         ->withoutMiddleware(['auth.csrf']) // CSRFトークン認証は不要
@@ -51,9 +44,9 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             Route::post('verify',     [RegisterController::class, 'verifyEmail'])->name('auth.verify');
             Route::post('login',      [LoginController::class, 'login'])->name('auth.login');
             Route::post('autologin',  [LoginController::class, 'autologin'])->name('auth.autologin');
-            Route::post('logout',     [LoginController::class, 'logout'])->name('auth.logout');
             Route::post('password',   [PasswordController::class, 'requestReset'])->name('auth.password.request');
             Route::put( 'password',   [PasswordController::class, 'reset'])->name('auth.password.reset');
+            Route::post('csrf/refresh', [LoginController::class, 'refreshCsrf'])->name('auth.csrf.refresh');
             Route::post('google/exchange', [OauthController::class, 'googleExchange'])->name('auth.google.exchange');
         });
 
@@ -93,6 +86,11 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
                 Route::put(   '/update',  [ProfileController::class, 'update'])->name('user.update');
                 Route::delete('/',        [ProfileController::class, 'delete'])->name('user.delete');
                 Route::post(  '/avatar',  [ProfileController::class, 'avatar'])->name('user.avatar');
+            });
+
+            // ログアウトのルート
+            Route::prefix('auth')->group(function () {
+                Route::post('logout', [LogoutController::class, 'logout'])->name('auth.logout');
             });
         });
 

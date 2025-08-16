@@ -2,7 +2,6 @@
 
 /**
  * PullLog User Model
- * This model has been merged that created by reliese model.
  */
 
 namespace App\Models;
@@ -12,13 +11,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User
- * 
  * @property int $id
  * @property string $email
  * @property string $password
@@ -41,22 +39,24 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * 
- * @property Plan $plan
- * @property Collection|AuthToken[] $auth_tokens
- * @property Collection|App[] $apps
- * @property Collection|UserSession[] $user_sessions
- * @property Collection|LogsP0[] $logs_p0s
- * @property Collection|LogsP1[] $logs_p1s
- * @property Collection|LogsP2[] $logs_p2s
- * @property Collection|LogsP3[] $logs_p3s
- * @property Collection|LogsP4[] $logs_p4s
- * @property Collection|LogsP5[] $logs_p5s
- * @property Collection|LogsP6[] $logs_p6s
- * @property Collection|LogsP7[] $logs_p7s
- * @property Collection|LogsP8[] $logs_p8s
- * @property Collection|LogsP9[] $logs_p9s
+ * @usage:
+ * ```php
+ * // User → 紐づくアプリの一覧（pivot含む）
+ * $user = User::with(['userApps.app'])->findOrFail(3);
  *
- * @package App\Models
+ * // User → ログ（整数の最小単位）
+ * $logs = $user->logs()->latest('log_date')->limit(30)->get();
+ *
+ * // User → ログ（decimal/通貨コード付きのビュー）
+ * $moneyLogs = $user->moneyLogs()->forApp(7)->dateBetween('2025-08-01', '2025-08-31')->get();
+ *
+ * // App → このアプリに紐づくユーザーピボット
+ * $app = App::with('userApps.user')->findOrFail(7);
+ *
+ * // 冪等リンク
+ * $user->linkApp($app->id);           // user_apps upsert 相当
+ * $has = $user->hasApp($app->id);     // true/false
+ * ```
  */
 class User extends Authenticatable
 {
@@ -66,8 +66,6 @@ class User extends Authenticatable
 	protected $table = 'users';
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var list<string>
      */
 	protected $fillable = [
@@ -92,8 +90,6 @@ class User extends Authenticatable
 	];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
      * @var list<string>
      */
     protected $hidden = [
@@ -101,96 +97,105 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+	protected function casts(): array
     {
         return [
-            'password' => 'hashed',
-			'roles' => 'array',
-			'plan_id' => 'int',
-			'plan_expiration' => 'datetime',
-			'theme' => ThemeCast::class,
-			'last_login' => 'datetime',
-			'is_deleted' => 'bool',
-			'is_verified' => 'bool',
+            'password' 			=> 'hashed',
+			'roles' 			=> 'array',
+			'plan_id' 			=> 'int',
+			'plan_expiration' 	=> 'datetime',
+			'theme' 			=> ThemeCast::class,
+			'last_login' 		=> 'datetime',
+			'is_deleted' 		=> 'bool',
+			'is_verified' 		=> 'bool',
             'email_verified_at' => 'datetime',
-			'unread_notices' => 'array',
+			'unread_notices' 	=> 'array',
         ];
     }
 
-	public function plan()
+	/* ========= リレーション ========= */
+
+	/** @return BelongsTo<Plan,User> */
+	public function plan(): BelongsTo
 	{
 		return $this->belongsTo(Plan::class);
 	}
 
-	public function auth_tokens()
+	/** @return HasMany<AuthToken> */
+	public function auth_tokens(): HasMany
 	{
 		return $this->hasMany(AuthToken::class);
 	}
 
-	public function apps()
+	/**
+     * 多対多（既存の通り）
+     * @return BelongsToMany<App>
+     */
+	public function apps(): BelongsToMany
 	{
 		return $this->belongsToMany(App::class, 'user_apps', 'user_id', 'app_id')
-					->withPivot('id')
-					->withTimestamps();
+			->withPivot('id')
+			->withTimestamps();
 	}
 
-	public function user_sessions()
+	/** @return HasMany<UserSession> */
+	public function user_sessions(): HasMany
 	{
 		return $this->hasMany(UserSession::class);
 	}
 
-	public function logs_p0s()
+	/**
+	 * 親 logs テーブルへ一本化（パーティションはDBが自動ルーティング）
+     * @return HasMany<Log>
+     */
+	public function logs(): HasMany
 	{
-		return $this->hasMany(LogsP0::class);
+		return $this->hasMany(Log::class, 'user_id', 'id');
 	}
 
-	public function logs_p1s()
-	{
-		return $this->hasMany(LogsP1::class);
-	}
+	/**
+	 * ビュー logs_with_money（読み取り専用モデル）
+     * @return HasMany<LogWithMoney>
+     */
+    public function moneyLogs(): HasMany
+    {
+        return $this->hasMany(LogWithMoney::class, 'user_id', 'id');
+    }
 
-	public function logs_p2s()
-	{
-		return $this->hasMany(LogsP2::class);
-	}
+	/**
+	 * ピボット明示：user_apps
+     * @return HasMany<UserApp>
+     */
+    public function userApps(): HasMany
+    {
+        return $this->hasMany(UserApp::class, 'user_id', 'id');
+    }
 
-	public function logs_p3s()
-	{
-		return $this->hasMany(LogsP3::class);
-	}
+	/* ========= スコープ ========= */
 
-	public function logs_p4s()
-	{
-		return $this->hasMany(LogsP4::class);
-	}
+    public function scopeActive($q)
+    {
+        return $q->where('is_deleted', false);
+    }
 
-	public function logs_p5s()
-	{
-		return $this->hasMany(LogsP5::class);
-	}
+    public function scopeVerified($q)
+    {
+        return $q->where('is_verified', true);
+    }
 
-	public function logs_p6s()
-	{
-		return $this->hasMany(LogsP6::class);
-	}
+	/* ========= ユーティリティ ========= */
 
-	public function logs_p7s()
-	{
-		return $this->hasMany(LogsP7::class);
-	}
+    /** 指定アプリと紐付いているか */
+    public function hasApp(int $appId): bool
+    {
+        // user_apps のユニーク制約（user_id, app_id）前提で高速
+        return $this->userApps()->where('app_id', $appId)->exists();
+    }
 
-	public function logs_p8s()
-	{
-		return $this->hasMany(LogsP8::class);
-	}
+    /** アプリと冪等にリンク（無ければ作成、あれば何もしない） */
+    public function linkApp(int $appId): UserApp
+    {
+        return UserApp::ensureLink($this->id, $appId);
+    }
 
-	public function logs_p9s()
-	{
-		return $this->hasMany(LogsP9::class);
-	}
 }

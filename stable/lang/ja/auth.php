@@ -18,10 +18,12 @@ return [
     'throttle' => 'ログイン試行が多すぎます。:seconds 秒後に再試行してください。',
 
     'unauthorized' => 'Unauthorized.',
+    'unauthenticated' => 'Unauthenticated.',
     'forbidden' => 'Forbidden.',
     'not_found' => 'Not found.',
 
     'csrf_token_mismatch' => 'CSRFトークンが一致しません。',
+    'csrf_refresh_failed' => 'CSRFトークンの再発行に失敗しました: :error',
 
     'validation_failed' => 'バリデーションに失敗しました: :error',
     'user_not_found' => '一致するアカウントが見つかりません。新しいアカウントを登録してください。',

@@ -2,64 +2,59 @@
 
 /**
  * PullLog App Model
- * This model has been merged that created by reliese model.
  */
 
 namespace App\Models;
 
-use App\Casts\DefinitionCast;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\{BelongsTo, BelongsToMany, HasMany};
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Number;
 
 /**
- * Class App
- * 
  * @property int $id
  * @property string $app_key
  * @property string $name
  * @property string|null $url
  * @property string|null $description
- * @property string|null $currency_unit
+ * @property string $currency_code   // ← currency_unit 廃止
  * @property string $date_update_time
  * @property bool $sync_update_time
  * @property bool $pity_system
  * @property int $guarantee_count
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
  * @property array|null $rarity_defs
  * @property array|null $marker_defs
  * @property array|null $task_defs
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
- * @property Collection|User[] $users
- * @property Collection|LogsP0[] $logs_p0s
- * @property Collection|LogsP1[] $logs_p1s
- * @property Collection|LogsP2[] $logs_p2s
- * @property Collection|LogsP3[] $logs_p3s
- * @property Collection|LogsP4[] $logs_p4s
- * @property Collection|LogsP5[] $logs_p5s
- * @property Collection|LogsP6[] $logs_p6s
- * @property Collection|LogsP7[] $logs_p7s
- * @property Collection|LogsP8[] $logs_p8s
- * @property Collection|LogsP9[] $logs_p9s
+ * @usage:
+ * ```php
+ * // ユーザーのアプリ一覧を検索 + 通貨ロード + 新しい順
+ * $apps = App::forUser($userId)
+ *     ->search($request->q)
+ *     ->withCurrency()
+ *     ->recent()
+ *     ->paginate(20);
  *
- * @package App\Models
+ * // app_key で1件取得
+ * $app = App::byKey($appKey)->withCurrency()->firstOrFail();
+ *
+ * // アプリとユーザーを冪等リンク
+ * $app->ensureLinkedTo($userId);
+ * ```
  */
 class App extends Model
 {
 	protected $table = 'apps';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
 	protected $fillable = [
 		'app_key',
 		'name',
 		'url',
 		'description',
-		'currency_unit',
+		'currency_code',
 		'date_update_time',
 		'sync_update_time',
 		'pity_system',
@@ -69,77 +64,141 @@ class App extends Model
 		'task_defs'
 	];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
 	{
 		return [
 			'sync_update_time' => 'bool',
-			'pity_system' => 'bool',
-			'guarantee_count' => 'int',
-			'rarity_defs' => 'array',
-			'marker_defs' => 'array',
-			'task_defs' => 'array',
+			'pity_system' 	   => 'bool',
+			'guarantee_count'  => 'int',
+			'rarity_defs'      => 'array',
+			'marker_defs'      => 'array',
+			'task_defs'        => 'array',
 		];
 	}
 
-	public function users()
+	/** @return BelongsToMany<User> */
+	public function users(): BelongsToMany
 	{
 		return $this->belongsToMany(User::class, 'user_apps', 'app_id', 'user_id')
-					->withPivot('id')
-					->withTimestamps();
+			->withPivot('id')
+			->withTimestamps();
 	}
 
-	public function logs_p0s()
+	/** @return HasMany<Log> */
+	public function logs(): HasMany
 	{
-		return $this->hasMany(LogsP0::class);
+		return $this->hasMany(Log::class, 'app_id', 'id');
 	}
 
-	public function logs_p1s()
+	/** @return BelongsTo<Currency, App> */
+	public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'currency_code', 'code');
+    }
+
+	// UserApp（ピボットの明示的リレーション）
+	public function userApps(): HasMany
 	{
-		return $this->hasMany(LogsP1::class);
+    	return $this->hasMany(UserApp::class, 'app_id', 'id');
 	}
 
-	public function logs_p2s()
+	// LogWithMoney（ビュー）
+	public function moneyLogs(): HasMany
 	{
-		return $this->hasMany(LogsP2::class);
+    	return $this->hasMany(LogWithMoney::class, 'app_id', 'id');
 	}
 
-	public function logs_p3s()
-	{
-		return $this->hasMany(LogsP3::class);
-	}
+	/* ========= Scopes ========= */
 
-	public function logs_p4s()
-	{
-		return $this->hasMany(LogsP4::class);
-	}
+    /** ユーザーが所有するアプリに限定（user_apps 経由） */
+    public function scopeForUser(Builder $q, int $userId): Builder
+    {
+        return $q->whereHas('userApps', fn($qq) => $qq->where('user_id', $userId));
+    }
 
-	public function logs_p5s()
-	{
-		return $this->hasMany(LogsP5::class);
-	}
+    /** app_key で特定 */
+    public function scopeByKey(Builder $q, string $appKey): Builder
+    {
+        return $q->where('app_key', $appKey);
+    }
 
-	public function logs_p6s()
-	{
-		return $this->hasMany(LogsP6::class);
-	}
+    /** 名前・説明の簡易検索（Postgres想定の ILIKE） */
+    public function scopeSearch(Builder $q, ?string $term): Builder
+    {
+        $t = trim((string)$term);
+        if ($t === '') return $q;
+        return $q->where(function ($w) use ($t) {
+            $w->where('name', 'ILIKE', "%{$t}%")
+              ->orWhere('description', 'ILIKE', "%{$t}%");
+        });
+    }
 
-	public function logs_p7s()
-	{
-		return $this->hasMany(LogsP7::class);
-	}
+    /** 通貨を常に eager load */
+    public function scopeWithCurrency(Builder $q): Builder
+    {
+        return $q->with('currency');
+    }
 
-	public function logs_p8s()
-	{
-		return $this->hasMany(LogsP8::class);
-	}
+    /** 更新の新しい順で並べる */
+    public function scopeRecent(Builder $q): Builder
+    {
+        return $q->orderByDesc('updated_at');
+    }
 
-	public function logs_p9s()
-	{
-		return $this->hasMany(LogsP9::class);
-	}
+    /* ========= Utilities ========= */
+
+    /** 指定ユーザーに冪等リンク（存在しなければ作成） */
+    public function ensureLinkedTo(int $userId): UserApp
+    {
+        return UserApp::ensureLink($userId, $this->id);
+    }
+
+    /** 指定ユーザーとのリンク有無 */
+    public function isLinkedTo(int $userId): bool
+    {
+        return $this->userApps()->where('user_id', $userId)->exists();
+    }
+
+    /** 指定ユーザーとのリンク解除（削除数を返す） */
+    public function detachFrom(int $userId): int
+    {
+        return $this->userApps()->where('user_id', $userId)->delete();
+    }
+
+    /** 通貨の少数桁（なければ0） */
+    public function getCurrencyMinorUnitAttribute(): int
+    {
+        return $this->currency?->minor_unit ?? 0;
+    }
+
+    /** 最小単位の整数 -> 通貨書式（例: 12345 -> "$123.45"） */
+    public function formatMinorAmount(int $amount, ?string $locale = null): string
+    {
+        $code  = $this->currency?->code ?? 'USD';
+        $minor = $this->currency?->minor_unit ?? 0;
+
+        // 小数文字列に直す（精度維持）
+        $decimal = Currency::minorToDecimalStringStatic($amount, $minor);
+
+        try {
+            return Number::currency($decimal, $code, locale: $locale ?? (app()->getLocale() ?: 'en_US'));
+        } catch (\Throwable) {
+            return $decimal.' '.$code;
+        }
+    }
+
+    /** 十進文字列/数値 -> 最小単位の整数（例: "123.45" -> 12345） */
+    public function toMinor(string|int|float $decimal): int
+    {
+        $minor = $this->currency?->minor_unit ?? 0;
+        return Currency::decimalStringToMinorStatic((string)$decimal, $minor);
+    }
+
+    /** 最小単位の整数 -> 十進文字列（例: 12345 -> "123.45"） */
+    public function fromMinor(int $amount): string
+    {
+        $minor = $this->currency?->minor_unit ?? 0;
+        return Currency::minorToDecimalStringStatic($amount, $minor);
+    }
+
 }

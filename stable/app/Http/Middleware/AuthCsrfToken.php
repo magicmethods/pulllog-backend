@@ -37,7 +37,7 @@ class AuthCsrfToken
         ]);
         */
         if (!$csrfToken || !$validSession || !$user) {
-            return response()->json(['message' => trans('auth.csrf_token_mismatch', [], $lang)], 403);
+            return response()->json(['message' => trans('auth.csrf_token_mismatch', [], $lang)], 419);
         }
 
         // CSRFトークンが有効な場合、リクエストにユーザー情報をセット
