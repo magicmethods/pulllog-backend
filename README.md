@@ -24,7 +24,7 @@
 
 - エンドポイントのリクエストに対してJSONレスポンスを応答する
 - リクエスト毎のトークン認証・データベース処理
-- 現状は管理画面等のUIはなし
+- 現状は管理画面等のUI（View）はなし
 - レスポンスは OpenAPI のスキーマに準拠（~~スキーマ駆動型実装~~)
 
 ---
@@ -34,7 +34,7 @@
 - **PHP**: PHP v8.3 (開発環境は v8.4.2)
 - **フレームワーク**: Laravel v12.20.0
 - **データベース**: PostgreSQL v14.13 (開発環境は v17.4)
-- **OpenAPI 連携**: openapi-generator-cli v7.14.0 (※ 要JDK v11.x以上)
+- ~~**OpenAPI 連携**: openapi-generator-cli v7.14.0 (※ 要JDK v11.x以上)~~
 - **モック環境**: MockAPI-PHP v1.3.1
 - **画像変換**: Intervention Image v3.11.4 (driver: GD)
 - **メール送信（開発用）**: mailtrap
