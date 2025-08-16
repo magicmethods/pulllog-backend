@@ -97,7 +97,7 @@ erDiagram
 
 ## デプロイ手順
 
-1. Gitからリソースを取得
+1. Gitからリソースを取得  
   例:
   ```bash
   cd /var/www
@@ -118,13 +118,14 @@ erDiagram
   ```bash
   composer install --no-dev --optimize-autoloader
   ```
-4. パーミッション設定
+4. パーミッション設定  
   例:
   ```bash
   sudo chown -R deploy:www-data storage bootstrap/cache
   sudo chmod -R 775 storage bootstrap/cache
   ```
-5. DBマイグレーション
+5. DBマイグレーション  
+  必ず Laravel のマイグレーション後に DDL で **ログテーブル作成→パーティション化→View作成** を行う。
   ```bash
   php artisan migrate:fresh --seed
   psql -U <username> -d <dbname> -f create_logs_tables.sql
