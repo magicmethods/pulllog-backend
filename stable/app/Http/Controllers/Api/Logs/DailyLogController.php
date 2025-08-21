@@ -4,20 +4,22 @@ namespace App\Http\Controllers\Api\Logs;
 
 use App\Http\Controllers\Controller;
 use App\Models\App;
-use App\Models\UserApp;
-//use App\Models\Plan;
+use App\Models\Log;
+use App\Models\StatsCache;
 use App\Services\LocaleResolver;
+use App\Services\Demo\DemoLogProvider;
+use App\Support\Responses\LogResponse;
+use App\Support\Cache\StatsCachePurger;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
-//use Illuminate\Support\Facades\Validator;
-//use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class DailyLogController extends Controller
 {
+    use StatsCachePurger;
+
     /**
      * GET /logs/daily/{app}/{date}
      * 指定アプリの日別ログを取得
@@ -25,10 +27,9 @@ class DailyLogController extends Controller
     public function show(Request $request, string $appKey, string $date): JsonResponse|Response
     {
         $user = $request->user();
-        $userId = $user->id;
         $lang = LocaleResolver::resolve($request, $user);
 
-        // app_keyでアプリ取得
+        // アプリ解決
         $app = App::where('app_key', $appKey)->first();
         if (!$app) {
             return response()->json([
@@ -37,48 +38,72 @@ class DailyLogController extends Controller
             ], 404);
         }
 
-        // ユーザーがこのアプリに紐付いているかチェック
-        $userApp = UserApp::where('user_id', $userId)
-            ->where('app_id', $app->id)
-            ->first();
-        if (!$userApp) {
+        // 所有確認
+        if (!$user->apps()->where('apps.id', $app->id)->exists()) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.permission_denied', [], $lang),
             ], 403);
         }
 
-        // 日付のフォーマットチェック
+        // 日付検証
         try {
             $dateObj = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.invalid_date_format', [], $lang),
             ], 400);
         }
 
-        // 該当ログ検索
-        $log = \App\Models\Log::where('user_id', $userId)
+        // デモユーザーなら合成データを返す（DBアクセスしない）
+        if ($this->isDemoUser($user)) {
+            /** @var \App\Models\App $app */
+            $provider = app(DemoLogProvider::class);
+            $d = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
+
+            // 単日の合成
+            $rows = $provider->generateRange((int)$app->id, $d, $d);
+            $row = $rows->first();
+
+            if (!$row) {
+                // デモでも「存在しない」は null 互換で返す
+                return response('null', 200, ['Content-Type' => 'application/json']);
+            }
+
+            // 未保存の Log モデルに詰め替え
+            $log = new Log([
+                'user_id'         => $user->id,
+                'app_id'          => $app->id,
+                'log_date'        => $row['date'],
+                'total_pulls'     => (int) ($row['total_pulls'] ?? 0),
+                'discharge_items' => (int) ($row['discharge_items'] ?? 0),
+                'expense_amount'  => (int) ($row['expense_amount'] ?? 0),
+                'drop_details'    => $row['drop_details'] ?? null,
+                'tags'            => $row['tags'] ?? null,
+                'free_text'       => $row['free_text'] ?? null,
+                'images'          => $row['images'] ?? null,
+                'tasks'           => $row['tasks'] ?? null,
+            ]);
+            // $log->exists = false; // （既定で false。明示したいなら付けてもOK）
+
+            return response()->json(LogResponse::toArray($log, $app), 200);
+        }
+
+        // ログ取得
+        $log = Log::where('user_id', $user->id)
             ->where('app_id', $app->id)
-            ->whereDate('log_date', $dateObj)
+            ->where('log_date', $dateObj->toDateString())
             ->first();
 
-        // レスポンスデータ成形
-        if ($log) {
-            $response = $log->toArray();
-            // appIdの値をappKeyに置き換え
-            $response['appId'] = $appKey;
-            unset($response['app_id']); // 内部IDは返却しない
-            // log_dateのフォーマット統一
-            $response['date'] = Carbon::parse($log->log_date)->format('Y-m-d');
-            unset($response['log_date']);
-        } else {
+        if (!$log) {
+            // 互換：存在しない場合は 'null'
             return response('null', 200, ['Content-Type' => 'application/json']);
         }
 
-        return response()->json($response);
+        return response()->json(LogResponse::toArray($log, $app), 200);
     }
+
     /**
      * POST /logs/daily/{app}/{date}
      * 指定アプリの日別ログを新規登録
@@ -86,11 +111,8 @@ class DailyLogController extends Controller
     public function insert(Request $request, string $appKey, string $date): JsonResponse|Response
     {
         $user = $request->user();
-        $userId = $user->id;
-        $plan = $user->plan;
         $lang = LocaleResolver::resolve($request, $user);
 
-        // app_keyでアプリ取得
         $app = App::where('app_key', $appKey)->first();
         if (!$app) {
             return response()->json([
@@ -99,48 +121,36 @@ class DailyLogController extends Controller
             ], 404);
         }
 
-        // ユーザーがこのアプリに紐付いているかチェック
-        $userApp = UserApp::where('user_id', $userId)
-            ->where('app_id', $app->id)
-            ->first();
-        if (!$userApp) {
+        if (!$user->apps()->where('apps.id', $app->id)->exists()) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.permission_denied', [], $lang),
             ], 403);
         }
 
-        /*
-        Log::debug('DailyLogController@insert', [
-            'userId' => $userId,
-            'appKey' => $appKey,
-            'date' => $date,
-            'app' => $app->toArray(),
-            'userApp' => $userApp->toArray(),
-        ]);
-        */
-
-        // 日付のフォーマットチェック
         try {
             $dateObj = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.invalid_date_format', [], $lang),
             ], 400);
         }
 
+        $plan = $user->plan;
         if (!$plan) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.plan_not_found', [], $lang),
             ], 400);
         }
-        // 入力値バリデーション
+
+        // 互換のため expense / expense_amount の両方許容
         $validated = $request->validate([
             'total_pulls'      => 'required|integer|min:0',
             'discharge_items'  => 'required|integer|min:0',
             'expense'          => 'nullable|integer|min:0',
+            'expense_amount'   => 'nullable|integer|min:0',
             'drop_details'     => 'nullable|array',
             'tags'             => ['nullable', 'array', 'max:' . $plan->max_log_tags],
             'tags.*'           => ['string', 'max:' . $plan->max_log_tag_length],
@@ -149,64 +159,44 @@ class DailyLogController extends Controller
             'tasks'            => 'nullable|array',
         ]);
 
-        // トランザクションでinsert
-        DB::beginTransaction();
-        try {
-            $logAttrs = [
-                'user_id' => $userId,
-                'app_id'  => $app->id,
-                'log_date' => $dateObj->copy(),
-            ];
-            $logAttrs = array_merge($logAttrs, $validated);
+        $expenseAmount = $request->has('expense_amount')
+            ? (int) $request->input('expense_amount')
+            : (int) ($request->input('expense', 0));
 
-            /*
-            Log::debug('DailyLogController@insert', [
-                'logAttrs' => $logAttrs,
+        $logDate = $dateObj->toDateString();
+
+        /** @var Log $log */
+        $log = DB::transaction(function () use ($user, $app, $logDate, $validated, $expenseAmount) {
+            return Log::create([
+                'user_id'         => $user->id,
+                'app_id'          => $app->id,
+                'log_date'        => $logDate,
+                'total_pulls'     => (int) $validated['total_pulls'],
+                'discharge_items' => (int) $validated['discharge_items'],
+                'expense_amount'  => $expenseAmount,
+                'drop_details'    => $validated['drop_details'] ?? null,
+                'tags'            => $validated['tags'] ?? null,
+                'free_text'       => $validated['free_text'] ?? null,
+                'images'          => $validated['images'] ?? null,
+                'tasks'           => $validated['tasks'] ?? null,
             ]);
-            */
-            // 新規登録
-            $log = \App\Models\Log::create($logAttrs);
-            // キャッシュ削除
-            $this->deleteStatsCache($userId, $appKey);
+        });
 
-            DB::commit();
+        // キャッシュパージ
+        $this->purgeStatsCacheForApp($user->id, $app->id, $appKey);
 
-            // レスポンス形式調整
-            $response = $log->toArray();
-            $response['appId'] = $appKey;
-            $response['date'] = $dateObj->format('Y-m-d');
-            unset($response['app_id'], $response['log_date']);
-
-            return response()->json($response, 201);
-        } catch (\Throwable $e) {
-            DB::rollBack();
-            report($e);
-            /*
-            Log::error('DailyLogController@insertError', [
-                'error' => $e->getMessage(),
-                'userId' => $userId,
-                'appKey' => $appKey,
-                'date' => $date,
-            ]);
-            */
-            return response()->json([
-                'state' => 'error',
-                'message' => trans('messages.log_creation_failed', [], $lang),
-            ], 500);
-        }
+        return response()->json(LogResponse::toArray($log, $app), 201);
     }
+
     /**
      * PUT /logs/daily/{app}/{date}
-     * 指定アプリの日別ログを更新
+     * 指定アプリの日別ログを更新（なければ作成）
      */
     public function update(Request $request, string $appKey, string $date): JsonResponse|Response
     {
         $user = $request->user();
-        $userId = $user->id;
-        $plan = $user->plan;
         $lang = LocaleResolver::resolve($request, $user);
 
-        // app_keyでアプリ取得
         $app = App::where('app_key', $appKey)->first();
         if (!$app) {
             return response()->json([
@@ -215,47 +205,35 @@ class DailyLogController extends Controller
             ], 404);
         }
 
-        // ユーザーがこのアプリに紐付いているかチェック
-        $userApp = UserApp::where('user_id', $userId)
-            ->where('app_id', $app->id)
-            ->first();
-        if (!$userApp) {
+        if (!$user->apps()->where('apps.id', $app->id)->exists()) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.permission_denied', [], $lang),
             ], 403);
         }
 
-        /*
-        Log::debug('DailyLogController@update', [
-            'userId' => $userId,
-            'appKey' => $appKey,
-            'date' => $date,
-            'app' => $app->toArray(),
-            'userApp' => $userApp->toArray(),
-        ]);
-        */
-        // 日付のフォーマットチェック
         try {
             $dateObj = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.invalid_date_format', [], $lang),
             ], 400);
         }
 
+        $plan = $user->plan;
         if (!$plan) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.plan_not_found', [], $lang),
             ], 400);
         }
-        // 入力値バリデーション
+
         $validated = $request->validate([
             'total_pulls'      => 'required|integer|min:0',
             'discharge_items'  => 'required|integer|min:0',
             'expense'          => 'nullable|integer|min:0',
+            'expense_amount'   => 'nullable|integer|min:0',
             'drop_details'     => 'nullable|array',
             'tags'             => ['nullable', 'array', 'max:' . $plan->max_log_tags],
             'tags.*'           => ['string', 'max:' . $plan->max_log_tag_length],
@@ -264,63 +242,47 @@ class DailyLogController extends Controller
             'tasks'            => 'nullable|array',
         ]);
 
-        // トランザクションでinsert
-        DB::beginTransaction();
-        try {
-            $log = \App\Models\Log::where('user_id', $userId)
+        $expenseAmount = $request->has('expense_amount')
+            ? (int) $request->input('expense_amount')
+            : (int) ($request->input('expense', 0));
+
+        $logDate = $dateObj->toDateString();
+
+        /** @var Log $log */
+        $log = DB::transaction(function () use ($user, $app, $logDate, $validated, $expenseAmount) {
+            $log = Log::where('user_id', $user->id)
                 ->where('app_id', $app->id)
-                ->whereDate('log_date', $dateObj)
+                ->where('log_date', $logDate)
                 ->first();
 
-            $logAttrs = [
-                'user_id' => $userId,
-                'app_id'  => $app->id,
-                'log_date' => $dateObj->copy(),
+            $attrs = [
+                'user_id'         => $user->id,
+                'app_id'          => $app->id,
+                'log_date'        => $logDate,
+                'total_pulls'     => (int) $validated['total_pulls'],
+                'discharge_items' => (int) $validated['discharge_items'],
+                'expense_amount'  => $expenseAmount,
+                'drop_details'    => $validated['drop_details'] ?? null,
+                'tags'            => $validated['tags'] ?? null,
+                'free_text'       => $validated['free_text'] ?? null,
+                'images'          => $validated['images'] ?? null,
+                'tasks'           => $validated['tasks'] ?? null,
             ];
-            $logAttrs = array_merge($logAttrs, $validated);
 
-            /*
-            Log::debug('DailyLogController@update', [
-                'logAttrs' => $logAttrs,
-            ]);
-            */
             if ($log) {
-                // 既存更新
-                $log->fill($logAttrs);
-                $log->save();
+                $log->fill($attrs)->save();
             } else {
-                // 既存ログがない場合は新規登録
-                $log = \App\Models\Log::create($logAttrs);
+                $log = Log::create($attrs);
             }
-            // キャッシュ削除
-            $this->deleteStatsCache($userId, $appKey);
+            return $log;
+        });
 
-            DB::commit();
+        // キャッシュパージ
+        $this->purgeStatsCacheForApp($user->id, $app->id, $appKey);
 
-            // レスポンス形式調整
-            $response = $log->toArray();
-            $response['appId'] = $appKey;
-            $response['date'] = $dateObj->format('Y-m-d');
-            unset($response['app_id'], $response['log_date']);
-
-            return response()->json($response, 201);
-        } catch (\Throwable $e) {
-            DB::rollBack();
-            report($e);
-            /*
-            Log::error('DailyLogController@updateError', [
-                'error' => $e->getMessage(),
-                'userId' => $userId,
-                'appKey' => $appKey,
-                'date' => $date,
-            ]);
-            */
-            return response()->json([
-                'state' => 'error',
-                'message' => trans('messages.log_update_failed', [], $lang),
-            ], 500);
-        }
+        return response()->json(LogResponse::toArray($log, $app), 200);
     }
+
     /**
      * DELETE /logs/daily/{app}/{date}
      * 指定アプリの日別ログを削除
@@ -328,10 +290,8 @@ class DailyLogController extends Controller
     public function destroy(Request $request, string $appKey, string $date): JsonResponse
     {
         $user = $request->user();
-        $userId = $user->id;
         $lang = LocaleResolver::resolve($request, $user);
 
-        // app_keyでアプリ取得
         $app = App::where('app_key', $appKey)->first();
         if (!$app) {
             return response()->json([
@@ -340,31 +300,25 @@ class DailyLogController extends Controller
             ], 404);
         }
 
-        // ユーザーがこのアプリに紐付いているかチェック
-        $userApp = UserApp::where('user_id', $userId)
-            ->where('app_id', $app->id)
-            ->first();
-        if (!$userApp) {
+        if (!$user->apps()->where('apps.id', $app->id)->exists()) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.permission_denied', [], $lang),
             ], 403);
         }
 
-        // 日付のフォーマットチェック
         try {
-            $dateObj = \Carbon\Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
-        } catch (\Exception $e) {
+            $dateObj = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
+        } catch (\Throwable $e) {
             return response()->json([
                 'state' => 'error',
                 'message' => trans('messages.invalid_date_format', [], $lang),
             ], 400);
         }
 
-        // 対象レコードを取得
-        $log = \App\Models\Log::where('user_id', $userId)
+        $log = Log::where('user_id', $user->id)
             ->where('app_id', $app->id)
-            ->whereDate('log_date', $dateObj)
+            ->where('log_date', $dateObj->toDateString())
             ->first();
 
         if (!$log) {
@@ -374,28 +328,36 @@ class DailyLogController extends Controller
             ], 404);
         }
 
-        // 削除処理
         $log->delete();
-        // キャッシュ削除
-        $this->deleteStatsCache($userId, $appKey);
+        // キャッシュパージ
+        $this->purgeStatsCacheForApp($user->id, $app->id, $appKey);
 
         return response()->json([
-            'state' => 'success',
+            'state'   => 'success',
             'message' => trans('messages.log_deleted', [], $lang),
-            'log' => [
+            'log'     => [
                 'appId' => $appKey,
-                'date' => $date,
-            ]
-        ]);
+                'date'  => $dateObj->toDateString(),
+            ],
+        ], 200);
     }
-    /**
-     * 対象キャッシュを一括削除
-     */
-    private function deleteStatsCache($userId, $appKey)
+
+    // デモ判定のヘルパ
+    private function isDemoUser($user): bool
     {
-        $pattern = "stats:{$userId}:{$appKey}:%";
-        \App\Models\StatsCache::where('cache_key', 'like', $pattern)->delete();
+        $demoEmail = (string) config('demo.demo_email', env('DEMO_EMAIL'));
+        if ($demoEmail !== '' && strtolower($user->email ?? '') === strtolower($demoEmail)) {
+            return true;
+        }
+        $demoUserIds = (array) config('demo.demo_user_ids', []);
+        if (!empty($demoUserIds) && in_array((int)$user->id, array_map('intval', $demoUserIds), true)) {
+            return true;
+        }
+        // 役割ベースがあるなら最後に
+        if (property_exists($user, 'roles') && in_array('demo', $user->roles, true)) {
+            return true;
+        }
+        return false;
     }
-    
 
 }

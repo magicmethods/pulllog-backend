@@ -6,6 +6,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 
 use App\Http\Middleware\AuthApiKey;
 use App\Http\Middleware\AuthCsrfToken;
+use App\Http\Middleware\DemoGuard;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,7 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'auth.apikey' => AuthApiKey::class, // APIキー認証ミドルウェア
             'auth.csrf' => AuthCsrfToken::class, // CSRFトークン認証ミドルウェア
-        ])->api(prepend: [ 'auth.apikey', 'auth.csrf' ]); // 認証ミドルウェアを先頭に追加
+            'demo.guard' => DemoGuard::class, // デモユーザー制御ミドルウェア
+        ])->api(prepend: [ 'auth.apikey', 'demo.guard', 'auth.csrf' ]); // 認証ミドルウェアを先頭に追加
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

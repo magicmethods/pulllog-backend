@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\Logs\DailyLogController;
 use App\Http\Controllers\Api\Logs\LogImportController;
 use App\Http\Controllers\Api\Stats\StatsController;
 use App\Http\Controllers\Api\User\ProfileController;
+use App\Http\Controllers\Api\Currencies\CurrencyController;
 
 Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
@@ -51,7 +52,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
         });
 
     // その他（APIキー認証+CSRFトークン認証が必要）
-    Route::middleware(['auth.apikey', 'auth.csrf'])
+    Route::middleware(['auth.apikey', 'auth.csrf', 'demo.guard'])
         ->group(function () {
             // アプリ関連のルート
             Route::prefix('apps')->group(function () {
@@ -94,4 +95,12 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             });
         });
 
+    Route::prefix('currencies')
+        ->middleware(['auth.apikey'])
+        ->withoutMiddleware(['auth.csrf'])
+        ->group(function () {
+            Route::get('/', [CurrencyController::class, 'index'])->name('currencies.index');
+            // 単体取得が必要なら将来追加可能
+            // Route::get('/{code}', [CurrencyController::class, 'show'])->name('currencies.show');
+        });
 });
