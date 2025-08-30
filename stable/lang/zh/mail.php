@@ -37,55 +37,5 @@ TEXT,
 
 PullLog 运营团队
 TEXT,
-    'body_signup' => <<<TEXT
-:name 您好
-
-感谢您注册 PullLog。
-
-要完成注册，请点击以下链接进行邮箱验证。
-
-:tokenUrl
-
-※如果您未发出此请求，请忽略此邮件。
-
----
-※此邮件由发送专用地址（noreply@pulllog.net）自动发送。  
-如有疑问，请联系技术支持。
-
-技术支持: support@pulllog.net  
-官方网站: https://pulllog.net/
-
-感谢您的使用。
-
-PullLog 运营团队
-TEXT,
-    'body_reset' => <<<TEXT
-:name 您好
-
-我们已收到您重置 PullLog 账户密码的请求。
-
--------------------------------------
-【验证码】
-:code
--------------------------------------
-
-或者，您可以通过以下链接继续进行密码重置。
-
-:tokenUrl
-
-※如果您未发出此请求，请忽略此邮件。
-为了安全起见，该链接的有效期为 24 小时。
-
----
-※此邮件由发送专用地址（noreply@pulllog.net）自动发送。
-如有疑问，请联系技术支持。
-
-技术支持: support@pulllog.net
-官方网站: https://pulllog.net/
-
-感谢您的使用。
-
-PullLog 运营团队
-TEXT,
-
+    // Others
 ];
