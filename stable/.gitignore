@@ -25,3 +25,6 @@ openapitools.json
 Homestead.json
 Homestead.yaml
 Thumbs.db
+\# Guard: disallow dot-prefixed PHP sources in app/routes
+app/**/.*.php
+routes/**/.*.php

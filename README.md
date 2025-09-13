@@ -13,6 +13,7 @@
 - [テーブル構成](#テーブル構成)
 - [ER図](#ER図)
 - [デプロイ手順](#デプロイ手順)
+- [バッチ処理について](#バッチ処理について)
 - [モック環境](#モック環境)
 - [ライセンス](#ライセンス)
 - [コントリビューション](#コントリビューション)
@@ -199,6 +200,74 @@ erDiagram
   ```
 8. 動作確認
   https://api.pulllog.net/api/v1/dummy にアクセスしてJSONレスポンスが返却されればOk。
+
+---
+
+## バッチ処理について
+
+**運用サマリ**  
+- 実行内容: DBフルバックアップ＋日次サマリ（ユーザー/アプリ集計）
+- 実行時刻: 毎日 03:30 JST（本番環境のみスケジュール実行）
+- 保存場所: storage/app/backups/YYYYMMDD/, storage/app/reports/YYYYMMDD/
+- 通知: 成功/失敗を `BATCH_NOTIFY_EMAIL` へメール
+
+**依存コマンド/要件**  
+- pg_dump（PostgreSQL クライアント）、gzip、openssl
+- Windows の場合は `PG_DUMP_PATH` に `pg_dump.exe` のフルパスを設定（例: `C:\Program Files\PostgreSQL\16\bin\pg_dump.exe`）
+
+**環境変数**  
+- PG_DUMP_PATH（例: `pg_dump`）/ BACKUP_ENCRYPTION_KEY（未設定なら暗号化スキップ）
+- RETENTION_DAYS（既定 `14`）/ REPORT_TOP_N（既定 `10`）
+- BATCH_NOTIFY_EMAIL（既定 `admin@pulllog.net`）
+- メール送信には `.env` の `MAIL_*` を実配送向けに設定（既定 `MAIL_MAILER=log` はログ出力のみ）
+
+**スケジュール設定**  
+- 本番のみ有効。サーバ側は「毎分」Cronで `Laravel` スケジューラを起動してください。
+- 例（Linux）: `* * * * * cd /path/to/backend/stable && php artisan schedule:run >> storage/logs/schedule.log 2>&1`
+- 稼働確認: `php artisan schedule:list`
+
+**手動実行/ドライラン**  
+- バックアップ: `php artisan db:backup --dry-run`（実行時は `--dry-run` を外す）
+- サマリ: `php artisan report:daily-summary --dry-run`
+
+**保持/保存ポリシー**  
+- `RETENTION_DAYS` を経過した日付フォルダ（YYYYMMDD）は自動削除
+- バックアップは `*.dump.gz`（暗号化時は `*.dump.gz.enc`）
+
+**復旧手順（例）**  
+- 暗号化あり: `openssl enc -d -aes-256-cbc -pbkdf2 -pass pass:"$BACKUP_ENCRYPTION_KEY" -in file.dump.gz.enc -out file.dump.gz`
+- 復号後: `gunzip file.dump.gz && pg_restore -d <DB_NAME> -Fc file.dump`
+- 暗号化なし: `gunzip file.dump.gz && pg_restore -d <DB_NAME> -Fc file.dump`
+
+**運用・監視**  
+- 成功/失敗の概要をメール通知。詳細は `storage/logs/laravel.log` を参照
+- 容量監視を推奨（`storage/app` の残容量必須）。大容量時は実行時間帯の見直しも検討
+
+**セキュリティ注意**  
+- `BACKUP_ENCRYPTION_KEY` は十分な強度で生成し `.env` にのみ保存する
+- キー変更後は旧バックアップの復号に旧キーが必要なため、保持期間（既定14日）が過ぎるまで旧キーは保管する
+- `.env` とバックアップファイル（特に `.enc` の鍵）はリポジトリに含めないこと
+
+**付記: `BACKUP_ENCRYPTION_KEY` の生成方法**  
+以下のいずれかで十分に強い乱数パスフレーズ（32バイト以上）を生成し、`.env` に設定する（base64 形式推奨）。
+- Linux/macOS（OpenSSL）
+    - `openssl rand -base64 32`
+    - 16進が良ければ: `openssl rand -hex 32`
+- Windows（PowerShell）
+    - OpenSSLがある場合: `openssl rand -base64 32`
+    - .NETの暗号APIを使用:
+        - `$b = New-Object byte[] 32; (New-Object System.Security.Cryptography.RNGCryptoServiceProvider).GetBytes($b);`
+[Convert]::ToBase64String($b)
+- PHP（どこでも実行可）
+    - `php -r "echo base64_encode(random_bytes(32)), PHP_EOL;"`
+
+`.env` への設定例  
+- 値に記号が含まれても安全に扱えるよう、引用を推奨
+- `BACKUP_ENCRYPTION_KEY='Qb6q8mQ2Zp9...（生成値）...'`
+
+動作テスト（任意）  
+- 暗号化: `echo test > /tmp/t && openssl enc -aes-256-cbc -pbkdf2 -salt -pass pass:"$BACKUP_ENCRYPTION_KEY" -in /tmp/t -out /tmp/t.enc`
+- 復号: `openssl enc -d -aes-256-cbc -pbkdf2 -pass pass:"$BACKUP_ENCRYPTION_KEY" -in /tmp/t.enc -out /tmp/t.dec && diff /tmp/t /tmp/t.dec`
 
 ---
 
