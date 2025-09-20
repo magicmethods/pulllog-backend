@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -12,22 +12,25 @@ return [
     | according to your application's requirements.
     |
     */
-    'app_not_found' => '指定されたアプリは見つかりませんでした。',
-    'app_not_registered' => 'このアプリにアクセスする権限がありません。',
-    'app_deleted' => 'アプリは正常に削除されました。',
-    'app_registration_failed' => 'アプリの登録に失敗しました: :error',
-    'app_update_failed' => 'アプリの更新に失敗しました: :error',
+    'app_not_found' => '指定されたアプリが見つかりません。',
+    'app_not_registered' => '該当アプリへアクセスする権限がありません。',
+    'app_deleted' => 'アプリを削除しました。',
+    'app_registration_failed' => 'アプリ登録に失敗しました: :error',
+    'app_update_failed' => 'アプリ更新に失敗しました: :error',
 
-    'permission_denied' => 'このアプリにアクセスする権限がありません。',
-    'log_access_denied' => 'このアプリのログにアクセスする権限がありません。',
-    'log_not_found' => '指定されたログは見つかりませんでした。',
-    'log_deleted' => 'ログは正常に削除されました。',
+    'permission_denied' => 'アクセス権限がありません。',
+    'log_access_denied' => 'ログへアクセスする権限がありません。',
+    'log_not_found' => '指定されたログが見つかりません。',
+    'log_deleted' => 'ログを削除しました。',
     'log_creation_failed' => 'ログの作成に失敗しました: :error',
     'log_update_failed' => 'ログの更新に失敗しました: :error',
 
-    'plan_not_found' => '指定されたプランは見つかりませんでした。',
-    'invalid_date_format' => ':fieldの日付形式が無効です。',
+    'plan_not_found' => '指定されたプランが見つかりません。',
+    'invalid_date_format' => ':field の日付形式が正しくありません。',
 
-    'api_running_successfully' => 'APIは正常に動作しています。',
+    'user_filters_context_not_found' => '指定したレイアウトコンテキストはサポートされていません。',
+    'user_filters_version_conflict' => 'layout version conflict',
+
+    'api_running_successfully' => 'APIは正常に稼働しています。',
 
 ];

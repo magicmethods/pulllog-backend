@@ -16,14 +16,16 @@ use App\Http\Controllers\Api\Logs\DailyLogController;
 use App\Http\Controllers\Api\Logs\LogImportController;
 use App\Http\Controllers\Api\Stats\StatsController;
 use App\Http\Controllers\Api\User\ProfileController;
+use App\Http\Controllers\Api\UserFilters\UserFilterController;
 use App\Http\Controllers\Api\Currencies\CurrencyController;
 
 Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
-    // ãƒ€ãƒŸãƒ¼ãƒ«ãƒ¼ãƒˆï¼ˆAPIã®å‹•ä½œç¢ºèªç”¨ï¼‰
+    // ƒ_ƒ~[ƒ‹[ƒg: API‚Ì‰Ò“­Šm”F—p
     Route::get('/dummy', function (Request $request) {
         $cookie = $request->headers->get('cookie', '');
         $lang = LocaleResolver::resolve($request, null);
+
         return response()->json([
             'status' => 'success',
             'message' => trans('messages.api_running_successfully', [], $lang),
@@ -33,14 +35,14 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
     })->withoutMiddleware(['auth.apikey', 'auth.csrf'])
       ->name('api.dummy');
 
-    // ã“ã“ã‹ã‚‰ OpenAPI ã‚¹ã‚­ãƒ¼ãƒžã‹ã‚‰ç”Ÿæˆã—ãŸãƒ«ãƒ¼ãƒˆå®šç¾© `generated/routes.php` ã‚’ãƒžãƒ¼ã‚¸:
+    // ‚±‚±‚©‚ç OpenAPI ƒXƒL[ƒ}‚©‚ç¶¬‚µ‚½ƒ‹[ƒg’è‹` `generated/routes.php` ‚ð“Ç‚Þ:
 
-    // APIã‚­ãƒ¼èªè¨¼ã®ã¿ã®ãƒ«ãƒ¼ãƒˆï¼ˆãƒ­ã‚°ã‚¢ã‚¦ãƒˆä»¥å¤–ã® /auth/** ç³»ï¼‰
+    // APIƒL[”FØ‚Ì‚Ý‚Ìƒ‹[ƒgiƒƒOƒAƒEƒgˆÈŠOj /auth/** Œn
     Route::prefix('auth')
-        ->middleware(['auth.apikey']) // ç‹¬è‡ªAPIã‚­ãƒ¼èªè¨¼ãƒŸãƒ‰ãƒ«ã‚¦ã‚§ã‚¢
-        ->withoutMiddleware(['auth.csrf']) // CSRFãƒˆãƒ¼ã‚¯ãƒ³èªè¨¼ã¯ä¸è¦
+        ->middleware(['auth.apikey'])
+        ->withoutMiddleware(['auth.csrf'])
         ->group(function () {
-            // èªè¨¼é–¢é€£ã®ãƒ«ãƒ¼ãƒˆ
+            // ”FØŠÖ˜A‚Ìƒ‹[ƒg
             Route::post('register',   [RegisterController::class, 'register'])->name('auth.register');
             Route::post('verify',     [RegisterController::class, 'verifyEmail'])->name('auth.verify');
             Route::post('login',      [LoginController::class, 'login'])->name('auth.login');
@@ -51,10 +53,10 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             Route::post('google/exchange', [OauthController::class, 'googleExchange'])->name('auth.google.exchange');
         });
 
-    // ãã®ä»–ï¼ˆAPIã‚­ãƒ¼èªè¨¼+CSRFãƒˆãƒ¼ã‚¯ãƒ³èªè¨¼ãŒå¿…è¦ï¼‰
+    // ‚»‚êˆÈŠO: APIƒL[”FØ+CSRFƒg[ƒNƒ“”FØ‚ª•K—v
     Route::middleware(['auth.apikey', 'auth.csrf', 'demo.guard'])
         ->group(function () {
-            // ã‚¢ãƒ—ãƒªé–¢é€£ã®ãƒ«ãƒ¼ãƒˆ
+            // ƒAƒvƒŠŠÖ˜A‚Ìƒ‹[ƒg
             Route::prefix('apps')->group(function () {
                 Route::get(   '/',        [AppsController::class, 'getAppList'])->name('apps.list');
                 Route::post(  '/',        [AppsController::class, 'registerApp'])->name('apps.app.register');
@@ -63,25 +65,25 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
                 Route::delete('/{appId}', [AppsController::class, 'deleteApp'])->name('apps.app.delete');
             });
 
-            // ãƒ­ã‚°é–¢é€£ã®ãƒ«ãƒ¼ãƒˆ
+            // ƒƒOŠÖ˜A‚Ìƒ‹[ƒg
             Route::prefix('logs')->group(function () {
-                // ã‚¢ãƒ—ãƒªå…¨ä½“ãƒ­ã‚°å–å¾—
+                // ƒAƒvƒŠ‘S‘ÌƒƒOŽæ“¾
                 Route::get(   '/{app}',              [LogsController::class, 'index'])->name('logs.index');
-                // æ—¥åˆ¥ãƒ­ã‚°å–å¾—ãƒ»æ›´æ–°ãƒ»å‰Šé™¤
+                // “úŽŸƒƒOŽæ“¾EXVEíœ
                 Route::get(   '/daily/{app}/{date}', [DailyLogController::class, 'show'])->name('logs.daily.show');
                 Route::post(  '/daily/{app}/{date}', [DailyLogController::class, 'insert'])->name('logs.daily.insert');
                 Route::put(   '/daily/{app}/{date}', [DailyLogController::class, 'update'])->name('logs.daily.update');
                 Route::delete('/daily/{app}/{date}', [DailyLogController::class, 'destroy'])->name('logs.daily.destroy');
-                // ãƒ­ã‚°ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
+                // ƒƒOƒCƒ“ƒ|[ƒg
                 Route::post(  '/import/{app}',       [LogImportController::class, 'import'])->name('logs.import');
             });
 
-            // çµ±è¨ˆé–¢é€£ã®ãƒ«ãƒ¼ãƒˆ
+            // “ŒvŠÖ˜A‚Ìƒ‹[ƒg
             Route::prefix('stats')->group(function () {
                 Route::get(   '/{appId}', [StatsController::class, 'getAppStats'])->name('stats.app.get');
             });
 
-            // ãƒ¦ãƒ¼ã‚¶ãƒ¼é–¢é€£ã®ãƒ«ãƒ¼ãƒˆ
+            // ƒ†[ƒU[ŠÖ˜A‚Ìƒ‹[ƒg
             Route::prefix('user')->group(function () {
                 Route::get(   '/',        [ProfileController::class, 'userGet'])->name('user.get');
                 Route::put(   '/update',  [ProfileController::class, 'update'])->name('user.update');
@@ -89,7 +91,13 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
                 Route::post(  '/avatar',  [ProfileController::class, 'avatar'])->name('user.avatar');
             });
 
-            // ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒ«ãƒ¼ãƒˆ
+            // ƒ†[ƒU[ƒtƒBƒ‹ƒ^Ý’è
+            Route::prefix('user-filters')->group(function () {
+                Route::get(   '/{context}', [UserFilterController::class, 'show'])->name('user-filters.show');
+                Route::put(   '/{context}', [UserFilterController::class, 'update'])->name('user-filters.update');
+            });
+
+            // ƒƒOƒAƒEƒg—pƒ‹[ƒg
             Route::prefix('auth')->group(function () {
                 Route::post('logout', [LogoutController::class, 'logout'])->name('auth.logout');
             });
@@ -100,7 +108,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
         ->withoutMiddleware(['auth.csrf'])
         ->group(function () {
             Route::get('/', [CurrencyController::class, 'index'])->name('currencies.index');
-            // å˜ä½“å–å¾—ãŒå¿…è¦ãªã‚‰å°†æ¥è¿½åŠ å¯èƒ½
+            // ŒÂ•Ê’Ê‰ÝŽæ“¾‚Í¡Œã•K—v‚É‚È‚Á‚½‚ç—LŒø‰»
             // Route::get('/{code}', [CurrencyController::class, 'show'])->name('currencies.show');
         });
 });
