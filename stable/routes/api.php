@@ -16,14 +16,16 @@ use App\Http\Controllers\Api\Logs\DailyLogController;
 use App\Http\Controllers\Api\Logs\LogImportController;
 use App\Http\Controllers\Api\Stats\StatsController;
 use App\Http\Controllers\Api\User\ProfileController;
+use App\Http\Controllers\Api\UserFilters\UserFilterController;
 use App\Http\Controllers\Api\Currencies\CurrencyController;
 
 Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
-    // ダミールート（APIの動作確認用）
+    // ダミールート: APIの稼働確認用
     Route::get('/dummy', function (Request $request) {
         $cookie = $request->headers->get('cookie', '');
         $lang = LocaleResolver::resolve($request, null);
+
         return response()->json([
             'status' => 'success',
             'message' => trans('messages.api_running_successfully', [], $lang),
@@ -33,12 +35,12 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
     })->withoutMiddleware(['auth.apikey', 'auth.csrf'])
       ->name('api.dummy');
 
-    // ここから OpenAPI スキーマから生成したルート定義 `generated/routes.php` をマージ:
+    // ここから OpenAPI スキーマから生成したルート定義 `generated/routes.php` を読む:
 
-    // APIキー認証のみのルート（ログアウト以外の /auth/** 系）
+    // APIキー認証のみのルート（ログアウト以外） /auth/** 系
     Route::prefix('auth')
-        ->middleware(['auth.apikey']) // 独自APIキー認証ミドルウェア
-        ->withoutMiddleware(['auth.csrf']) // CSRFトークン認証は不要
+        ->middleware(['auth.apikey'])
+        ->withoutMiddleware(['auth.csrf'])
         ->group(function () {
             // 認証関連のルート
             Route::post('register',   [RegisterController::class, 'register'])->name('auth.register');
@@ -51,7 +53,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             Route::post('google/exchange', [OauthController::class, 'googleExchange'])->name('auth.google.exchange');
         });
 
-    // その他（APIキー認証+CSRFトークン認証が必要）
+    // それ以外: APIキー認証+CSRFトークン認証が必要
     Route::middleware(['auth.apikey', 'auth.csrf', 'demo.guard'])
         ->group(function () {
             // アプリ関連のルート
@@ -67,7 +69,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             Route::prefix('logs')->group(function () {
                 // アプリ全体ログ取得
                 Route::get(   '/{app}',              [LogsController::class, 'index'])->name('logs.index');
-                // 日別ログ取得・更新・削除
+                // 日次ログ取得・更新・削除
                 Route::get(   '/daily/{app}/{date}', [DailyLogController::class, 'show'])->name('logs.daily.show');
                 Route::post(  '/daily/{app}/{date}', [DailyLogController::class, 'insert'])->name('logs.daily.insert');
                 Route::put(   '/daily/{app}/{date}', [DailyLogController::class, 'update'])->name('logs.daily.update');
@@ -89,7 +91,13 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
                 Route::post(  '/avatar',  [ProfileController::class, 'avatar'])->name('user.avatar');
             });
 
-            // ログアウトのルート
+            // ユーザーフィルタ設定
+            Route::prefix('user-filters')->group(function () {
+                Route::get(   '/{context}', [UserFilterController::class, 'show'])->name('user-filters.show');
+                Route::put(   '/{context}', [UserFilterController::class, 'update'])->name('user-filters.update');
+            });
+
+            // ログアウト用ルート
             Route::prefix('auth')->group(function () {
                 Route::post('logout', [LogoutController::class, 'logout'])->name('auth.logout');
             });
@@ -100,7 +108,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
         ->withoutMiddleware(['auth.csrf'])
         ->group(function () {
             Route::get('/', [CurrencyController::class, 'index'])->name('currencies.index');
-            // 単体取得が必要なら将来追加可能
+            // 個別通貨取得は今後必要になったら有効化
             // Route::get('/{code}', [CurrencyController::class, 'show'])->name('currencies.show');
         });
 });
