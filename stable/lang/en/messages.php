@@ -28,6 +28,9 @@ return [
     'plan_not_found' => 'The specified plan was not found.',
     'invalid_date_format' => 'The :field date is invalid.',
 
+    'user_filters_context_not_found' => 'The requested layout context is not supported.',
+    'user_filters_version_conflict' => 'layout version conflict',
+
     'api_running_successfully' => 'API is running successfully.',
 
 ];

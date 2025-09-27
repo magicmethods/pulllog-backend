@@ -23,9 +23,9 @@ return new class extends Migration
         });
 
         // token_type ENUM型適用（デフォルト値を一時的に外してから型変換）
-        //DB::statement("ALTER TABLE auth_tokens ALTER COLUMN type DROP DEFAULT;");
-        DB::statement('ALTER TABLE auth_tokens ALTER COLUMN type TYPE token_type USING type::token_type');
-        //DB::statement("ALTER TABLE auth_tokens ALTER COLUMN type SET DEFAULT 'signup';");
+        if (DB::getDriverName() === 'pgsql') {
+            DB::statement("ALTER TABLE auth_tokens ALTER COLUMN type TYPE token_type USING type::token_type;");
+        }
     }
 
     public function down(): void

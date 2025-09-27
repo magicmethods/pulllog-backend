@@ -33,9 +33,11 @@ return new class extends Migration
         });
 
         // カラム型変更: theme ENUM（デフォルト値を一時的に外してから型変換）
-        DB::statement("ALTER TABLE users ALTER COLUMN theme DROP DEFAULT;");
-        DB::statement('ALTER TABLE users ALTER COLUMN theme TYPE theme USING theme::theme');
-        DB::statement("ALTER TABLE users ALTER COLUMN theme SET DEFAULT 'light';");
+        if (DB::getDriverName() === 'pgsql') {
+            DB::statement("ALTER TABLE users ALTER COLUMN theme DROP DEFAULT;");
+            DB::statement("ALTER TABLE users ALTER COLUMN theme TYPE theme USING theme::theme;");
+            DB::statement("ALTER TABLE users ALTER COLUMN theme SET DEFAULT 'light';");
+        }
     }
 
     public function down(): void

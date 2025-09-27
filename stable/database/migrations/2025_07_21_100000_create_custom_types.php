@@ -7,6 +7,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (DB::getDriverName() !== 'pgsql') {
+            return;
+        }
+
         // theme型
         DB::statement("
             DO $$
@@ -58,6 +62,10 @@ return new class extends Migration
 
     public function down(): void
     {
+        if (DB::getDriverName() !== 'pgsql') {
+            return;
+        }
+
         DB::statement("DROP TYPE IF EXISTS drop CASCADE;");
         DB::statement("DROP TYPE IF EXISTS definition CASCADE;");
         DB::statement("DROP TYPE IF EXISTS token_type CASCADE;");

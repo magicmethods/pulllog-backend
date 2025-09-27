@@ -129,7 +129,7 @@ class User extends Authenticatable
 
 	/**
      * 多対多（既存の通り）
-     * @return BelongsToMany<App>
+	 * @return BelongsToMany<App>
      */
 	public function apps(): BelongsToMany
 	{
@@ -146,7 +146,7 @@ class User extends Authenticatable
 
 	/**
 	 * 親 logs テーブルへ一本化（パーティションはDBが自動ルーティング）
-     * @return HasMany<Log>
+	 * @return HasMany<Log>
      */
 	public function logs(): HasMany
 	{
@@ -155,7 +155,7 @@ class User extends Authenticatable
 
 	/**
 	 * ビュー logs_with_money（読み取り専用モデル）
-     * @return HasMany<LogWithMoney>
+	 * @return HasMany<LogWithMoney>
      */
     public function moneyLogs(): HasMany
     {
@@ -169,6 +169,12 @@ class User extends Authenticatable
     public function userApps(): HasMany
     {
         return $this->hasMany(UserApp::class, 'user_id', 'id');
+    }
+
+    /** @return HasMany<UserFilter> */
+    public function userFilters(): HasMany
+    {
+        return $this->hasMany(UserFilter::class, 'user_id', 'id');
     }
 
 	/* ========= スコープ ========= */
@@ -189,7 +195,7 @@ class User extends Authenticatable
     public function hasApp(int $appId): bool
     {
         // user_apps のユニーク制約（user_id, app_id）前提で高速
-        return $this->userApps()->where('app_id', $appId)->exists();
+		return $this->userApps()->where('app_id', $appId)->exists();
     }
 
     /** アプリと冪等にリンク（無ければ作成、あれば何もしない） */
@@ -199,3 +205,6 @@ class User extends Authenticatable
     }
 
 }
+
+
+
