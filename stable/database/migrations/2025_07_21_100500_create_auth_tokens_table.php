@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestampsTz(0);
         });
 
-        // token_type ENUM �ւ̕ϊ��� PostgreSQL �̂�
+        // token_type ENUM型適用（デフォルト値を一時的に外してから型変換）
         if (DB::getDriverName() === 'pgsql') {
             DB::statement("ALTER TABLE auth_tokens ALTER COLUMN type TYPE token_type USING type::token_type;");
         }

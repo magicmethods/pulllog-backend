@@ -32,7 +32,7 @@ return new class extends Migration
             $table->timestampsTz(0);
         });
 
-        // theme���PostgreSQL��ENUM�ɕϊ�
+        // カラム型変更: theme ENUM（デフォルト値を一時的に外してから型変換）
         if (DB::getDriverName() === 'pgsql') {
             DB::statement("ALTER TABLE users ALTER COLUMN theme DROP DEFAULT;");
             DB::statement("ALTER TABLE users ALTER COLUMN theme TYPE theme USING theme::theme;");

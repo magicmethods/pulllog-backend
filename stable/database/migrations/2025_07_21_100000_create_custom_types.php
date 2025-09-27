@@ -11,7 +11,7 @@ return new class extends Migration
             return;
         }
 
-        // themeŒ^
+        // themeåž‹
         DB::statement("
             DO $$
             BEGIN
@@ -21,7 +21,7 @@ return new class extends Migration
             END$$;
         ");
 
-        // token_typeŒ^
+        // token_typeåž‹
         DB::statement("
             DO $$
             BEGIN
@@ -31,7 +31,7 @@ return new class extends Migration
             END$$;
         ");
 
-        // definitionŒ^
+        // definitionåž‹
         DB::statement("
             DO $$
             BEGIN
@@ -45,7 +45,7 @@ return new class extends Migration
             END$$;
         ");
 
-        // dropŒ^
+        // dropåž‹
         DB::statement("
             DO $$
             BEGIN
