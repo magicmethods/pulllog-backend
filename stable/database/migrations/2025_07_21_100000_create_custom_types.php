@@ -7,7 +7,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // themeåž‹
+        if (DB::getDriverName() !== 'pgsql') {
+            return;
+        }
+
+        // themeŒ^
         DB::statement("
             DO $$
             BEGIN
@@ -17,7 +21,7 @@ return new class extends Migration
             END$$;
         ");
 
-        // token_typeåž‹
+        // token_typeŒ^
         DB::statement("
             DO $$
             BEGIN
@@ -27,7 +31,7 @@ return new class extends Migration
             END$$;
         ");
 
-        // definitionåž‹
+        // definitionŒ^
         DB::statement("
             DO $$
             BEGIN
@@ -41,7 +45,7 @@ return new class extends Migration
             END$$;
         ");
 
-        // dropåž‹
+        // dropŒ^
         DB::statement("
             DO $$
             BEGIN
@@ -58,6 +62,10 @@ return new class extends Migration
 
     public function down(): void
     {
+        if (DB::getDriverName() !== 'pgsql') {
+            return;
+        }
+
         DB::statement("DROP TYPE IF EXISTS drop CASCADE;");
         DB::statement("DROP TYPE IF EXISTS definition CASCADE;");
         DB::statement("DROP TYPE IF EXISTS token_type CASCADE;");
