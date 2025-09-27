@@ -41,17 +41,21 @@ use Carbon\Carbon;
  * 
  * @usage:
  * ```php
- * // User ↁE紐づくアプリの一覧�E�Eivot含む�E�E * $user = User::with(['userApps.app'])->findOrFail(3);
+ * // User → 紐づくアプリの一覧（pivot含む）
+ * $user = User::with(['userApps.app'])->findOrFail(3);
  *
- * // User ↁEログ�E�整数の最小単位！E * $logs = $user->logs()->latest('log_date')->limit(30)->get();
+ * // User → ログ（整数の最小単位）
+ * $logs = $user->logs()->latest('log_date')->limit(30)->get();
  *
- * // User ↁEログ�E�Eecimal/通貨コード付きのビュー�E�E * $moneyLogs = $user->moneyLogs()->forApp(7)->dateBetween('2025-08-01', '2025-08-31')->get();
+ * // User → ログ（decimal/通貨コード付きのビュー）
+ * $moneyLogs = $user->moneyLogs()->forApp(7)->dateBetween('2025-08-01', '2025-08-31')->get();
  *
- * // App ↁEこ�Eアプリに紐づくユーザーピ�EチE��
+ * // App → このアプリに紐づくユーザーピボット
  * $app = App::with('userApps.user')->findOrFail(7);
  *
  * // 冪等リンク
- * $user->linkApp($app->id);           // user_apps upsert 相彁E * $has = $user->hasApp($app->id);     // true/false
+ * $user->linkApp($app->id);           // user_apps upsert 相当
+ * $has = $user->hasApp($app->id);     // true/false
  * ```
  */
 class User extends Authenticatable
@@ -124,7 +128,8 @@ class User extends Authenticatable
 	}
 
 	/**
-     * 多対多（既存�E通り�E�E     * @return BelongsToMany<App>
+     * 多対多（既存の通り）
+	 * @return BelongsToMany<App>
      */
 	public function apps(): BelongsToMany
 	{
@@ -140,7 +145,8 @@ class User extends Authenticatable
 	}
 
 	/**
-	 * 親 logs チE�Eブルへ一本化（パーチE��ションはDBが�E動ルーチE��ング�E�E     * @return HasMany<Log>
+	 * 親 logs テーブルへ一本化（パーティションはDBが自動ルーティング）
+	 * @return HasMany<Log>
      */
 	public function logs(): HasMany
 	{
@@ -148,7 +154,8 @@ class User extends Authenticatable
 	}
 
 	/**
-	 * ビュー logs_with_money�E�読み取り専用モチE���E�E     * @return HasMany<LogWithMoney>
+	 * ビュー logs_with_money（読み取り専用モデル）
+	 * @return HasMany<LogWithMoney>
      */
     public function moneyLogs(): HasMany
     {
@@ -156,7 +163,7 @@ class User extends Authenticatable
     }
 
 	/**
-	 * ピ�EチE��明示�E�user_apps
+	 * ピボット明示：user_apps
      * @return HasMany<UserApp>
      */
     public function userApps(): HasMany
@@ -170,7 +177,7 @@ class User extends Authenticatable
         return $this->hasMany(UserFilter::class, 'user_id', 'id');
     }
 
-	/* ========= スコーチE========= */
+	/* ========= スコープ ========= */
 
     public function scopeActive($q)
     {
@@ -182,15 +189,16 @@ class User extends Authenticatable
         return $q->where('is_verified', true);
     }
 
-	/* ========= ユーチE��リチE�� ========= */
+	/* ========= ユーティリティ ========= */
 
-    /** 持E��アプリと紐付いてぁE��ぁE*/
+    /** 指定アプリと紐付いているか */
     public function hasApp(int $appId): bool
     {
-        // user_apps のユニ�Eク制紁E��Eser_id, app_id�E�前提で高送E        return $this->userApps()->where('app_id', $appId)->exists();
+        // user_apps のユニーク制約（user_id, app_id）前提で高速
+		return $this->userApps()->where('app_id', $appId)->exists();
     }
 
-    /** アプリと冪等にリンク�E�無ければ作�E、あれ�E何もしなぁE��E*/
+    /** アプリと冪等にリンク（無ければ作成、あれば何もしない） */
     public function linkApp(int $appId): UserApp
     {
         return UserApp::ensureLink($this->id, $appId);
