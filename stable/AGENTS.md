@@ -18,6 +18,7 @@
 - PHP: PSR-12、スペース4。整形は `vendor/bin/pint`。
 - 命名: クラス `StudlyCaps`、メソッド/変数 `camelCase`、定数 `UPPER_SNAKE_CASE`。
 - ルーティングは `routes/api.php` を基点（`config('api.base_uri')` 配下）。
+- バイナリ以外のリソースファイルは原則文字コード `UTF-8` で `BOM` 無し、改行コードは `LF` とする。原則から外れる場合は通知すること。
 
 ## Testing Guidelines
 - フレームワーク: PHPUnit。配置は `tests/Unit` / `tests/Feature`、ファイル名は `*Test.php`。
@@ -34,3 +35,5 @@
 - DB 初期化: `php artisan migrate`（または `init_db.(sh|bat)`）。
 - API 連携: `API_BASE_URI` と `API_KEY` を設定。ログへ個人情報を残さない。
 
+## Others
+- `.codex/` を codex CLI で作業する際のテンポラリディレクトリとして利用する。作業用の一時ファイルやバグレポート、Issueのひな形、補足ドキュメント等を自由に出力して構いません。
