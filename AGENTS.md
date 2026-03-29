@@ -40,6 +40,19 @@ Beta (PHP API):
 - DB 初期化: Stable は `init_db.(sh|bat)` または `php artisan migrate`、Beta は `schema/` と `pulllog-ddl.sql` を参照。
 - ログには個人情報を残さない（`beta/logs/` はローテーション前提）。
 
+## API Contract
+- API スキーマの正本は `contract/api-schema.yaml`（contract ワークスペース管理）。
+- エンドポイントを追加・変更する際は必ず `contract/api-schema.yaml` を参照すること。
+- マルチルートワークスペース（`backend.code-workspace` または `pulllog.code-workspace`）では `${workspaceFolder:contract}/api-schema.yaml` としてアクセス可能。
+
+## Docs / Issue 運用
+- `docs/` は長期参照する開発・運用ドキュメントを置く。
+- 機能計画は `docs/features/`、連携仕様は `docs/integrations/`、運用手順は `docs/operations/` を使う。
+- `stable/docs` の既存ドキュメントは `backend/docs` に集約し、今後は `docs/` を正本として扱う。
+- GitHub Issue の正本は GitHub 側に置き、起票時は `.github/ISSUE_TEMPLATE/` のテンプレートを利用する。
+- 一時的な作業メモ、壁打ち、未整理の調査ログは `.codex/` に置く。
+- `docs/` 配下のファイル名は `*-plan.md`、`*-spec.md`、`*-notes.md` のように用途が分かる名前を使う。
+
 ## Agent-Specific Notes
 - 本 AGENTS.md は `backend/` 配下に適用。下位に AGENTS.md がある場合は、より深い階層の指示を優先してください。
 

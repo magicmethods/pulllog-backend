@@ -1,0 +1,51 @@
+name: Backend Task
+description: バックエンド実装タスクを起票する
+title: "task(backend): "
+labels:
+  - backend
+  - task
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 何を実装するかを簡潔に記載
+      placeholder: ギャラリー資産一覧 API のフィルタを追加する
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: なぜ必要か、関連する文脈
+    validations:
+      required: true
+  - type: input
+    id: related_doc
+    attributes:
+      label: 関連ドキュメント
+      description: docs 配下の参照先
+      placeholder: docs/features/gallery/upload-ticket-spec.md
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対応範囲
+      description: 実装対象と対象外を分けて記載
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ条件
+      description: 完了条件を箇条書きで記載
+      placeholder: |
+        - 新規エンドポイントが追加される
+        - API 契約と実装が一致している
+        - stable/tests の関連テストが通る
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 実装メモ
+      description: API 契約、依存Issue、懸念点など
