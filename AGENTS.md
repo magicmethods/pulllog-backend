@@ -56,3 +56,10 @@ Beta (PHP API):
 ## Agent-Specific Notes
 - 本 AGENTS.md は `backend/` 配下に適用。下位に AGENTS.md がある場合は、より深い階層の指示を優先してください。
 
+## Workspace Root Policy Summary
+- 上位階層（`pulllog/AGENTS.md`）の共通方針に合わせ、Windows では PowerShell を優先する。
+- Python は存在を前提にしない。未確認状態で Python スクリプトを生成・実行しない。
+- 実行コマンドは以下を優先する: `composer.json` / `package.json` の既存スクリプト → リポジトリ内既存スクリプト → PowerShell → Node.js。
+- backend では stable/beta それぞれの既存手順（composer / phpunit / phpstan / phpcs）を優先する。
+- 検証は最小単位から行い、不要なフルテストや無関係な変更を避ける。
+
