@@ -1,0 +1,32 @@
+name: Backend Investigation
+description: 調査・設計検討用のIssueを起票する
+title: "investigate(backend): "
+labels:
+  - backend
+  - investigation
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: 調査したいこと
+      description: 未確定事項や論点
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: 比較したい案
+      description: 案A / 案B のように候補を列挙
+  - type: input
+    id: related_doc
+    attributes:
+      label: 関連ドキュメント
+      placeholder: docs/architecture/overview.md
+  - type: textarea
+    id: output
+    attributes:
+      label: 期待するアウトプット
+      description: 何が決まれば完了か
+      placeholder: 実装方針、リスク、推奨案を確定する
+    validations:
+      required: true

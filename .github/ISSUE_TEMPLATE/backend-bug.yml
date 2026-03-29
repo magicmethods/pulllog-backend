@@ -1,0 +1,40 @@
+name: Backend Bug
+description: バックエンド不具合を起票する
+title: "fix(backend): "
+labels:
+  - backend
+  - bug
+body:
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 症状
+      description: 何が起きているか
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現手順
+      placeholder: |
+        1. API を呼び出す
+        2. 特定のパラメータを渡す
+        3. 想定外レスポンスになる
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待結果
+    validations:
+      required: true
+  - type: input
+    id: related_doc
+    attributes:
+      label: 関連ドキュメント
+      placeholder: docs/operations/gallery-bug-report-notes.md
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログ・再現データ
+      description: エラーログ、リクエスト/レスポンス、スクリーンショットなど

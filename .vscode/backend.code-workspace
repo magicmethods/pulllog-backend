@@ -1,8 +1,21 @@
 {
 	"folders": [
 		{
+			"name": "backend",
 			"path": ".."
+		},
+		{
+			"name": "contract",
+			"path": "../../contract"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"terminal.integrated.defaultProfile.windows": "Git Bash",
+		"terminal.integrated.profiles.windows": {
+			"Git Bash": {
+				"path": "C:\\Program Files\\Git\\bin\\bash.exe",
+				"icon": "terminal-bash"
+			}
+		}
+	}
 }
