@@ -20,3 +20,11 @@ The authoritative OpenAPI schema for the Pulllog API is maintained in the **cont
 ## General Guidelines
 
 See `AGENTS.md` in this workspace root for full coding conventions, build commands, and PR guidelines.
+
+## Workspace Root Policy Summary
+
+- This workspace follows the shared root policy in `pulllog/AGENTS.md`.
+- On Windows, prefer PowerShell-first workflows.
+- Do not assume Python is installed. Avoid Python-based helpers unless availability is confirmed.
+- For command selection, prioritize existing `composer.json` / `package.json` scripts and committed repo scripts.
+- Keep edits scoped and validate with the smallest relevant command first.
