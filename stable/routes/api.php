@@ -18,6 +18,8 @@ use App\Http\Controllers\Api\Stats\StatsController;
 use App\Http\Controllers\Api\User\ProfileController;
 use App\Http\Controllers\Api\UserFilters\UserFilterController;
 use App\Http\Controllers\Api\Currencies\CurrencyController;
+use App\Http\Controllers\Gallery\GalleryAssetController;
+use App\Http\Controllers\Gallery\GalleryUsageController;
 
 Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
@@ -81,6 +83,21 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
             // 統計関連のルート
             Route::prefix('stats')->group(function () {
                 Route::get(   '/{appId}', [StatsController::class, 'getAppStats'])->name('stats.app.get');
+            });
+
+            // ギャラリー関連のルート
+            Route::prefix('gallery')->group(function () {
+                Route::post('assets/upload-ticket', [GalleryAssetController::class, 'uploadTicket'])->name('gallery.assets.upload-ticket');
+                Route::get('assets', [GalleryAssetController::class, 'index'])->name('gallery.assets.index');
+                Route::post('assets', [GalleryAssetController::class, 'store'])->name('gallery.assets.store');
+                Route::get('assets/{id}', [GalleryAssetController::class, 'show'])->name('gallery.assets.show');
+                Route::patch('assets/{id}', [GalleryAssetController::class, 'update'])->name('gallery.assets.update');
+                Route::delete('assets/{id}', [GalleryAssetController::class, 'destroy'])->name('gallery.assets.destroy');
+                Route::get('usage', [GalleryUsageController::class, 'show'])->name('gallery.usage.show');
+                Route::get('assets/{id}/content', [GalleryAssetController::class, 'content'])
+                    ->name('gallery.assets.content')
+                    ->withoutMiddleware(['auth.apikey', 'auth.csrf', 'demo.guard'])
+                    ->middleware('signed');
             });
 
             // ユーザー関連のルート

@@ -24,7 +24,15 @@ return new class extends Migration
         DO $$
         BEGIN
             IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'storage_disk') THEN
-                CREATE TYPE storage_disk AS ENUM ('local', 's3', 'drive', 'dropbox');
+                CREATE TYPE storage_disk AS ENUM ('local', 'private', 's3', 'drive', 'dropbox');
+            ELSE
+                IF NOT EXISTS (
+                    SELECT 1 FROM pg_enum e
+                    JOIN pg_type t ON e.enumtypid = t.oid
+                    WHERE t.typname = 'storage_disk' AND e.enumlabel = 'private'
+                ) THEN
+                    ALTER TYPE storage_disk ADD VALUE 'private';
+                END IF;
             END IF;
         END$$;
         SQL);

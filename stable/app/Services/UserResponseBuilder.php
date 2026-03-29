@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\User;
 use Carbon\Carbon;
-//use Illuminate\Support\Facades\Log;
 
 class UserResponseBuilder
 {
@@ -13,22 +12,26 @@ class UserResponseBuilder
      */
     public static function build(User $user): array
     {
-        // Eager Load推奨
         $user->loadMissing('plan');
         $plan = $user->plan;
-        // プラン制限（型合わせ＆バイト単位変換）
-        $planLimits = $plan ? [
-            'maxApps' => $plan->max_apps,
-            'maxAppNameLength' => $plan->max_app_name_length,
-            'maxAppDescriptionLength' => $plan->max_app_desc_length,
-            'maxLogTags' => $plan->max_log_tags,
-            'maxLogTagLength' => $plan->max_log_tag_length,
-            'maxLogTextLength' => $plan->max_log_text_length,
-            'maxLogsPerApp' => $plan->max_logs_per_app,
-            // max_storage_mb(プラン) → maxStorage(バイト)
-            'maxStorage' => $plan->max_storage_mb * 1024 * 1024,
-            // maxLogSizeはPlanテーブルに現状は該当フィールドがない
-        ] : [];
+
+        $planLimits = [];
+        if ($plan) {
+            $planLimits = [
+                'maxApps' => $plan->max_apps,
+                'maxAppNameLength' => $plan->max_app_name_length,
+                'maxAppDescriptionLength' => $plan->max_app_desc_length,
+                'maxLogTags' => $plan->max_log_tags,
+                'maxLogTagLength' => $plan->max_log_tag_length,
+                'maxLogTextLength' => $plan->max_log_text_length,
+                'maxLogsPerApp' => $plan->max_logs_per_app,
+                'maxStorage' => $plan->max_storage_mb * 1024 * 1024,
+                'maxGallery' => $plan->max_gallery_mb * 1024 * 1024,
+                'maxUploadPerFile' => $plan->max_upload_mb_per_file * 1024 * 1024,
+                'externalStorageAllowed' => (bool) $plan->external_storage_allowed,
+                'transcodeWebp' => (bool) $plan->transcode_webp,
+            ];
+        }
 
         return [
             'id' => $user->id,
@@ -51,8 +54,8 @@ class UserResponseBuilder
                 : null,
             'last_login_ip' => $user->last_login_ip ?? null,
             'last_login_user_agent' => $user->last_login_ua ?? null,
-            'is_deleted' => (bool)($user->is_deleted ?? false),
-            'is_verified' => (bool)($user->is_verified ?? false),
+            'is_deleted' => (bool) ($user->is_deleted ?? false),
+            'is_verified' => (bool) ($user->is_verified ?? false),
             'unread_notifications' => $user->unread_notices ?? [],
         ];
     }

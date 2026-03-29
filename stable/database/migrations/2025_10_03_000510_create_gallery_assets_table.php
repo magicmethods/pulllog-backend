@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('gallery_assets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('app_id')->nullable();
             $table->unsignedBigInteger('log_id')->nullable();
             $table->string('disk', 32)->default('local');
             $table->string('path', 1024);
@@ -32,10 +33,12 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->index(['user_id', 'created_at']);
+            $table->index(['app_id', 'created_at']);
             $table->index(['log_id', 'created_at']);
             $table->unique(['user_id', 'hash_sha256']);
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('app_id')->references('id')->on('apps')->nullOnDelete();
         });
 
         if (DB::getDriverName() === 'pgsql') {
@@ -54,6 +57,7 @@ return new class extends Migration
         if (Schema::hasTable('gallery_assets')) {
             Schema::table('gallery_assets', function (Blueprint $table) {
                 $table->dropForeign(['user_id']);
+                $table->dropForeign(['app_id']);
             });
         }
 
