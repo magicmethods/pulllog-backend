@@ -1,0 +1,42 @@
+name: Frontend Integration Request
+description: フロントエンド連携や契約調整の依頼を起票する
+title: "integration(frontend): "
+labels:
+  - backend
+  - frontend
+  - integration
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: 依頼内容
+      description: 何を変更してほしいか
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 背景と目的
+      description: なぜ必要か、どのAPI/画面に影響するか
+    validations:
+      required: true
+  - type: input
+    id: contract
+    attributes:
+      label: API契約参照
+      placeholder: contract/api-schema.yaml
+  - type: input
+    id: related_doc
+    attributes:
+      label: 関連ドキュメント
+      placeholder: docs/integrations/frontend/gallery-integration-notes.md
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ条件
+      placeholder: |
+        - 必要な契約差分が確定する
+        - 実装側の変更点が明確になる
+        - 連携テスト観点が合意される
+    validations:
+      required: true
