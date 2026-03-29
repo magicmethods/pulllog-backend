@@ -33,8 +33,6 @@
 - DB 初期化: `php artisan migrate`（または `init_db.(sh|bat)`）。
 - API 連携: `API_BASE_URI` と `API_KEY` を設定。ログへ個人情報を残さない。
 
-<<<<<<< Updated upstream
-=======
 ## API Contract
 - API スキーマの正本は `contract/api-schema.yaml`（contract ワークスペース管理）。
 - エンドポイントを追加・変更する際は必ず `contract/api-schema.yaml` を参照すること。
@@ -46,4 +44,3 @@
 
 ## Others
 - `.codex/` を codex CLI で作業する際のテンポラリディレクトリとして利用する。作業用の一時ファイルやバグレポート、Issueのひな形、補足ドキュメント等を自由に出力して構いません。
->>>>>>> Stashed changes
