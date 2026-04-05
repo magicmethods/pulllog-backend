@@ -55,9 +55,9 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'email' => 'ka2bowy@gmail.com',
-                'password' => bcrypt('3ys3fVL+9E9A'),// 登録後適宜変更
-                'name' => 'DEMO',
+                'email' => 'e2e@pulllog.net',
+                'password' => bcrypt('3ys3fVL+9E9A'),// E2Eテスト専用
+                'name' => 'E2E',
                 'avatar_url' => null,
                 'roles' => json_encode(['user']),
                 'plan_id' => 1, // Free

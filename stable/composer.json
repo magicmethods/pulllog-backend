@@ -56,6 +56,17 @@
       "Composer\\Config::disableProcessTimeout",
       "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
     ],
+    "e2e:prepare": [
+      "@php -r \"file_exists('.env.e2e') || copy('.env.e2e.example', '.env.e2e');\"",
+      "@php artisan config:clear --ansi",
+      "@php -r \"$envFile='.env.e2e'; $contents=file_get_contents($envFile); if (!preg_match('/^APP_KEY=base64:/m', $contents)) { $key='base64:'.base64_encode(random_bytes(32)); $contents=preg_replace('/^APP_KEY=.*$/m', 'APP_KEY='.$key, $contents, 1, $count); if (!$count) { $contents .= PHP_EOL.'APP_KEY='.$key.PHP_EOL; } file_put_contents($envFile, $contents); echo 'E2E APP_KEY prepared'.PHP_EOL; }\"",
+      "@php -r \"if (!file_exists('public/storage')) { passthru(PHP_BINARY . ' artisan storage:link --ansi', $code); exit($code); }\"",
+      "@php artisan migrate:fresh --seed --env=e2e --force"
+    ],
+    "e2e:serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php artisan serve --env=e2e --host=127.0.0.1 --port=3030"
+    ],
     "repo:guard": [
       "@php scripts/check_forbidden_files.php"
     ],
