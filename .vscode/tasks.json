@@ -1,0 +1,170 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Stable: install dependencies",
+            "type": "shell",
+            "command": "composer",
+            "args": ["install"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Stable: Laravel dev",
+            "type": "shell",
+            "command": "composer",
+            "args": ["run", "dev"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Stable: composer test",
+            "type": "shell",
+            "command": "composer",
+            "args": ["test"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Stable: artisan test (filter)",
+            "type": "shell",
+            "command": "php",
+            "args": ["artisan", "test", "--filter", "${input:stableTestFilter}"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Stable: Pint format",
+            "type": "shell",
+            "command": "vendor/bin/pint",
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Stable: route list",
+            "type": "shell",
+            "command": "php",
+            "args": ["artisan", "route:list"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Stable: schedule list",
+            "type": "shell",
+            "command": "php",
+            "args": ["artisan", "schedule:list"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Stable: E2E prepare",
+            "type": "shell",
+            "command": "composer",
+            "args": ["run", "e2e:prepare"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Stable: E2E serve",
+            "type": "shell",
+            "command": "composer",
+            "args": ["run", "e2e:serve"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Stable: E2E prepare + serve",
+            "type": "shell",
+            "command": "echo",
+            "args": ["Stable E2E backend is ready."],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "dependsOn": ["Stable: E2E prepare", "Stable: E2E serve"],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Beta: install dependencies",
+            "type": "shell",
+            "command": "composer",
+            "args": ["install"],
+            "options": {
+                "cwd": "${workspaceFolder}/beta"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Beta: start server",
+            "type": "shell",
+            "command": "php",
+            "args": ["start_server.php"],
+            "options": {
+                "cwd": "${workspaceFolder}/beta"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Beta: PHPUnit",
+            "type": "shell",
+            "command": "vendor/bin/phpunit",
+            "options": {
+                "cwd": "${workspaceFolder}/beta"
+            },
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Beta: PHPStan",
+            "type": "shell",
+            "command": "vendor/bin/phpstan",
+            "args": ["analyse"],
+            "options": {
+                "cwd": "${workspaceFolder}/beta"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Beta: PHPCS",
+            "type": "shell",
+            "command": "vendor/bin/phpcs",
+            "options": {
+                "cwd": "${workspaceFolder}/beta"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "stableTestFilter",
+            "type": "promptString",
+            "description": "PHPUnit filter for stable/tests (example: AuthTest or test_login_flow)",
+            "default": "Auth"
+        }
+    ]
+}
