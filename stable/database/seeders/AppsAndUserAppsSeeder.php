@@ -46,12 +46,25 @@ class AppsAndUserAppsSeeder extends Seeder
                 )
             ");
 
-            // user_apps を作成：id=1,2 は user_id=2、それ以外は user_id=3
+            // user_apps を作成：id=1,2 は Demo、それ以外は E2E 専用アカウントへ紐付ける
+            $demoUserId = (int) (DB::table('users')
+                ->where('email', 'demo@pulllog.net')
+                ->value('id') ?? 0);
+            $e2eUserId = (int) (DB::table('users')
+                ->where('email', 'e2e@pulllog.net')
+                ->value('id') ?? 0);
+
+            if ($demoUserId === 0 || $e2eUserId === 0) {
+                throw new \RuntimeException('Seeded demo/e2e users were not found before creating user_apps.');
+            }
+
             $now = now();
             $userAppsRows = [];
             foreach ($apps as $row) {
                 $appId = (int) $row['id'];
-                $userId = in_array($appId, [1, 2], true) ? 2 : 3;
+                $userId = in_array($appId, [1, 2], true)
+                    ? $demoUserId
+                    : $e2eUserId;
 
                 // 既存 created_at/updated_at を揃える。無い場合は now。
                 $createdAt = $row['created_at'] ?? $now;

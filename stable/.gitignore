@@ -3,6 +3,9 @@
 .env
 .env.local
 .env.production
+.env.e2e
+.env.e2e.local
+!.env.e2e.example
 .phpactor.json
 .phpunit.result.cache
 /.fleet

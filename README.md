@@ -14,6 +14,7 @@
 - [ER図](#ER図)
 - [デプロイ手順](#デプロイ手順)
 - [バッチ処理について](#バッチ処理について)
+- [E2Eテスト連携](#e2eテスト連携)
 - [モック環境](#モック環境)
 - [ライセンス](#ライセンス)
 - [コントリビューション](#コントリビューション)
@@ -271,6 +272,46 @@ erDiagram
 
 ---
 
+## E2Eテスト連携
+
+フロントエンドの Playwright ベースのゴールデンルートE2Eは、この `stable/` の Laravel 環境を専用バックエンドとして利用します。Playwright からは `composer run e2e:serve` が起動され、`http://127.0.0.1:3030/up` のヘルスチェック完了後にシナリオが開始されます。
+
+### 仕組み
+
+- `.env.e2e` を使った専用ローカル環境で、通常の開発環境と分離して動作します
+- `composer run e2e:prepare` は `.env.e2e` の生成・補完、`APP_KEY` の準備、`storage:link`、`migrate:fresh --seed --env=e2e --force` をまとめて実行します
+- バックエンドの Seeder では、E2E専用アカウント `e2e@pulllog.net`（name: `E2E`, `plan_id = 1`）と、検証に必要な `apps` / `user_apps` の関連付けを投入します
+- 履歴保存や統計表示で必要な `logs` テーブルおよび `logs_with_money` View を含め、ゴールデンルートE2Eがそのまま通るDB状態を再現します
+
+### 実行例
+
+`stable/` ディレクトリで準備する場合:
+
+```sh
+cd stable
+composer install
+composer run e2e:prepare
+composer run e2e:serve
+```
+
+別ターミナルでフロントエンドE2Eを実行します。
+
+```sh
+cd ../../frontend
+pnpm run test:e2e
+```
+
+フロントエンド側からまとめて準備する場合は、次のコマンドでも同じ初期化を呼び出せます。
+
+```sh
+cd frontend
+pnpm run test:e2e:prepare
+```
+
+> `e2e:prepare` は E2E用DBを `migrate:fresh --seed` で再作成するため、既存データを残したい環境では実行先を分けてください。
+
+---
+
 ## モック環境
 
 モックシステムは `beta/` ディレクトリに格納しています。
@@ -312,4 +353,14 @@ MAGIC METHODS に帰属します。
 - [PullLog フロントエンドリポジトリ](https://github.com/magicmethods/pulllog-frontend)
 - [PullLog API仕様書](https://github.com/magicmethods/pulllog-contract)
 - ドキュメント
+  - [利用規約（日本語）](https://github.com/magicmethods/pulllog-frontend/blob/main/public/docs/terms_ja.md)
+  - [利用規約（English）](https://github.com/magicmethods/pulllog-frontend/blob/main/public/docs/terms_en.md)
+  - [利用規約（中国語・簡体字）](https://github.com/magicmethods/pulllog-frontend/blob/main/public/docs/terms_zh.md)
+  - [プライバシーポリシー（日本語）](https://github.com/magicmethods/pulllog-frontend/blob/main/public/docs/privacy_policy_ja.md)
+  - [プライバシーポリシー（English）](https://github.com/magicmethods/pulllog-frontend/blob/main/public/docs/privacy_policy_en.md)
+  - [プライバシーポリシー（中国語・簡体字）](https://github.com/magicmethods/pulllog-frontend/blob/main/public/docs/privacy_policy_zh.md)
 
+---
+
+**（補足）**  
+運用や設計方針の見直しは適宜Issue/PRで反映していきます。最新情報はGitHubリポジトリおよび本READMEを参照してください。
