@@ -45,6 +45,12 @@ Beta (PHP API):
 - エンドポイントを追加・変更する際は必ず `contract/api-schema.yaml` を参照すること。
 - マルチルートワークスペース（`backend.code-workspace` または `pulllog.code-workspace`）では `${workspaceFolder:contract}/api-schema.yaml` としてアクセス可能。
 
+## Repository Playwright E2E Reference
+- Playwright E2E アーキテクチャとケース定義の正本は `../frontend/docs/architecture/e2e-test.md` と `../frontend/e2e/cases/case.schema.json` を参照すること。
+- 規定プロジェクトマトリクスは `chromium` / `ipad-pro-11` / `iphone-14`。個別指定が必要な場合は frontend ワークスペースの既存スクリプトで `--project=chromium,ipad-pro-11,iphone-14` のようにカンマ区切り指定を優先する。
+- レポートテンプレートは `../frontend/e2e/templates/`、リポジトリ既定セットは `../frontend/e2e/templates/pulllog/`。グローバル切替は `../frontend/.env.e2e` の `PLAYWRIGHT_E2E_TEMPLATE_DIR` 等で管理する。
+- 同一 case の複数プロジェクト実行時は、Markdown レポートと PDF evidence が全プロジェクト結果を集約表示する前提で backend 側の影響を確認する。
+
 ## Docs / Issue 運用
 - `docs/` は長期参照する開発・運用ドキュメントを置く。
 - 機能計画は `docs/features/`、連携仕様は `docs/integrations/`、運用手順は `docs/operations/` を使う。
