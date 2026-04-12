@@ -2,7 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Stable: install dependencies",
+            "label": "Backend: Install dependencies",
+            "detail": "Laravel Stable 側の Composer 依存関係をインストールします。",
             "type": "shell",
             "command": "composer",
             "args": ["install"],
@@ -12,7 +13,20 @@
             "problemMatcher": []
         },
         {
-            "label": "Stable: Laravel dev",
+            "label": "Backend: Start local API",
+            "detail": "Laravel のローカル API サーバーを 3030 番ポートで起動します。",
+            "type": "shell",
+            "command": "php",
+            "args": ["artisan", "serve", "--host=127.0.0.1", "--port=3030"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Backend: Start full dev stack",
+            "detail": "API・queue・pail・Vite を含むフル開発スタックを起動します。",
             "type": "shell",
             "command": "composer",
             "args": ["run", "dev"],
@@ -23,7 +37,36 @@
             "problemMatcher": []
         },
         {
-            "label": "Stable: composer test",
+            "label": "Backend: Migrate and seed local DB",
+            "detail": "ローカル DB のマイグレーションと初期データ投入を実行します。",
+            "type": "shell",
+            "command": "php",
+            "args": ["artisan", "migrate", "--seed", "--force"],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Backend: Stop local API",
+            "detail": "3030 番ポートで動作しているローカル API を停止します。",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "$targets = Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'pulllog\\\\backend\\\\stable' -and $_.CommandLine -match 'artisan serve' -and $_.CommandLine -match '127\\.0\\.0\\.1' -and $_.CommandLine -match '3030' }; if ($targets) { $targets | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }; Write-Host ('Stopped stable Laravel dev processes: ' + (($targets | ForEach-Object { $_.ProcessId }) -join ', ')) } else { Write-Host 'No stable Laravel dev process found.' }"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/stable"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Backend: Run tests",
+            "detail": "Stable バックエンドのテスト一式を実行します。",
             "type": "shell",
             "command": "composer",
             "args": ["test"],
@@ -34,10 +77,11 @@
             "group": "test"
         },
         {
-            "label": "Stable: artisan test (filter)",
+            "label": "Backend: Run filtered tests",
+            "detail": "指定したフィルターに一致するテストだけを実行します。",
             "type": "shell",
             "command": "php",
-            "args": ["artisan", "test", "--filter", "${input:stableTestFilter}"],
+            "args": ["artisan", "test", "--filter", "${input:backendTestFilter}"],
             "options": {
                 "cwd": "${workspaceFolder}/stable"
             },
@@ -45,7 +89,8 @@
             "group": "test"
         },
         {
-            "label": "Stable: Pint format",
+            "label": "Backend: Format with Pint",
+            "detail": "Pint で PHP コードを整形します。",
             "type": "shell",
             "command": "vendor/bin/pint",
             "options": {
@@ -54,7 +99,8 @@
             "problemMatcher": []
         },
         {
-            "label": "Stable: route list",
+            "label": "Backend: Show routes",
+            "detail": "Laravel のルート一覧を表示します。",
             "type": "shell",
             "command": "php",
             "args": ["artisan", "route:list"],
@@ -64,7 +110,8 @@
             "problemMatcher": []
         },
         {
-            "label": "Stable: schedule list",
+            "label": "Backend: Show schedule",
+            "detail": "Laravel のスケジュール一覧を表示します。",
             "type": "shell",
             "command": "php",
             "args": ["artisan", "schedule:list"],
@@ -74,7 +121,8 @@
             "problemMatcher": []
         },
         {
-            "label": "Stable: E2E prepare",
+            "label": "Backend E2E: Prepare",
+            "detail": "E2E 用の環境準備と DB 初期化を行います。",
             "type": "shell",
             "command": "composer",
             "args": ["run", "e2e:prepare"],
@@ -85,7 +133,8 @@
             "group": "test"
         },
         {
-            "label": "Stable: E2E serve",
+            "label": "Backend E2E: Serve",
+            "detail": "E2E 用のバックエンド API を起動します。",
             "type": "shell",
             "command": "composer",
             "args": ["run", "e2e:serve"],
@@ -96,74 +145,25 @@
             "problemMatcher": []
         },
         {
-            "label": "Stable: E2E prepare + serve",
+            "label": "Backend E2E: Prepare and serve",
+            "detail": "E2E 用の準備後に API サーバーを起動します。",
             "type": "shell",
             "command": "echo",
-            "args": ["Stable E2E backend is ready."],
+            "args": ["Backend E2E environment is ready."],
             "options": {
                 "cwd": "${workspaceFolder}/stable"
             },
-            "dependsOn": ["Stable: E2E prepare", "Stable: E2E serve"],
+            "dependsOn": ["Backend E2E: Prepare", "Backend E2E: Serve"],
             "dependsOrder": "sequence",
             "problemMatcher": [],
             "group": "test"
-        },
-        {
-            "label": "Beta: install dependencies",
-            "type": "shell",
-            "command": "composer",
-            "args": ["install"],
-            "options": {
-                "cwd": "${workspaceFolder}/beta"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Beta: start server",
-            "type": "shell",
-            "command": "php",
-            "args": ["start_server.php"],
-            "options": {
-                "cwd": "${workspaceFolder}/beta"
-            },
-            "isBackground": true,
-            "problemMatcher": []
-        },
-        {
-            "label": "Beta: PHPUnit",
-            "type": "shell",
-            "command": "vendor/bin/phpunit",
-            "options": {
-                "cwd": "${workspaceFolder}/beta"
-            },
-            "problemMatcher": [],
-            "group": "test"
-        },
-        {
-            "label": "Beta: PHPStan",
-            "type": "shell",
-            "command": "vendor/bin/phpstan",
-            "args": ["analyse"],
-            "options": {
-                "cwd": "${workspaceFolder}/beta"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Beta: PHPCS",
-            "type": "shell",
-            "command": "vendor/bin/phpcs",
-            "options": {
-                "cwd": "${workspaceFolder}/beta"
-            },
-            "problemMatcher": []
         }
     ],
     "inputs": [
         {
-            "id": "stableTestFilter",
+            "id": "backendTestFilter",
             "type": "promptString",
-            "description": "PHPUnit filter for stable/tests (example: AuthTest or test_login_flow)",
+            "description": "実行対象のテストフィルターを入力します。",
             "default": "Auth"
         }
     ]
