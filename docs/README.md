@@ -18,6 +18,7 @@ docs/
 │       └── gallery-integration-notes.md        # フロント連携メモ
 └── operations/
     ├── deploy-and-release.md                   # デプロイ/ロールバック運用手順
+    ├── service-operations-overview.md          # サービス運用の正本概要
     ├── daily-batch-plan.md                     # 日次バッチ設計
     ├── gallery-manual-test-report-notes.md     # 手動テスト記録
     └── gallery-bug-report-notes.md             # 不具合報告メモ

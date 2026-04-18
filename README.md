@@ -4,6 +4,8 @@
 本アプリの正式版は Laravel + PostgreSQL を中心技術として構築します。  
 初期開発用のモック環境としては [MockAPI-PHP](https://github.com/ka215/MockAPI-PHP) を使用しています。
 
+> 用語方針: PullLog 全体は workspace、`backend/` など各トップレベルディレクトリは subproject と呼びます。正式な定義は `../pulllog-docs/docs/workspace-terminology.md` を参照してください。VS Code や pnpm の機能名に言及する場合は、それぞれの公式用語を優先します。
+
 ---
 
 ## 目次
