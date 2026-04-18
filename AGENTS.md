@@ -2,6 +2,11 @@
 
 本ドキュメントは Pulllog バックエンド（この `backend/` ディレクトリ）向けの貢献ガイドです。構成は Laravel 12 の `stable/` と、軽量 PHP API の `beta/` の二系統です。
 
+## Terminology Policy
+- Pulllog 全体は `workspace`、`backend/` など各トップレベルディレクトリは `subproject` と呼ぶ。
+- 正式な定義は `../pulllog-docs/docs/workspace-terminology.md` を参照する。
+- VS Code 機能の説明では `workspace` / `workspace folder`、pnpm の説明では公式用語を優先する。
+
 ## Project Structure & Module Organization
 - `stable/`: Laravel アプリ。`app/`, `routes/`, `resources/`, `public/`, `tests/`, `vendor/`。フロント資産は Vite（`package.json`）。
 - `beta/`: スタンドアロン API。`hooks/`(各エンドポイント), `libs/`, `tests/`, `schema/`, `vendor/`。
