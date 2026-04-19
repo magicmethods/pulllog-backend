@@ -11,6 +11,12 @@
 
 beta/ のローカルモック運用は対象外です。mock 環境のセットアップやローカル開発手順は backend ルート README を参照してください。
 
+## ローカル開発 / E2E 運用
+
+- backend/stable の local-dev と e2e の運用差分は [local-development-runtime.md](local-development-runtime.md) を正本とします。
+- 通常開発は local-dev レーン、Playwright は e2e レーンを利用し、両者を混在させません。
+- `e2e:prepare` は E2E 用 DB の初期化を含み、`e2e:serve` は起動のみです。
+
 ## デプロイとリリース
 
 - 本番向けのリリース手順とロールバック手順は [deploy-and-release.md](deploy-and-release.md) に集約します。

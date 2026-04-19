@@ -40,7 +40,7 @@ docs/
 | architecture/ | システム構成、責務分離、API実装原則 |
 | features/ | 機能ごとの実装計画、仕様、設計判断 |
 | integrations/ | フロントエンド/契約との連携仕様 |
-| operations/ | リリース、運用、障害対応、テスト記録 |
+| operations/ | リリース、運用、障害対応、ローカル起動、テスト記録 |
 
 ## Agent Workflow
 
