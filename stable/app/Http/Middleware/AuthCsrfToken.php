@@ -8,6 +8,7 @@ use App\Models\UserSession;
 use App\Services\LocaleResolver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,6 +21,10 @@ class AuthCsrfToken
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->isMethod('OPTIONS')) {
+            return $next($request);
+        }
+
         $csrfToken = $request->header('x-csrf-token');
         // CSRFトークンはDB（UserSessionモデル）から取得する
         $now = Carbon::now('UTC');
@@ -44,6 +49,7 @@ class AuthCsrfToken
         $request->setUserResolver(function () use ($user) {
             return $user;
         });
+        Auth::setUser($user);
 
         return $next($request);
     }

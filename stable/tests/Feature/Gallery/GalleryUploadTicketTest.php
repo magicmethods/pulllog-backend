@@ -132,6 +132,31 @@ class GalleryUploadTicketTest extends TestCase
             ->assertStatus(429);
     }
 
+    public function test_upload_ticket_still_requires_api_key(): void
+    {
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        $this->seedSessionForUser($user, 'csrf-token');
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+        ])->postJson('/api/v1/gallery/assets/upload-ticket', [
+            'expectedBytes' => 256000,
+            'mime' => 'image/jpeg',
+            'appKey' => $app->app_key,
+        ])->assertStatus(401)->assertJson([
+            'message' => 'Unauthorized',
+        ]);
+    }
+
     private function createPlan(int $maxGalleryMb = 300, int $maxUploadMb = 20): Plan
     {
         return Plan::create([

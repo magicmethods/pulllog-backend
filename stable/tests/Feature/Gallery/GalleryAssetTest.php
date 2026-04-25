@@ -4,6 +4,7 @@ namespace Tests\Feature\Gallery;
 
 use App\Models\App;
 use App\Models\GalleryAsset;
+use App\Models\GalleryUploadTicket;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\UserSession;
@@ -37,7 +38,7 @@ class GalleryAssetTest extends TestCase
     }
 
     // Verifies successful upload stores the asset and recalculates usage counters.
-    public function test_user_can_upload_gallery_asset(): void
+    public function test_user_can_upload_gallery_asset_without_api_key(): void
     {
         Storage::fake('private');
 
@@ -63,10 +64,9 @@ class GalleryAssetTest extends TestCase
         ]);
 
         $response = $this->withHeaders([
-            'x-api-key' => 'test-api-key',
             'x-csrf-token' => 'csrf-token',
             'x-upload-token' => $ticket['token'],
-        ])->actingAs($user)
+        ])
             ->postJson('/api/v1/gallery/assets', [
                 'file' => $file,
                 'app_key' => $app->app_key,
@@ -121,6 +121,292 @@ class GalleryAssetTest extends TestCase
         $usage = DB::table('gallery_usage_stats')->where('user_id', $user->id)->first();
         $this->assertSame(1, (int) $usage->files_count);
         $this->assertGreaterThan(0, (int) $usage->bytes_used);
+    }
+
+    public function test_upload_with_invalid_token_returns_401_without_api_key(): void
+    {
+        Storage::fake('private');
+
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->seedSessionForUser($user, 'csrf-token');
+
+        $file = UploadedFile::fake()->image('invalid-token.jpg', 800, 600)->size(400);
+
+        $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+            'x-upload-token' => 'invalid-token',
+        ])->actingAs($user)
+            ->postJson('/api/v1/gallery/assets', [
+            'file' => $file,
+            'app_key' => $app->app_key,
+        ])->assertStatus(401)->assertJson([
+            'message' => 'Invalid upload token',
+        ]);
+    }
+
+    public function test_upload_with_expired_token_returns_401_without_api_key(): void
+    {
+        Storage::fake('private');
+
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->seedSessionForUser($user, 'csrf-token');
+
+        $file = UploadedFile::fake()->image('expired-token.jpg', 800, 600)->size(400);
+        $ticket = $this->createStoredUploadTicket($user, [
+            'expires_at' => now()->subMinute(),
+            'mime' => $file->getMimeType(),
+        ]);
+
+        $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+            'x-upload-token' => $ticket->token,
+        ])->actingAs($user)
+            ->postJson('/api/v1/gallery/assets', [
+            'file' => $file,
+            'app_key' => $app->app_key,
+        ])->assertStatus(401)->assertJson([
+            'message' => 'Upload token expired',
+        ]);
+    }
+
+    public function test_upload_with_used_token_returns_401_without_api_key(): void
+    {
+        Storage::fake('private');
+
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->seedSessionForUser($user, 'csrf-token');
+
+        $file = UploadedFile::fake()->image('used-token.jpg', 800, 600)->size(400);
+        $ticket = $this->createStoredUploadTicket($user, [
+            'used_at' => now()->subSecond(),
+            'mime' => $file->getMimeType(),
+        ]);
+
+        $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+            'x-upload-token' => $ticket->token,
+        ])->actingAs($user)
+            ->postJson('/api/v1/gallery/assets', [
+            'file' => $file,
+            'app_key' => $app->app_key,
+        ])->assertStatus(401)->assertJson([
+            'message' => 'Upload token already used',
+        ]);
+    }
+
+    public function test_upload_without_csrf_is_rejected_even_with_valid_token(): void
+    {
+        Storage::fake('private');
+
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->seedSessionForUser($user, 'csrf-token');
+
+        $file = UploadedFile::fake()->image('missing-csrf.jpg', 800, 600)->size(400);
+        $ticket = $this->createStoredUploadTicket($user, [
+            'app_id' => $app->id,
+            'expected_bytes' => $file->getSize(),
+            'mime' => $file->getMimeType(),
+        ]);
+
+        $this->withHeaders([
+            'x-upload-token' => $ticket->token,
+        ])->postJson('/api/v1/gallery/assets', [
+            'file' => $file,
+            'app_key' => $app->app_key,
+        ])->assertStatus(419);
+    }
+
+    public function test_reuploading_a_soft_deleted_duplicate_restores_the_asset(): void
+    {
+        Storage::fake('private');
+
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->seedSessionForUser($user, 'csrf-token');
+
+        $file = UploadedFile::fake()->image('restore-duplicate.jpg', 800, 600)->size(400);
+        $firstTicket = $this->issueUploadTicket($user, [
+            'appKey' => $app->app_key,
+            'expectedBytes' => $file->getSize(),
+            'mime' => $file->getMimeType(),
+        ]);
+
+        $firstResponse = $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+            'x-upload-token' => $firstTicket['token'],
+        ])->postJson('/api/v1/gallery/assets', [
+            'file' => $file,
+            'app_key' => $app->app_key,
+            'title' => 'Original title',
+        ]);
+
+        $firstResponse->assertCreated();
+
+        $asset = GalleryAsset::firstOrFail();
+        $asset->delete();
+
+        $restoredUpload = new UploadedFile(
+            $file->getPathname(),
+            'restore-duplicate.jpg',
+            $file->getMimeType(),
+            null,
+            true,
+        );
+
+        $secondTicket = $this->issueUploadTicket($user, [
+            'appKey' => $app->app_key,
+            'expectedBytes' => $restoredUpload->getSize(),
+            'mime' => $restoredUpload->getMimeType(),
+        ]);
+
+        $secondResponse = $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+            'x-upload-token' => $secondTicket['token'],
+        ])->postJson('/api/v1/gallery/assets', [
+            'file' => $restoredUpload,
+            'app_key' => $app->app_key,
+            'title' => 'Restored title',
+            'description' => 'Restored description',
+        ]);
+
+        $secondResponse->assertCreated();
+
+        $restoredAsset = GalleryAsset::query()->firstOrFail();
+        $this->assertSame($asset->id, $restoredAsset->id);
+        $this->assertNull($restoredAsset->deleted_at);
+        $this->assertSame('Restored title', $restoredAsset->title);
+        $this->assertSame('Restored description', $restoredAsset->description);
+        $this->assertSame(1, GalleryAsset::count());
+    }
+
+    public function test_demo_guard_blocks_upload_without_api_key(): void
+    {
+        Storage::fake('private');
+
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id, ['demo']);
+        $app = $this->createAppForUser($user);
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->seedSessionForUser($user, 'csrf-token');
+
+        $file = UploadedFile::fake()->image('demo-blocked.jpg', 800, 600)->size(400);
+        $ticket = $this->createStoredUploadTicket($user, [
+            'mime' => $file->getMimeType(),
+        ]);
+
+        $response = $this->withHeaders([
+            'x-csrf-token' => 'csrf-token',
+            'x-upload-token' => $ticket->token,
+        ])->actingAs($user)
+            ->postJson('/api/v1/gallery/assets', [
+            'file' => $file,
+            'app_key' => $app->app_key,
+        ]);
+
+        $response->assertNoContent();
+        $response->assertHeader('X-Demo-Blocked', 'write-operation');
+        $this->assertSame(0, GalleryAsset::count());
+    }
+
+    public function test_direct_upload_preflight_allows_upload_token_and_credentials(): void
+    {
+        config([
+            'cors.allowed_origins' => ['https://pull.log:4649'],
+            'cors.allowed_headers' => ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'x-csrf-token', 'x-upload-token'],
+            'cors.supports_credentials' => true,
+        ]);
+
+        $response = $this->withHeaders([
+            'Origin' => 'https://pull.log:4649',
+            'Access-Control-Request-Method' => 'POST',
+            'Access-Control-Request-Headers' => 'x-csrf-token, x-upload-token',
+        ])->call('OPTIONS', '/api/v1/gallery/assets');
+
+        $this->assertContains($response->getStatusCode(), [200, 204]);
+        $this->assertSame('https://pull.log:4649', $response->headers->get('Access-Control-Allow-Origin'));
+        $this->assertSame('true', $response->headers->get('Access-Control-Allow-Credentials'));
+        $this->assertContains('x-upload-token', array_map(
+            static fn (string $header): string => strtolower($header),
+            config('cors.allowed_headers', [])
+        ));
+    }
+
+    public function test_gallery_assets_index_requires_authentication_headers(): void
+    {
+        $this->getJson('/api/v1/gallery/assets')
+            ->assertStatus(401);
+
+        $this->withHeaders([
+            'x-api-key' => 'test-api-key',
+        ])->getJson('/api/v1/gallery/assets')
+            ->assertStatus(419);
+    }
+
+    public function test_gallery_usage_show_requires_authentication_headers(): void
+    {
+        $this->getJson('/api/v1/gallery/usage')
+            ->assertStatus(401);
+
+        $this->withHeaders([
+            'x-api-key' => 'test-api-key',
+        ])->getJson('/api/v1/gallery/usage')
+            ->assertStatus(419);
     }
 
     // Confirms duplicate uploads return HTTP 409 and do not create a second record.
@@ -341,11 +627,11 @@ class GalleryAssetTest extends TestCase
         ]);
     }
 
-    private function createUserForPlan(int $planId): User
+    private function createUserForPlan(int $planId, array $roles = ['user']): User
     {
         return User::factory()->create([
             'plan_id' => $planId,
-            'roles' => ['user'],
+            'roles' => $roles,
             'plan_expiration' => now()->addYear(),
             'language' => 'en',
             'theme' => 'light',
@@ -391,6 +677,25 @@ class GalleryAssetTest extends TestCase
             'meta' => Arr::get($json, 'meta'),
             'appId' => Arr::get($json, 'appId'),
         ];
+    }
+
+    private function createStoredUploadTicket(User $user, array $overrides = []): GalleryUploadTicket
+    {
+        return GalleryUploadTicket::create(array_merge([
+            'user_id' => $user->id,
+            'token' => (string) Str::ulid(),
+            'app_id' => null,
+            'file_name' => 'upload.jpg',
+            'expected_bytes' => 256000,
+            'mime' => 'image/jpeg',
+            'max_bytes' => 5_000_000,
+            'visibility' => 'private',
+            'log_id' => null,
+            'tags' => null,
+            'meta' => null,
+            'expires_at' => now()->addMinute(),
+            'used_at' => null,
+        ], $overrides));
     }
 
     private function ensureCurrency(string $code = 'JPY'): void

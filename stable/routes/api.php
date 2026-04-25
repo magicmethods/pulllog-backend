@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\Currencies\CurrencyController;
 use App\Http\Controllers\Gallery\GalleryAssetController;
 use App\Http\Controllers\Gallery\GalleryUsageController;
 use App\Http\Controllers\Gallery\GalleryBootstrapController;
+use App\Http\Middleware\AuthApiKey;
 
 Route::prefix(config('api.base_uri', 'v1'))->group(function () {
 
@@ -111,7 +112,9 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
         Route::post('assets/upload-ticket', [GalleryAssetController::class, 'uploadTicket'])->name('gallery.assets.upload-ticket');
         Route::get('assets', [GalleryAssetController::class, 'index'])->name('gallery.assets.index');
         Route::get('bootstrap', [GalleryBootstrapController::class, 'show'])->name('gallery.bootstrap.show');
-        Route::post('assets', [GalleryAssetController::class, 'store'])->name('gallery.assets.store');
+        Route::post('assets', [GalleryAssetController::class, 'store'])
+            ->withoutMiddleware(['auth.apikey', AuthApiKey::class])
+            ->name('gallery.assets.store');
         Route::get('assets/{id}', [GalleryAssetController::class, 'show'])->name('gallery.assets.show');
         Route::patch('assets/{id}', [GalleryAssetController::class, 'update'])->name('gallery.assets.update');
         Route::delete('assets/{id}', [GalleryAssetController::class, 'destroy'])->name('gallery.assets.destroy');

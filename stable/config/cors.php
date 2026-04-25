@@ -1,5 +1,14 @@
 <?php
 
+$allowedHeaders = array_values(array_filter(array_map(
+    static fn (string $header): string => trim($header),
+    explode(',', (string) env('CORS_ALLOWED_HEADERS', 'Origin,X-Requested-With,Content-Type,Accept,x-api-key,x-csrf-token,x-upload-token'))
+)));
+
+if ($allowedHeaders !== ['*'] && !in_array('x-upload-token', $allowedHeaders, true)) {
+    $allowedHeaders[] = 'x-upload-token';
+}
+
 return [
 
     /*
@@ -23,12 +32,12 @@ return [
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => explode(',',env('CORS_ALLOWED_HEADERS', '*')),
+    'allowed_headers' => $allowedHeaders,
 
     'exposed_headers' => [],
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => filter_var(env('CORS_SUPPORTS_CREDENTIALS', true), FILTER_VALIDATE_BOOL),
 
 ];

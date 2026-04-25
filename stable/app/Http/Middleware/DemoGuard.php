@@ -2,8 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
+use App\Models\UserSession;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class DemoGuard
@@ -18,7 +22,7 @@ class DemoGuard
 
     public function handle(Request $request, Closure $next): Response
     {
-        $user = $request->user();
+        $user = $request->user() ?? $this->resolveUserFromCsrfToken($request);
 
         // 未ログインは素通し（他ミドルウェアで制御される想定）
         if (!$user || !$this->isDemoUser($user)) {
@@ -55,7 +59,7 @@ class DemoGuard
      */
     private function isDemoUser($user): bool
     {
-        if (property_exists($user, 'roles') && in_array('demo', $user->roles, true)) {
+        if (in_array('demo', (array) ($user->roles ?? []), true)) {
             return true;
         }
 
@@ -70,5 +74,32 @@ class DemoGuard
         }
 
         return false;
+    }
+
+    private function resolveUserFromCsrfToken(Request $request): ?User
+    {
+        $csrfToken = $request->header('x-csrf-token');
+        if (!$csrfToken) {
+            return null;
+        }
+
+        $validSession = UserSession::query()
+            ->where('csrf_token', $csrfToken)
+            ->where('expires_at', '>', Carbon::now('UTC'))
+            ->first();
+
+        if (!$validSession) {
+            return null;
+        }
+
+        $user = User::find($validSession->user_id);
+        if (!$user) {
+            return null;
+        }
+
+        $request->setUserResolver(static fn () => $user);
+        Auth::setUser($user);
+
+        return $user;
     }
 }
