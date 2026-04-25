@@ -278,20 +278,10 @@ erDiagram
 
 フロントエンドの Playwright ベースのゴールデンルートE2Eは、この `stable/` の Laravel 環境を専用バックエンドとして利用します。Playwright からは `composer run e2e:serve` が起動され、`http://127.0.0.1:3030/up` のヘルスチェック完了後にシナリオが開始されます。
 
-### local-dev と e2e の使い分け
-
-- 通常の画面開発、手動ブラウザ確認、データを残したいローカル確認は local-dev を使います。
-- Playwright 実行や seed 済み再現環境での検証は e2e を使います。
-- local-dev は frontend の `.env.local` と backend の通常 `.env` を組み合わせます。
-- e2e は frontend の `.env.e2e` と backend の `.env.e2e` を組み合わせます。
-- frontend が `.env.local`、backend が `.env.e2e` のように混線すると `API_KEY` 不一致で login 401 が起こりえます。
-- 詳細な運用差分は `docs/operations/local-development-runtime.md` を参照してください。
-
 ### 仕組み
 
 - `.env.e2e` を使った専用ローカル環境で、通常の開発環境と分離して動作します
 - `composer run e2e:prepare` は `.env.e2e` の生成・補完、`APP_KEY` の準備、`storage:link`、`migrate:fresh --seed --env=e2e --force` をまとめて実行します
-- `composer run e2e:serve` は `.env.e2e` で Laravel を起動するだけで、DB 初期化は行いません
 - バックエンドの Seeder では、E2E専用アカウント `e2e@pulllog.net`（name: `E2E`, `plan_id = 1`）と、検証に必要な `apps` / `user_apps` の関連付けを投入します
 - 履歴保存や統計表示で必要な `logs` テーブルおよび `logs_with_money` View を含め、ゴールデンルートE2Eがそのまま通るDB状態を再現します
 
@@ -321,8 +311,6 @@ pnpm run test:e2e:prepare
 ```
 
 > `e2e:prepare` は E2E用DBを `migrate:fresh --seed` で再作成するため、既存データを残したい環境では実行先を分けてください。
-
-> `pnpm run test:e2e` 自体は Playwright から `e2e:serve` を起動するだけなので、毎回 DB を初期化するわけではありません。クリーンな seed 状態が必要なときだけ `e2e:prepare` を先に実行してください。
 
 ---
 

@@ -32,12 +32,14 @@
 
 - 通常の `.env` を使う
 - 起動コマンドは `php artisan serve --host=127.0.0.1 --port=3030` を基本とする
+- gallery 周りの migration を pull した後は、既存 local DB の enum drift を残さないため `php artisan migrate` を一度実行する
 
 ### 注意点
 
 - frontend の `SECRET_API_KEY` と backend の `API_KEY` は同じ値に揃える
 - `API_BASE_URI` は frontend 側の通常 local 前提に合わせて `/api/v1` を基準にする
 - local-dev で backend を `.env.e2e` 起動に切り替えない
+- 既存 local DB が gallery 初期導入時点の `storage_disk` enum を保持していると、`GALLERY_DISK=private` でも `private` ラベル不足で upload insert が 22P02 になるため、migration 適用漏れを疑う
 
 ## e2e レーン
 
