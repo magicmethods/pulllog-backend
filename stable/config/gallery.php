@@ -24,5 +24,7 @@ return [
     ],
     'signed_url_ttl' => (int) env('GALLERY_SIGNED_URL_TTL', 120),
     'upload_ticket_ttl' => (int) env('GALLERY_UPLOAD_TICKET_TTL', 60),
+    'bootstrap_slow_log_ms' => (int) env('GALLERY_BOOTSTRAP_SLOW_LOG_MS', 2000),
+    'bootstrap_hard_timeout_ms' => (int) env('GALLERY_BOOTSTRAP_HARD_TIMEOUT_MS', 8000),
     'public_host' => env('GALLERY_PUBLIC_HOST', 'https://img.pulllog.net'),
 ];
