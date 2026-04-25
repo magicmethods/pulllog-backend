@@ -9,13 +9,14 @@ use App\Http\Requests\Gallery\UpdateGalleryAssetRequest;
 use App\Http\Resources\GalleryAssetResource;
 use App\Models\App;
 use App\Models\GalleryAsset;
-use App\Models\Log;
+use App\Models\Log as LogModel;
 use App\Services\Gallery\GalleryAssetLinkService;
 use App\Services\Gallery\GalleryStorage;
 use App\Services\Gallery\GalleryUploadTicketService;
 use App\Services\PlanLimitService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
@@ -23,6 +24,7 @@ class GalleryAssetController extends Controller
 {
     public function index(Request $request)
     {
+        $startedAt = hrtime(true);
         $user = $request->user();
 
         $query = GalleryAsset::query()
@@ -30,8 +32,7 @@ class GalleryAssetController extends Controller
                 'app:id,app_key,name',
                 'link:asset_id,code',
             ])
-            ->where('user_id', $user->id)
-            ->whereNull('deleted_at');
+            ->where('user_id', $user->id);
 
         if ($request->filled('from')) {
             $query->whereDate('created_at', '>=', $request->date('from')->startOfDay());
@@ -68,6 +69,27 @@ class GalleryAssetController extends Controller
         $per = max(1, min($per, 100));
 
         $paginator = $query->paginate($per)->withQueryString();
+
+        $elapsedMs = (int) ((hrtime(true) - $startedAt) / 1_000_000);
+        $slowLogThresholdMs = (int) config('gallery.list_slow_log_ms', 1500);
+
+        if ($elapsedMs >= $slowLogThresholdMs) {
+            Log::warning('gallery.assets.index.slow', [
+                'user_id' => (int) $user->id,
+                'elapsed_ms' => $elapsedMs,
+                'per' => $per,
+                'page' => (int) $request->input('page', 1),
+                'result_count' => $paginator->count(),
+                'total' => $paginator->total(),
+                'has_filters' => [
+                    'from' => $request->filled('from'),
+                    'to' => $request->filled('to'),
+                    'log_id' => $request->filled('log_id'),
+                    'tags' => $request->filled('tags'),
+                    'q' => $request->filled('q'),
+                ],
+            ]);
+        }
 
         return GalleryAssetResource::collection($paginator);
     }
@@ -151,12 +173,12 @@ class GalleryAssetController extends Controller
         }
 
         $hash = hash_file('sha256', $file->getRealPath());
-        $duplicate = GalleryAsset::where('user_id', $user->id)
+        $duplicate = GalleryAsset::withTrashed()
+            ->where('user_id', $user->id)
             ->where('hash_sha256', $hash)
-            ->whereNull('deleted_at')
             ->first();
 
-        if ($duplicate) {
+        if ($duplicate && !$duplicate->trashed()) {
             return response()->json([
                 'message' => 'Duplicate file',
                 'asset' => new GalleryAssetResource(
@@ -196,7 +218,7 @@ class GalleryAssetController extends Controller
 
         $log = null;
         if ($resolvedLogId !== null) {
-            $log = Log::where('id', (int) $resolvedLogId)
+            $log = LogModel::where('id', (int) $resolvedLogId)
                 ->where('user_id', $user->id)
                 ->first();
             if (!$log) {
@@ -216,6 +238,46 @@ class GalleryAssetController extends Controller
 
                 $resolvedAppId = $logAppId;
             }
+        }
+
+        if ($duplicate && $duplicate->trashed()) {
+            $asset = DB::transaction(function () use (
+                $request,
+                $duplicate,
+                $resolvedLogId,
+                $resolvedAppId,
+                $resolvedVisibility,
+                $resolvedTags,
+                $linkService,
+                $ticketService,
+                $ticket
+            ) {
+                $duplicate->restore();
+                $duplicate->forceFill([
+                    'app_id' => $resolvedAppId,
+                    'log_id' => $resolvedLogId,
+                    'title' => $request->input('title'),
+                    'description' => $request->input('description'),
+                    'tags' => $resolvedTags,
+                    'visibility' => $resolvedVisibility,
+                ])->save();
+
+                $ticketService->markAsUsed($ticket);
+
+                if ($duplicate->visibility === 'public') {
+                    $link = $linkService->createOrRefreshLink($duplicate);
+                    $duplicate->setRelation('link', $link);
+                } else {
+                    $linkService->deleteLink($duplicate);
+                    $duplicate->setRelation('link', null);
+                }
+
+                return $duplicate->loadMissing('app:id,app_key,name', 'link:asset_id,code');
+            });
+
+            return (new GalleryAssetResource($asset))
+                ->response()
+                ->setStatusCode(201);
         }
 
         $disk = config('gallery.disk');
@@ -377,7 +439,7 @@ class GalleryAssetController extends Controller
         $this->authorize('update', $asset);
 
         if ($request->filled('log_id')) {
-            $log = Log::where('id', (int) $request->input('log_id'))
+            $log = LogModel::where('id', (int) $request->input('log_id'))
                 ->where('user_id', $request->user()->id)
                 ->first();
             if (!$log) {
