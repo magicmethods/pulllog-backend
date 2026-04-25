@@ -1,7 +1,7 @@
 ---
 description: Orchestrate stable backend feature delivery from issue or requirements through architecture, contract alignment, implementation, and review
 name: backend-orch-feature
-tools: ["search/codebase", "search", "read", "todo", "agent", "read/problems", "edit"]
+tools: ["search/codebase", "search", "read", "todo", "agent", "read/problems", "edit", "execute/runInTerminal"]
 agents: [backend-arch-api, backend-design-contract, backend-impl-feature, backend-review-feature]
 user-invocable: true
 ---
@@ -54,6 +54,9 @@ Use this sequence unless there is a strong reason not to:
 - keep plans minimal and grounded in the current codebase
 - prefer existing controllers, form requests, services, resources, and tests over new abstractions
 - surface blockers early, especially missing acceptance criteria, migration risk, and contract drift
+- enforce backend-only authority by default: no edits outside `backend/` without explicit user approval in the current request
+- do not authorize or perform frontend / contract / docs edits implicitly as part of backend planning
+- when cross-team change is needed but not authorized, produce a handoff summary and stop before implementation
 
 # Handoff criteria
 Only send work forward when the prior stage has produced enough information:

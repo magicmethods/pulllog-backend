@@ -17,6 +17,18 @@ The authoritative OpenAPI schema for the Pulllog API is maintained in the **cont
 - Stable endpoints are routed via `stable/routes/` and handled in `stable/app/Http/Controllers/`.
 - Response structure must conform to the schema defined in `contract/api-schema.yaml`.
 
+## Authority Boundary (Backend Scope)
+
+- In this workspace, the default implementation scope is `backend/` only.
+- Reading `../frontend`, `../contract`, and `../pulllog-docs` is allowed for analysis and alignment checks.
+- Editing files outside `backend/` is prohibited unless the user explicitly authorizes cross-team changes in the current request.
+- If frontend, contract, or docs work is required but not explicitly authorized, stop implementation and return a handoff packet:
+  - required cross-team changes
+  - impact scope
+  - validation expectations
+  - rollback considerations
+- For agents with edit or terminal permissions, this scope boundary takes precedence over convenience.
+
 ## Repository-wide instructions for Playwright E2E operations
 
 ### Purpose

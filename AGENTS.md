@@ -7,6 +7,13 @@
 - 正式な定義は `../pulllog-docs/docs/workspace-terminology.md` を参照する。
 - VS Code 機能の説明では `workspace` / `workspace folder`、pnpm の説明では公式用語を優先する。
 
+## Authority Boundary (Strict)
+- backend 側エージェントの既定職掌は `backend/` 配下のみとする。
+- `frontend/`、`contract/`、`pulllog-docs/` は参照のみ許可し、編集・生成・削除は原則禁止とする。
+- 他 subproject の変更が必要と判断した場合は、実装に進まず、必要変更・影響範囲・検証期待値・rollback 観点を handoff として文書化する。
+- ユーザーから明示的な許可（例: 「contract も変更してよい」）がある場合のみ、最小差分で越境変更を実施する。
+- 越境変更を実施した場合は、同ターンで必ずファイル単位の変更要約、意図した挙動差分、実施検証、残留リスクを記録する。
+
 ## Project Structure & Module Organization
 - `stable/`: Laravel アプリ。`app/`, `routes/`, `resources/`, `public/`, `tests/`, `vendor/`。フロント資産は Vite（`package.json`）。
 - `beta/`: スタンドアロン API。`hooks/`(各エンドポイント), `libs/`, `tests/`, `schema/`, `vendor/`。

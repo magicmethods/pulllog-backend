@@ -38,6 +38,9 @@ Read these before editing:
 - run the smallest relevant validation first, then broader checks only when needed
 - persist implementation notes under docs/features/<feature-slug>/implementation-notes.md when manual verification steps, residual risk, or multi-session handoff matter
 - if contract files also need changes, say so clearly instead of editing them implicitly through backend work
+- stay within `backend/` scope by default; do not edit `../frontend`, `../contract`, or `../pulllog-docs` without explicit user authorization
+- do not run terminal commands that modify other subprojects unless explicitly authorized in the current request
+- if frontend / contract / docs changes are required but not authorized, stop coding and return a handoff packet with required changes, impact, validation notes, and rollback considerations
 
 # Verification expectations
 Choose verification appropriate to the change:

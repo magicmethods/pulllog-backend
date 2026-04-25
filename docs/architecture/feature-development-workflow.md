@@ -43,6 +43,17 @@ Issue、要件書、要求仕様から着手し、設計、契約整合、実装
 - 実装は最小差分を原則とし、無関係なリファクタリングを混ぜない
 - 変更に応じて auth、authorization、status code、error shape、DB 影響を明示する
 
+### 3.1 職掌境界
+
+- backend エージェントの既定作業範囲は `backend/` 配下のみとする
+- `frontend/`、`contract/`、`pulllog-docs/` は参照のみ許可し、編集・生成・削除はユーザーの明示許可以前は禁止とする
+- frontend / contract / docs の修正が必要でも未許可であれば、実装を止めて handoff packet を返す
+- handoff packet には最低限、必要変更、影響範囲、検証期待値、rollback 観点を含める
+- 越境変更が明示許可された場合でも、同ターンでファイル単位の変更要約、意図した挙動差分、実施検証、残留リスクを記録する
+- edit / terminal 権限を持つエージェントは、この職掌境界を convenience より優先して強制する
+
+詳細運用は `docs/operations/agent-scope-governance.md` を参照する。
+
 ---
 
 ## 4. 役割一覧
