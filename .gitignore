@@ -1,5 +1,9 @@
+.codex
+
 stable/.codex/
 stable/.env
 stable/.env.local
 stable/.env.production
 stable/api-schema.yaml
+
+beta/.codex/
