@@ -12,7 +12,6 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class GalleryUploadTicketService
 {
@@ -67,14 +66,14 @@ class GalleryUploadTicketService
 
         $expectedBytes = $payload['expected_bytes'] ?? null;
         if ($expectedBytes !== null && $expectedBytes > $maxBytes) {
-            throw ValidationException::withMessages([
+            $this->throwValidationError([
                 'expectedBytes' => ['Expected size exceeds available quota.'],
             ]);
         }
 
         $mime = $payload['mime'] ?? null;
         if ($mime !== null && !in_array($mime, $allowedMimes, true)) {
-            throw ValidationException::withMessages([
+            $this->throwValidationError([
                 'mime' => ['MIME type is not allowed.'],
             ]);
         }
@@ -86,7 +85,7 @@ class GalleryUploadTicketService
         if ($logId !== null) {
             $log = $this->findLogForUser($logId, $user->id);
             if (!$log) {
-                throw ValidationException::withMessages([
+                $this->throwValidationError([
                     'logId' => ['Log is not available for this user.'],
                 ]);
             }
@@ -97,13 +96,13 @@ class GalleryUploadTicketService
         if ($appKey !== null) {
             $app = App::where('app_key', $appKey)->first();
             if (!$app) {
-                throw ValidationException::withMessages([
+                $this->throwValidationError([
                     'appKey' => ['App key is invalid.'],
                 ]);
             }
 
             if (!$this->appBelongsToUser($app->id, $user->id)) {
-                throw ValidationException::withMessages([
+                $this->throwValidationError([
                     'appKey' => ['App is not available for this user.'],
                 ]);
             }
@@ -114,7 +113,7 @@ class GalleryUploadTicketService
         if ($log !== null && $log->app_id !== null) {
             $logAppId = (int) $log->app_id;
             if ($appId !== null && $appId !== $logAppId) {
-                throw ValidationException::withMessages([
+                $this->throwValidationError([
                     'appKey' => ['App key does not match the log.'],
                 ]);
             }
@@ -237,5 +236,18 @@ class GalleryUploadTicketService
             ->where('user_id', $userId)
             ->where('app_id', $appId)
             ->exists();
+    }
+
+    /**
+     * @param array<string, array<int, string>> $errors
+     */
+    private function throwValidationError(array $errors): void
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'message' => 'The given data was invalid.',
+                'errors' => $errors,
+            ], 422)
+        );
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Requests\Gallery;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Validation\Validator;
 
 class StoreUploadTicketRequest extends FormRequest
 {
@@ -36,6 +38,16 @@ class StoreUploadTicketRequest extends FormRequest
             'tags.*' => ['string', 'max:50'],
             'app_key' => ['nullable', 'string', 'exists:apps,app_key'],
         ];
+    }
+
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'message' => 'The given data was invalid.',
+                'errors' => $validator->errors(),
+            ], 422)
+        );
     }
 
     public function validatedPayload(): array

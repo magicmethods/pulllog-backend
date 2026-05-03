@@ -7,6 +7,7 @@
 - 通常の画面開発と Playwright E2E を別レーンとして扱う
 - local-dev と e2e の env、起動コマンド、DB 取り扱い差分を明示する
 - API_KEY や API_BASE_URI の混線による 401 / 疎通不良を防ぐ
+- frontend と backend のレーン不一致を運用上禁止し、切り分け不能な 403 / 404 を減らす
 
 ## 運用レーン
 
@@ -82,6 +83,32 @@
 - frontend の `.env.local` と backend の `.env.e2e` を組み合わせない
 - frontend の `.env.e2e` と backend の通常 `.env` を組み合わせない
 - 通常開発で `e2e:serve` を常用しない
+
+### レーン一致ルール（必須）
+
+- local-dev 検証時は frontend / backend をともに local-dev で起動する
+- e2e 検証時は frontend / backend をともに e2e で起動する
+- レーンを跨いだ起動を検知した場合、その時点の検証結果は無効扱いとする
+
+## Gallery ストレージ方針
+
+- レーン差に起因する 404 切り分けコストを下げるため、gallery のストレージ設定は local-dev と e2e で揃える
+- 標準値（example）
+  - `GALLERY_DISK=private`
+  - `GALLERY_BASE_DIR=gallery`
+- DB は従来どおり分離運用（local-dev と e2e で別 DB）を継続する
+
+## 403 / 404 の最小切り分け
+
+1. 403 の場合
+  - 署名 URL の `expires` / `signature` / `user` / `variant` を確認する
+  - frontend/backend のレーン一致を確認する
+2. 404 の場合
+  - 対象 asset id が現在のレーン DB に存在するか確認する
+  - `disk` と `path` が指す実ファイルの存在を確認する
+3. 結果判定
+  - 403 は署名や権限起因の可能性が高い
+  - 404 は DB レコードまたはストレージ実体不在の可能性が高い
 
 ## 混線時に起こりやすい症状
 

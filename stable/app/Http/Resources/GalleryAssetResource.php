@@ -28,15 +28,18 @@ class GalleryAssetResource extends JsonResource
             }
 
             if ($needsSignedUrl) {
-                return URL::temporarySignedRoute(
+                $relativeSignedUrl = URL::temporarySignedRoute(
                     'gallery.assets.content',
                     now()->addSeconds($ttl),
                     [
                         'id' => (string) $this->id,
                         'variant' => $variant,
                         'user' => (int) $this->user_id,
-                    ]
+                    ],
+                    absolute: false
                 );
+
+                return url($relativeSignedUrl);
             }
 
             return null;

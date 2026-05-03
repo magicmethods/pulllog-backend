@@ -122,7 +122,7 @@ Route::prefix(config('api.base_uri', 'v1'))->group(function () {
         Route::get('assets/{id}/content', [GalleryAssetController::class, 'content'])
             ->name('gallery.assets.content')
             ->withoutMiddleware(['auth.apikey', 'auth.csrf', 'demo.guard'])
-            ->middleware('signed');
+            ->middleware('signed:relative');
     });
 
     Route::prefix('currencies')

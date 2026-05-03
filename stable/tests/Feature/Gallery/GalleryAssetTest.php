@@ -94,6 +94,10 @@ class GalleryAssetTest extends TestCase
         $this->assertStringContainsString('variant=original', $payload['url']);
         $this->get($payload['url'])->assertOk();
 
+        $hostVariantUrl = preg_replace('#^https?://[^/]+#', 'http://127.0.0.1', $payload['url']);
+        $this->assertIsString($hostVariantUrl);
+        $this->get($hostVariantUrl)->assertOk();
+
         $unsignedPath = parse_url($payload['url'], PHP_URL_PATH);
         $this->get($unsignedPath)->assertForbidden();
 

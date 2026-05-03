@@ -157,6 +157,90 @@ class GalleryUploadTicketTest extends TestCase
         ]);
     }
 
+    public function test_upload_ticket_returns_json_422_for_invalid_mime_without_accept_header(): void
+    {
+        $plan = $this->createPlan();
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        $this->seedSessionForUser($user, 'csrf-token');
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $response = $this->actingAs($user)->call(
+            'POST',
+            '/api/v1/gallery/assets/upload-ticket',
+            [],
+            [],
+            [],
+            [
+                'HTTP_X_API_KEY' => 'test-api-key',
+                'HTTP_X_CSRF_TOKEN' => 'csrf-token',
+                'CONTENT_TYPE' => 'application/json',
+            ],
+            json_encode([
+                'expectedBytes' => 256000,
+                'mime' => 'image/gif',
+                'appKey' => $app->app_key,
+            ])
+        );
+
+        $response->assertStatus(422);
+        $this->assertStringContainsString(
+            'application/json',
+            (string) $response->headers->get('content-type')
+        );
+        $response->assertJsonPath('message', 'The given data was invalid.');
+        $response->assertJsonStructure([
+            'errors' => ['mime'],
+        ]);
+    }
+
+    public function test_upload_ticket_returns_json_422_for_oversized_expected_bytes_without_accept_header(): void
+    {
+        $plan = $this->createPlan(maxGalleryMb: 300, maxUploadMb: 1);
+        $user = $this->createUserForPlan($plan->id);
+        $app = $this->createAppForUser($user);
+        $this->seedSessionForUser($user, 'csrf-token');
+        DB::table('gallery_usage_stats')->insert([
+            'user_id' => $user->id,
+            'bytes_used' => 0,
+            'files_count' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $response = $this->actingAs($user)->call(
+            'POST',
+            '/api/v1/gallery/assets/upload-ticket',
+            [],
+            [],
+            [],
+            [
+                'HTTP_X_API_KEY' => 'test-api-key',
+                'HTTP_X_CSRF_TOKEN' => 'csrf-token',
+                'CONTENT_TYPE' => 'application/json',
+            ],
+            json_encode([
+                'expectedBytes' => 2 * 1024 * 1024,
+                'mime' => 'image/jpeg',
+                'appKey' => $app->app_key,
+            ])
+        );
+
+        $response->assertStatus(422);
+        $this->assertStringContainsString(
+            'application/json',
+            (string) $response->headers->get('content-type')
+        );
+        $response->assertJsonPath('message', 'The given data was invalid.');
+        $response->assertJsonPath('errors.expectedBytes.0', 'Expected size exceeds available quota.');
+    }
+
     private function createPlan(int $maxGalleryMb = 300, int $maxUploadMb = 20): Plan
     {
         return Plan::create([

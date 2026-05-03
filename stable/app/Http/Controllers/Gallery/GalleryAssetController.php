@@ -384,7 +384,7 @@ class GalleryAssetController extends Controller
 
     public function content(Request $request, string $id)
     {
-        if (!$request->hasValidSignature()) {
+        if (!$request->hasValidSignature(false)) {
             abort(403);
         }
 
