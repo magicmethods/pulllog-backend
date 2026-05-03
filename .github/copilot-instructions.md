@@ -121,6 +121,15 @@ Before working on any E2E task, read these files when they exist in the **fronte
 
 See `AGENTS.md` in this workspace root for full coding conventions, build commands, and PR guidelines.
 
+## Terminal & Process Management
+- After completing any task in a terminal, always run the `exit` command to close the session.
+- Do not leave background processes running after your work is done.
+- On Windows, when using Git Bash (bash.exe), be aware that orphaned child processes may remain; always include a cleanup step for lingering processes at the end of a work sequence.
+
+## Cleanup Rules
+- After running multiple Git operations or build tasks in succession, consider cleaning up idle Git processes by running:
+  `powershell.exe -Command "Get-Process | Where-Object { $_.Name -match 'git-remote-https|ssh-agent' } | Stop-Process -Force"`
+
 ## Workspace Root Policy Summary
 
 - This workspace follows the shared root policy in `pulllog/AGENTS.md`.
